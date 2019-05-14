@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".AddActivity"
+    tools:showIn="@layout/activity_add">
+
+    <!--希望種別( :カメラマン、 :モデル)-->
+    <RadioGroup
+        android:id="@+id/category_hope"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RadioButton
+            android:id="@+id/category_hope_cameraman"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:checked="true"/>
+        <RadioButton
+            android:id="@+id/category_hope_model"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+    </RadioGroup>
+
+    <!--表示名(入力:そのまま使用、未入力:NG.同じ名前がある場合はNG→表示名で検索する時困る)-->
+    <EditText
+        android:id="@+id/display_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:hint="表示名"
+        />
+
+    <!--編集・削除パスワード(未入力可だが、未入力の場合、チェック時に注意文言を表示する)-->
+    <EditText
+        android:id="@+id/pass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:hint="編集・削除パスワード"
+        />
+
+    <!--SNS種別(:Twitter、:instagram)-->
+    <RadioGroup
+        android:id="@+id/category_sns"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <RadioButton
+            android:id="@+id/category_sns_twitter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <RadioButton
+            android:id="@+id/category_sns_instagram"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </RadioGroup>
+
+    <!--SNSのアカウント名（これ、もし二つだった場合は？？）-->
+    <EditText
+        android:id="@+id/sns_user_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:hint="SNSでのユーザ名"
+        />
+
+    <!--共有項目-->
+    <!--・種別（カメラマン：モデル募集、モデル：カメラマン募集）ーーーーDefault:カメラマン-->
+    <!--・表示名（任意に入力）ーーー未入力は「名無し」として登録-->
+    <!--・アカウント名（文字列入力。＠はデフォルトで？インスタどうか知らない）ーーーURLあってもなくても、必須-->
+    <!--・SNS種別（Twitter、インスタのみ）ーーーどちらか必須。未選択はNG-->
+    <!--・URL（それぞれ。あるんであれば、文字列を）ーーー未入力でも可。だけど、SNSアカウント名への入力は必須-->
+    <!--・年齢（年代でのみ選択、トグル）ーーー未選択も可。10代前半〜90代後半まで（必要あるか？）-->
+    <!--・性別（LGBT考えて、トグル）ーーー未選択も可。男性、女性、未選択（Default:未選択）-->
+    <!--・都道府県（トグル？）ーーー地域で分ける（Default：関東）-->
+    <!--・得意なイメージ-->
+    <!--・有償、無償（トグル）ーーー未選択はNG。無償、有償、どちらでも（Default：無償）-->
+    <!--・空き日（テキストエリア、自由に入力）ーーー未入力の場合（Default:いつでもOKです！）-->
+    <!--　　　　　　　　　　　　　　　　　　　それか、面倒な場合もあるので、選択したら自動入力するようにしよう。-->
+    <!--　　　　　　　　　　　　　　　　　　　・土日祝、空いています！-->
+    <!--　　　　　　　　　　　　　　　　　　　・平日も土日祝日も空いています！-->
+    <!--　　　　　　　　　　　　　　　　　　　・仕事（バイト）の都合があるので、調整させてください！-->
+
+    <!--・写真（は、URLリンクでスクレイピング！）-->
+
+    <!--・ざっくり撮り（られ）たいイメージ（トグル・ かっこいい、かわいい、ふわふわ、かため、ランジェリー）ーーーー未選択でも可-->
+    <!--・削除、編集パスワード（TextView）ーーーー任意で設定してもらう。未入力の場合、空文字を入れる。-->
+    <!--　　　　　　　　　　　　　　　判定処理で空文字が来た場合、NGとする。-->
+
+    <!--都道府県トグル-->
+
+    <!--年齢トグル-->
+
+    <!--性別トグル-->
+
+    <!--カメラマン（モデル募集）か、モデル（カメラマン募集）か。-->
+
+    <!--使用しているSNSの種類-->
+
+    <!--URL-->
+</android.support.constraint.ConstraintLayout>

@@ -1,33 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".AddActivity"
-    tools:showIn="@layout/activity_add">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
 
     <!--希望種別( :カメラマン、 :モデル)-->
+    <TextView
+        android:id="@+id/category_hope_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="希望種別"
+        android:textSize="20dp"/>
     <RadioGroup
         android:id="@+id/category_hope"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="5dp">
         <RadioButton
             android:id="@+id/category_hope_cameraman"
-            android:layout_width="wrap_content"
+            android:text="カメラマン"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:checked="true"/>
         <RadioButton
             android:id="@+id/category_hope_model"
-            android:layout_width="wrap_content"
+            android:text="モデル"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"/>
     </RadioGroup>
 
     <!--表示名(入力:そのまま使用、未入力:NG.同じ名前がある場合はNG→表示名で検索する時困る)-->
+    <TextView
+        android:id="@+id/display_name_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="投稿表示名"
+        android:textSize="20dp"/>
     <EditText
         android:id="@+id/display_name"
         android:layout_width="match_parent"
@@ -37,8 +50,15 @@
         />
 
     <!--編集・削除パスワード(未入力可だが、未入力の場合、チェック時に注意文言を表示する)-->
+    <TextView
+        android:id="@+id/password_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="編集・削除パスワード（登録しなければ今後の編集削除はできません）"
+        android:textSize="20dp"/>
     <EditText
-        android:id="@+id/pass"
+        android:id="@+id/password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textPassword"
@@ -46,18 +66,31 @@
         />
 
     <!--SNS種別(:Twitter、:instagram)-->
+    <TextView
+        android:id="@+id/category_sns_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="SNSの種類"
+        android:textSize="20dp"/>
     <RadioGroup
         android:id="@+id/category_sns"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="5dp">
         <RadioButton
             android:id="@+id/category_sns_twitter"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:text="Twitter"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
         <RadioButton
             android:id="@+id/category_sns_instagram"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:text="instagram"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
     </RadioGroup>
 
     <!--SNSのアカウント名（これ、もし二つだった場合は？？）-->
@@ -103,4 +136,4 @@
     <!--使用しているSNSの種類-->
 
     <!--URL-->
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>

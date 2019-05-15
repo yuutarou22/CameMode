@@ -1,139 +1,267 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-    <!--希望種別( :カメラマン、 :モデル)-->
-    <TextView
-        android:id="@+id/category_hope_label"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:text="希望種別"
-        android:textSize="20dp"/>
-    <RadioGroup
-        android:id="@+id/category_hope"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_margin="5dp">
-        <RadioButton
-            android:id="@+id/category_hope_cameraman"
-            android:text="カメラマン"
-            android:layout_width="0dp"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:orientation="vertical">
+
+        <!--希望種別( :カメラマン、 :モデル)-->
+        <TextView
+            android:id="@+id/category_hope_label"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:checked="true"/>
-        <RadioButton
-            android:id="@+id/category_hope_model"
-            android:text="モデル"
-            android:layout_width="0dp"
+            android:layout_marginTop="5dp"
+            android:text="希望種別"
+            android:textSize="20dp"/>
+
+        <RadioGroup
+            android:id="@+id/category_hope"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"/>
-    </RadioGroup>
+            android:layout_margin="8dp"
+            android:orientation="horizontal">
 
-    <!--表示名(入力:そのまま使用、未入力:NG.同じ名前がある場合はNG→表示名で検索する時困る)-->
-    <TextView
-        android:id="@+id/display_name_label"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:text="投稿表示名"
-        android:textSize="20dp"/>
-    <EditText
-        android:id="@+id/display_name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="text"
-        android:hint="表示名"
-        />
+            <RadioButton
+                android:id="@+id/category_hope_cameraman"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:checked="true"
+                android:text="カメラマン"/>
 
-    <!--編集・削除パスワード(未入力可だが、未入力の場合、チェック時に注意文言を表示する)-->
-    <TextView
-        android:id="@+id/password_label"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:text="編集・削除パスワード（登録しなければ今後の編集削除はできません）"
-        android:textSize="20dp"/>
-    <EditText
-        android:id="@+id/password"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textPassword"
-        android:hint="編集・削除パスワード"
-        />
+            <RadioButton
+                android:id="@+id/category_hope_model"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="モデル"/>
+        </RadioGroup>
 
-    <!--SNS種別(:Twitter、:instagram)-->
-    <TextView
-        android:id="@+id/category_sns_label"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:text="SNSの種類"
-        android:textSize="20dp"/>
-    <RadioGroup
-        android:id="@+id/category_sns"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="5dp">
-        <RadioButton
-            android:id="@+id/category_sns_twitter"
-            android:text="Twitter"
-            android:layout_width="0dp"
+        <!--表示名(入力:そのまま使用、未入力:NG.同じ名前がある場合はNG→表示名で検索する時困る)-->
+        <TextView
+            android:id="@+id/display_name_label"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"/>
-        <RadioButton
-            android:id="@+id/category_sns_instagram"
-            android:text="instagram"
-            android:layout_width="0dp"
+            android:layout_marginTop="5dp"
+            android:text="投稿表示名"
+            android:textSize="20dp"/>
+
+        <EditText
+            android:id="@+id/display_name"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"/>
-    </RadioGroup>
+            android:layout_margin="8dp"
+            android:hint="表示名"
+            android:inputType="text"
+            />
 
-    <!--SNSのアカウント名（これ、もし二つだった場合は？？）-->
-    <EditText
-        android:id="@+id/sns_user_name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="text"
-        android:hint="SNSでのユーザ名"
-        />
+        <!--編集・削除パスワード(未入力可だが、未入力の場合、チェック時に注意文言を表示する)-->
+        <TextView
+            android:id="@+id/password_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="編集・削除パスワード"
+            android:textSize="20dp"/>
 
-    <!--共有項目-->
-    <!--・種別（カメラマン：モデル募集、モデル：カメラマン募集）ーーーーDefault:カメラマン-->
-    <!--・表示名（任意に入力）ーーー未入力は「名無し」として登録-->
-    <!--・アカウント名（文字列入力。＠はデフォルトで？インスタどうか知らない）ーーーURLあってもなくても、必須-->
-    <!--・SNS種別（Twitter、インスタのみ）ーーーどちらか必須。未選択はNG-->
-    <!--・URL（それぞれ。あるんであれば、文字列を）ーーー未入力でも可。だけど、SNSアカウント名への入力は必須-->
-    <!--・年齢（年代でのみ選択、トグル）ーーー未選択も可。10代前半〜90代後半まで（必要あるか？）-->
-    <!--・性別（LGBT考えて、トグル）ーーー未選択も可。男性、女性、未選択（Default:未選択）-->
-    <!--・都道府県（トグル？）ーーー地域で分ける（Default：関東）-->
-    <!--・得意なイメージ-->
-    <!--・有償、無償（トグル）ーーー未選択はNG。無償、有償、どちらでも（Default：無償）-->
-    <!--・空き日（テキストエリア、自由に入力）ーーー未入力の場合（Default:いつでもOKです！）-->
-    <!--　　　　　　　　　　　　　　　　　　　それか、面倒な場合もあるので、選択したら自動入力するようにしよう。-->
-    <!--　　　　　　　　　　　　　　　　　　　・土日祝、空いています！-->
-    <!--　　　　　　　　　　　　　　　　　　　・平日も土日祝日も空いています！-->
-    <!--　　　　　　　　　　　　　　　　　　　・仕事（バイト）の都合があるので、調整させてください！-->
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:hint="編集・削除パスワード"
+            android:inputType="textPassword"
+            />
 
-    <!--・写真（は、URLリンクでスクレイピング！）-->
+        <!--SNS種別(:Twitter、:instagram)-->
+        <TextView
+            android:id="@+id/category_sns_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="SNSの種類"
+            android:textSize="20dp"/>
 
-    <!--・ざっくり撮り（られ）たいイメージ（トグル・ かっこいい、かわいい、ふわふわ、かため、ランジェリー）ーーーー未選択でも可-->
-    <!--・削除、編集パスワード（TextView）ーーーー任意で設定してもらう。未入力の場合、空文字を入れる。-->
-    <!--　　　　　　　　　　　　　　　判定処理で空文字が来た場合、NGとする。-->
+        <RadioGroup
+            android:id="@+id/category_sns"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:orientation="horizontal">
 
-    <!--都道府県トグル-->
+            <RadioButton
+                android:id="@+id/category_sns_twitter"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:checked="true"
+                android:text="Twitter"/>
 
-    <!--年齢トグル-->
+            <RadioButton
+                android:id="@+id/category_sns_instagram"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="instagram"/>
+        </RadioGroup>
 
-    <!--性別トグル-->
+        <!--SNSのアカウント名（これ、もし二つだった場合は？？）-->
+        <TextView
+            android:id="@+id/sns_user_name_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="SNSアカウント名"
+            android:textSize="20dp"
+            />
 
-    <!--カメラマン（モデル募集）か、モデル（カメラマン募集）か。-->
+        <EditText
+            android:id="@+id/sns_user_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:hint="SNSでのユーザ名"
+            android:inputType="text"
+            />
 
-    <!--使用しているSNSの種類-->
+        <!--URL-->
+        <TextView
+            android:id="@+id/photo_url_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="写真のURL"
+            android:textSize="20dp"/>
 
-    <!--URL-->
-</LinearLayout>
+        <EditText
+            android:id="@+id/photo_url"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:hint="URL"
+            android:inputType="text"/>
+
+        <!--空き日-->
+        <!--ボタンで簡単入力できるように！-->
+        <TextView
+            android:id="@+id/free_day_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="空き日（1行まで）"
+            android:textSize="20dp"/>
+
+        <EditText
+            android:id="@+id/free_day"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:maxLength="20"
+            android:hint="土日祝日は空いています！"/>
+
+        <!--有償・無償-->
+        <TextView
+            android:id="@+id/which_charge_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="有償・無償"
+            android:textSize="20dp"/>
+
+        <RadioGroup
+            android:id="@+id/which_charge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/charge"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="有償"/>
+
+            <RadioButton
+                android:id="@+id/either"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:checked="true"
+                android:text="どちらでも"/>
+
+            <RadioButton
+                android:id="@+id/no_charge"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="無償"/>
+        </RadioGroup>
+
+        <!--地域-->
+        <TextView
+            android:id="@+id/region_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="地域"
+            android:textSize="20dp"/>
+        <Spinner
+            android:id="@+id/spinner_region"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:entries="@array/region_item"
+            android:spinnerMode="dialog"
+            />
+
+        <!--性別-->
+        <TextView
+            android:id="@+id/sex_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="性別"
+            android:textSize="20dp"/>
+        <Spinner
+            android:id="@+id/spinner_sex"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:entries="@array/sex_item"
+            android:spinnerMode="dropdown"
+            />
+
+
+        <!--年代-->
+
+        <!--ざっくりイメージ-->
+
+
+        <!--共有項目-->
+        <!--・種別（カメラマン：モデル募集、モデル：カメラマン募集）ーーーーDefault:カメラマン-->
+        <!--・表示名（任意に入力）ーーー未入力は「名無し」として登録-->
+        <!--・アカウント名（文字列入力。＠はデフォルトで？インスタどうか知らない）ーーーURLあってもなくても、必須-->
+        <!--・SNS種別（Twitter、インスタのみ）ーーーどちらか必須。未選択はNG-->
+        <!--・URL（それぞれ。あるんであれば、文字列を）ーーー未入力でも可。だけど、SNSアカウント名への入力は必須-->
+        <!--・年齢（年代でのみ選択、トグル）ーーー未選択も可。10代前半〜90代後半まで（必要あるか？）-->
+        <!--・性別（LGBT考えて、トグル）ーーー未選択も可。男性、女性、未選択（Default:未選択）-->
+        <!--・都道府県（トグル？）ーーー地域で分ける（Default：関東）-->
+        <!--・得意なイメージ-->
+        <!--・有償、無償（トグル）ーーー未選択はNG。無償、有償、どちらでも（Default：無償）-->
+        <!--・空き日（テキストエリア、自由に入力）ーーー未入力の場合（Default:いつでもOKです！）-->
+        <!--　　　　　　　　　　　　　　　　　　　それか、面倒な場合もあるので、選択したら自動入力するようにしよう。-->
+        <!--　　　　　　　　　　　　　　　　　　　・土日祝、空いています！-->
+        <!--　　　　　　　　　　　　　　　　　　　・平日も土日祝日も空いています！-->
+        <!--　　　　　　　　　　　　　　　　　　　・仕事（バイト）の都合があるので、調整させてください！-->
+
+        <!--・写真（は、URLリンクでスクレイピング！）-->
+
+        <!--・ざっくり撮り（られ）たいイメージ（トグル・ かっこいい、かわいい、ふわふわ、かため、ランジェリー）ーーーー未選択でも可-->
+        <!--・削除、編集パスワード（TextView）ーーーー任意で設定してもらう。未入力の場合、空文字を入れる。-->
+        <!--　　　　　　　　　　　　　　　判定処理で空文字が来た場合、NGとする。-->
+
+
+    </LinearLayout>
+</ScrollView>

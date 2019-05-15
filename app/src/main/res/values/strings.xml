@@ -3,4 +3,22 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_add">AddActivity</string>
     <string name="title_activity_search">SearchActivity</string>
+
+    <string-array name="region_item">
+        <item>北海道</item>
+        <item>東北</item>
+        <item>関東</item>
+        <item>北陸</item>
+        <item>中部</item>
+        <item>近畿</item>
+        <item>四国</item>
+        <item>中国</item>
+        <item>九州沖縄</item>
+    </string-array>
+
+    <string-array name="sex_item">
+        <item>未選択</item>
+        <item>男性</item>
+        <item>女性</item>
+    </string-array>
 </resources>

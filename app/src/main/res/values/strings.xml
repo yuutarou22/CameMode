@@ -13,12 +13,22 @@
         <item>近畿</item>
         <item>四国</item>
         <item>中国</item>
-        <item>九州沖縄</item>
+        <item>九州</item>
+        <item>沖縄</item>
     </string-array>
 
     <string-array name="sex_item">
         <item>未選択</item>
         <item>男性</item>
         <item>女性</item>
+    </string-array>
+
+    <string-array name="age_item">
+        <item>10代</item>
+        <item>20代</item>
+        <item>30代</item>
+        <item>40代</item>
+        <item>50代</item>
+        <item>60代以上</item>
     </string-array>
 </resources>

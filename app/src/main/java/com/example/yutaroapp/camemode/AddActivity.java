@@ -1,11 +1,14 @@
 package com.example.yutaroapp.camemode;
 
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 
@@ -18,13 +21,7 @@ public class AddActivity extends AppCompatActivity {
   EditText password;
   RadioGroup categorySns;
   EditText snsUserName;
-//  CheckBox freeDayMon;
-//  CheckBox freeDayTue;
-//  CheckBox freeDayWed;
-//  CheckBox freeDayThu;
-//  CheckBox freeDayFri;
-//  CheckBox freeDaySat;
-//  CheckBox freeDaySun;
+  CheckBox[] freeDay = new CheckBox[freeDayArrayCount];
   RadioGroup whichCharge;
   Spinner spinnerRegion;
   Spinner spinnerSex;
@@ -37,7 +34,7 @@ public class AddActivity extends AppCompatActivity {
   String PasswordString;
   int categorySnsInt;
   String snsUserNameString;
-//  boolean[] freeDayArray = new boolean[freeDayArrayCount];
+  boolean[] freeDayArray = new boolean[freeDayArrayCount];
   int whichChargeInt;
   int spinnerRegionInt;
   int spinnerSexInt;
@@ -59,12 +56,17 @@ public class AddActivity extends AppCompatActivity {
       @Override
       public void onClick(View view) {
         categoryRoleInt = categoryRole.getCheckedRadioButtonId();
+        RadioButton categoryRoleButton = findViewById(categoryRoleInt);
         displayNameString = displayName.getText().toString();
         PasswordString = password.getText().toString();
         categorySnsInt = categorySns.getCheckedRadioButtonId();
+        RadioButton categorySnsButton = findViewById(categorySnsInt);
         snsUserNameString = snsUserName.getText().toString();
-//        空き日用の配列に格納する処理
+        for (int i = 0; i<freeDayArrayCount; i++) {
+          freeDayArray[i] = freeDay[i].isChecked();
+        }
         whichChargeInt = whichCharge.getCheckedRadioButtonId();
+        RadioButton whichChargeButton = findViewById(whichChargeInt);
         spinnerRegionInt = spinnerRegion.getSelectedItemPosition();
         spinnerSexInt = spinnerSex.getSelectedItemPosition();
         spinnerAgeInt = spinnerAge.getSelectedItemPosition();
@@ -79,13 +81,15 @@ public class AddActivity extends AppCompatActivity {
     password = (EditText)findViewById(R.id.password);
     categorySns = (RadioGroup)findViewById(R.id.category_sns);
     snsUserName = (EditText)findViewById(R.id.sns_user_name);
-//    freeDayMon = (CheckBox)findViewById(R.id.free_day_mon);
-//    freeDayTue = (CheckBox)findViewById(R.id.free_day_tue);
-//    freeDayWed = (CheckBox)findViewById(R.id.free_day_wed);
-//    freeDayThu = (CheckBox)findViewById(R.id.free_day_thu);
-//    freeDayFri = (CheckBox)findViewById(R.id.free_day_fri);
-//    freeDaySat = (CheckBox)findViewById(R.id.free_day_sat);
-//    freeDaySun = (CheckBox)findViewById(R.id.free_day_sun);
+
+    freeDay[0] = (CheckBox)findViewById(R.id.free_day_mon);
+    freeDay[1] = (CheckBox)findViewById(R.id.free_day_tue);
+    freeDay[2] = (CheckBox)findViewById(R.id.free_day_wed);
+    freeDay[3] = (CheckBox)findViewById(R.id.free_day_thu);
+    freeDay[4] = (CheckBox)findViewById(R.id.free_day_fri);
+    freeDay[5] = (CheckBox)findViewById(R.id.free_day_sat);
+    freeDay[6] = (CheckBox)findViewById(R.id.free_day_sun);
+
     whichCharge = (RadioGroup)findViewById(R.id.which_charge);
     spinnerRegion = (Spinner)findViewById(R.id.spinner_region);
     spinnerSex = (Spinner)findViewById(R.id.spinner_sex);

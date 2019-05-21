@@ -66,8 +66,6 @@ public class MainActivity extends AppCompatActivity {
     Resources res = getResources();
     for (int i = 0; i < 15; i++) {
       Bitmap bmp = BitmapFactory.decodeResource(res, R.mipmap.ic_gohan);
-      Log.d("TAG", "MainActivity---onCreate----getResources: " + res);
-      Log.d("TAG", "MainActivity---onCreate----Bitmap: " + bmp);
       UserListItem userItem = new UserListItem(bmp, "ねこにゃん" + String.valueOf(i+1));
       userListItems.add(userItem);
     }

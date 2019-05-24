@@ -1,7 +1,9 @@
 package com.example.yutaroapp.camemode;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -34,6 +36,7 @@ public class AddActivity extends AppCompatActivity {
   Spinner spinnerSex;
   Spinner spinnerAge;
   EditText imaginationHope;
+  FloatingActionButton fab; // 登録FABボタン
 
   // データ送信用
   int categoryRoleInt;
@@ -43,7 +46,6 @@ public class AddActivity extends AppCompatActivity {
   int categorySnsInt;
   RadioButton categorySnsButton;
   String snsUserNameString;
-  boolean[] freeDayArrayBool = new boolean[freeDayArrayCount];
   List<Boolean> freeDayArrayList = new ArrayList<Boolean>();
   int whichChargeInt;
   RadioButton whichChargeButton;
@@ -56,51 +58,26 @@ public class AddActivity extends AppCompatActivity {
   protected void onCreate(final Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_add);
-//    NCMB.initialize(this.getApplicationContext(), "7d6991b6ccf72cfbaf788b0f1315d58796c46f791165a8cb690238c217d2a6a7"
-//            ,"8c04c78a810b705ef1b8fd6f832f74f6edbe0d99444c95bc1e6fe115a730def7");
     onCreateView();
 
-    FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
     fab.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {
-        categoryRoleInt = categoryRole.getCheckedRadioButtonId();
-        categoryRoleButton = findViewById(categoryRoleInt);
-        displayNameString = displayName.getText().toString();
-        passwordString = password.getText().toString();
-        categorySnsInt = categorySns.getCheckedRadioButtonId();
-        categorySnsButton = findViewById(categorySnsInt);
-        snsUserNameString = snsUserName.getText().toString();
-        for (int i = 0; i<freeDayArrayCount; i++) {
-          // Listにaddしていく
-          freeDayArrayList.add(freeDay[i].isChecked());
-        }
-        whichChargeInt = whichCharge.getCheckedRadioButtonId();
-        whichChargeButton = findViewById(whichChargeInt);
-        spinnerRegionInt = spinnerRegion.getSelectedItemPosition();
-        spinnerSexInt = spinnerSex.getSelectedItemPosition();
-        spinnerAgeInt = spinnerAge.getSelectedItemPosition();
-        imaginationHopeString = imaginationHope.getText().toString();
-
-        onCreateLog();
-        NCMBObject saveUserInfoData = null;
-        try {
-          saveUserInfoData = putUserInfo(new NCMBObject("UserInfoData"));
-        } catch (NCMBException e) {
-          e.printStackTrace();
-        }
-        saveUserInfoData.saveInBackground(new DoneCallback() {
-          @Override
-          public void done(NCMBException e) {
-            if (e != null) {
-              // error
-              Toast.makeText(getApplicationContext(), "登録エラー", Toast.LENGTH_SHORT);
-            } else {
-              // success
-              Toast.makeText(getApplicationContext(), "登録成功", Toast.LENGTH_SHORT);
-            }
-          }
-        });
+        new AlertDialog.Builder(AddActivity.this).setTitle("登録しますか？")
+                .setPositiveButton("はい", new DialogInterface.OnClickListener() {
+                  @Override
+                  public void onClick(DialogInterface dialog, int which) {
+                    convertViewValue();
+                    onCreateLog();
+                    pushUserData();
+                    freeDayArrayList.clear();
+                    finish();
+                  }
+                }).setNegativeButton("いいえ", new DialogInterface.OnClickListener() {
+                  @Override
+                  public void onClick(DialogInterface dialog, int which) {
+                  }
+                }).show();
       }
     });
   }
@@ -125,6 +102,7 @@ public class AddActivity extends AppCompatActivity {
     spinnerSex = (Spinner)findViewById(R.id.spinner_sex);
     spinnerAge = (Spinner)findViewById(R.id.spinner_age);
     imaginationHope = (EditText)findViewById(R.id.imagination_hope);
+    fab = (FloatingActionButton) findViewById(R.id.fab);
   }
 
   protected void onCreateLog() {
@@ -143,15 +121,31 @@ public class AddActivity extends AppCompatActivity {
     Log.d("TAG", "imaginationHopeString: " + imaginationHopeString);
   }
 
+  protected void convertViewValue() {
+    categoryRoleInt = categoryRole.getCheckedRadioButtonId();
+    categoryRoleButton = findViewById(categoryRoleInt);
+    displayNameString = displayName.getText().toString();
+    passwordString = password.getText().toString();
+    categorySnsInt = categorySns.getCheckedRadioButtonId();
+    categorySnsButton = findViewById(categorySnsInt);
+    snsUserNameString = snsUserName.getText().toString();
+    for (int i = 0; i<freeDayArrayCount; i++) {
+      freeDayArrayList.add(freeDay[i].isChecked());
+    }
+    whichChargeInt = whichCharge.getCheckedRadioButtonId();
+    whichChargeButton = findViewById(whichChargeInt);
+    spinnerRegionInt = spinnerRegion.getSelectedItemPosition();
+    spinnerSexInt = spinnerSex.getSelectedItemPosition();
+    spinnerAgeInt = spinnerAge.getSelectedItemPosition();
+    imaginationHopeString = imaginationHope.getText().toString();
+  }
+
   protected NCMBObject putUserInfo (NCMBObject userInfo) throws NCMBException {
     userInfo.put("CategoryRole", categoryRoleButton.getText().toString());
     userInfo.put("DisplayName", displayNameString);
     userInfo.put("Password", passwordString); // 扱いに対してもう少し考慮が必要。平文すぎる。
     userInfo.put("CategorySNS", categorySnsButton.getText().toString());
     userInfo.put("SNSUserName", snsUserNameString);
-//    for (int i = 0; i<freeDayArrayCount; i++) {
-//      freeDayArray[i] = freeDay[i].isChecked();
-//    }
     userInfo.put("FreeDay", freeDayArrayList);
     userInfo.put("WhichCharge", whichChargeButton.getText().toString());
     userInfo.put("SpinnerRegionInt", spinnerRegionInt);
@@ -160,5 +154,26 @@ public class AddActivity extends AppCompatActivity {
     userInfo.put("ImaginationHope", imaginationHopeString);
     
     return userInfo;
+  }
+
+  protected void pushUserData() {
+    NCMBObject saveUserInfoData = null;
+    try {
+      saveUserInfoData = putUserInfo(new NCMBObject("UserInfoData"));
+    } catch (NCMBException e) {
+      e.printStackTrace();
+    }
+    saveUserInfoData.saveInBackground(new DoneCallback() {
+      @Override
+      public void done(NCMBException e) {
+        if (e != null) {
+          // error
+          Toast.makeText(getApplicationContext(), "登録エラー", Toast.LENGTH_SHORT).show();
+        } else {
+          // success
+          Toast.makeText(getApplicationContext(), "登録成功", Toast.LENGTH_SHORT).show();
+        }
+      }
+    });
   }
 }

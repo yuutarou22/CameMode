@@ -94,6 +94,7 @@ public class MainActivity extends AppCompatActivity {
     fabAddButton.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
+        fabClose();
         Intent intent = new Intent(getApplication(), AddActivity.class);
         startActivity(intent);
       }
@@ -103,6 +104,7 @@ public class MainActivity extends AppCompatActivity {
     fabSearchButton.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
+        fabClose();
         Intent intent = new Intent(getApplication(), SearchActivity.class);
         startActivity(intent);
       }

@@ -35,30 +35,7 @@ public class MainActivity extends AppCompatActivity {
     setContentView(R.layout.activity_main);
     NCMB.initialize(this.getApplicationContext(),"7d6991b6ccf72cfbaf788b0f1315d58796c46f791165a8cb690238c217d2a6a7"
             ,"8c04c78a810b705ef1b8fd6f832f74f6edbe0d99444c95bc1e6fe115a730def7");
-
-    // mBaaSのデータストアに保存先の「TestClass」というクラスを作成し、
-    // 「message」というフィールドへ「Hello, NCMB!」というメッセージ（文字列）を保存するもの
-    NCMBObject obj = new NCMBObject("TestClass");
-
-    // オブジェクトに値を設定
-    try {
-      obj.put("message", "Hello, NCMB!");
-    } catch (NCMBException e) {
-      e.printStackTrace();
-    }
-
-    // 設定したオブジェクトをデータストアへ登録
-    obj.saveInBackground(new DoneCallback() {
-      @Override
-      public void done(NCMBException e) {
-        if (e != null) {
-
-        } else {
-
-        }
-      }
-    });
-
+    
     // リスト要素を設定
     ListView UserListView = (ListView)findViewById(R.id.user_info_list);
     ArrayList<UserListItem> userListItems = new ArrayList<>();

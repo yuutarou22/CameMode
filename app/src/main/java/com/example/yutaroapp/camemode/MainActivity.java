@@ -6,19 +6,24 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.Toast;
 
+import com.nifcloud.mbaas.core.FindCallback;
 import com.nifcloud.mbaas.core.NCMB;
 import com.nifcloud.mbaas.core.NCMBException;
 import com.nifcloud.mbaas.core.NCMBObject;
 import com.nifcloud.mbaas.core.DoneCallback;
+import com.nifcloud.mbaas.core.NCMBQuery;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -50,6 +55,43 @@ public class MainActivity extends AppCompatActivity {
     // リスト表示
     UserListAdapter adapter = new UserListAdapter(this, R.layout.user_info_list_item, userListItems);
     UserListView.setAdapter(adapter);
+
+    // UserInfoDataクラスのデータを格納するListを作成
+    final List<NCMBObject> userInfoDataList = new ArrayList<NCMBObject>();
+
+    // UserInfoDataクラスのデータを取得するクエリを作成
+    NCMBQuery<NCMBObject> query = new NCMBQuery<>("UserInfoData");
+
+    // updateDateフィールドの降順（新しい順）で取得する
+    query.addOrderByDescending("updateDate");
+    query.setLimit(15);
+    query.findInBackground(new FindCallback<NCMBObject>() {
+      @Override
+      public void done(List<NCMBObject> list, NCMBException e) {
+        if (e != null) {
+          // エラー時
+          Toast.makeText(getApplicationContext(), "データ取得エラー", Toast.LENGTH_SHORT).show();
+        } else {
+          // 成功時
+          // UserInfoDataList の確認
+          Toast.makeText(getApplicationContext(), "データ取得成功", Toast.LENGTH_SHORT).show();
+          for (NCMBObject obj : list) {
+            Log.d("MainActivity", "userInfoDataList DispName: " + obj.getString("DisplayName"));
+            userInfoDataList.add(obj);
+          }
+        }
+      }
+    });
+
+    new Handler().postDelayed(new Runnable() {
+      @Override
+      public void run() {
+//    出力用リストへの格納確認
+        for (NCMBObject obj : userInfoDataList) {
+          Log.d("2MainActivity", "userInfoDataList DispName: " + obj.getString("DisplayName"));
+        }
+      }
+    }, 2000);
 
     // FAB処理
     FloatingActionButton fabMenuButton = (FloatingActionButton) findViewById(R.id.fab);

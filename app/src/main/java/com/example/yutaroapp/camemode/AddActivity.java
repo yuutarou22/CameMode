@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.nifcloud.mbaas.core.DoneCallback;
@@ -64,16 +65,18 @@ public class AddActivity extends AppCompatActivity {
       @Override
       public void onClick(View view) {
         new AlertDialog.Builder(AddActivity.this).setTitle("登録しますか？")
-                .setPositiveButton("はい", new DialogInterface.OnClickListener() {
+                .setNeutralButton("はい", new DialogInterface.OnClickListener() {
                   @Override
                   public void onClick(DialogInterface dialog, int which) {
                     convertViewValue();
                     onCreateLog();
-                    pushUserData();
-                    freeDayArrayList.clear();
-                    finish();
+                    if (validationCheck(displayNameString, snsUserNameString)){
+                      pushUserData();
+                      freeDayArrayList.clear();
+                      finish();
+                    }
                   }
-                }).setNegativeButton("いいえ", new DialogInterface.OnClickListener() {
+                }).setPositiveButton("いいえ", new DialogInterface.OnClickListener() {
                   @Override
                   public void onClick(DialogInterface dialog, int which) {
                   }
@@ -154,6 +157,21 @@ public class AddActivity extends AppCompatActivity {
     userInfo.put("ImaginationHope", imaginationHopeString);
     
     return userInfo;
+  }
+
+  protected boolean validationCheck(String displayNameString, String snsUserNameString){
+    if (displayNameString.isEmpty() || snsUserNameString.isEmpty()) {
+      if (displayNameString.isEmpty()) {
+        displayName.setError("表示名を入力してください。");
+        displayName.setFocusable(true);
+      }
+      if (snsUserNameString.isEmpty()) {
+        snsUserName.setError("SNSアカウント名を入力してください。");
+        snsUserName.setFocusable(true);
+      }
+      return false;
+    }
+    return true;
   }
 
   protected void pushUserData() {

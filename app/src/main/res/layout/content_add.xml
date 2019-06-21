@@ -8,7 +8,7 @@
                   android:layout_height="match_parent"
                   android:orientation="vertical">
 
-        <!-- 希望種別( :カメラマン、 :モデル) -->
+        <!-- 希望種別( :カメラマン、 :モデル、:どちらとも) -->
         <TextView
             android:id="@+id/category_role_label"
             android:layout_width="match_parent"
@@ -30,13 +30,18 @@
                 android:layout_weight="1"
                 android:checked="true"
                 android:text="カメラマン"/>
-
             <RadioButton
                 android:id="@+id/category_role_model"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="モデル"/>
+            <RadioButton
+                android:id="@+id/category_role_none"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="どちらとも"/>
         </RadioGroup>
 
         <!-- 表示名(入力:そのまま使用、未入力:NG.同じ名前がある場合はNG→表示名で検索する時困る) -->

@@ -9,6 +9,9 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DividerItemDecoration;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -118,6 +121,7 @@ public class MainActivity extends AppCompatActivity {
     mFABState = FABState.OPEN;
     mFabBackground.animate().alpha(0.8f).setDuration(300);
   }
+
   private void fabClose() {
     LinearLayout mFabSearchLayout = findViewById(R.id.fab_search_layout);
     LinearLayout mFabAddLayout = findViewById(R.id.fab_add_layout);
@@ -142,6 +146,7 @@ public class MainActivity extends AppCompatActivity {
     mFABState = FABState.CLOSE;
     mFabBackground.animate().alpha(0f).setDuration(200);
   }
+
   private void displayListView(NCMBQuery query, final List<NCMBObject> userInfoDataList) {
       query.findInBackground(new FindCallback<NCMBObject>() {
           @Override
@@ -166,7 +171,10 @@ public class MainActivity extends AppCompatActivity {
 
   private void display() {
       Resources res = getResources();
-      ListView UserListView = (ListView)findViewById(R.id.user_info_list);
+      RecyclerView UserListView = (RecyclerView) findViewById(R.id.user_info_list);
+      RecyclerView.ItemDecoration itemDecoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
+      UserListView.addItemDecoration(itemDecoration);
+
       ArrayList<UserListItem> userListItems = new ArrayList<>();
 
       for (NCMBObject obj : userInfoDataList) {
@@ -175,7 +183,11 @@ public class MainActivity extends AppCompatActivity {
           userListItems.add(userItem);
       }
 
-      UserListAdapter adapter = new UserListAdapter(this, R.layout.user_info_list_item, userListItems);
+      UserRecyclerViewAdapter adapter = new UserRecyclerViewAdapter(userListItems);
+      LinearLayoutManager llm = new LinearLayoutManager(getApplicationContext());
+      UserListView.setHasFixedSize(true);
+      UserListView.setLayoutManager(llm);
+
       UserListView.setAdapter(adapter);
   }
 }

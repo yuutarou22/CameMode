@@ -1,6 +1,7 @@
 package com.example.yutaroapp.camemode;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
@@ -73,6 +74,7 @@ public class AddActivity extends AppCompatActivity {
                     if (validationCheck(displayNameString, snsUserNameString)){
                       pushUserData();
                       freeDayArrayList.clear();
+                      setResult(RESULT_OK);
                       finish();
                     }
                   }

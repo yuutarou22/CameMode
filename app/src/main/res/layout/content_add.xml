@@ -21,22 +21,24 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
             <RadioButton
                 android:id="@+id/category_role_cameraman"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:checked="true"
                 android:text="カメラマン"/>
-
             <RadioButton
                 android:id="@+id/category_role_model"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:text="モデル"/>
+            <RadioButton
+                android:id="@+id/category_role_none"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="どちらとも"/>
         </RadioGroup>
 
         <!-- 表示名(入力:そのまま使用、未入力:NG.同じ名前がある場合はNG→表示名で検索する時困る) -->
@@ -87,19 +89,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:orientation="horizontal">
+            android:orientation="vertical">
             <RadioButton
                 android:id="@+id/category_sns_twitter"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:checked="true"
                 android:text="Twitter"/>
             <RadioButton
                 android:id="@+id/category_sns_instagram"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:text="instagram"/>
         </RadioGroup>
 
@@ -209,24 +209,21 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:orientation="horizontal">
+            android:orientation="vertical">
             <RadioButton
                 android:id="@+id/charge"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:text="有償"/>
             <RadioButton
                 android:id="@+id/no_charge"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:text="無償"/>
             <RadioButton
                 android:id="@+id/either"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:checked="true"
                 android:text="どちらでも"/>
         </RadioGroup>
@@ -262,7 +259,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:entries="@array/sex_item"
-            android:spinnerMode="dropdown"
+            android:spinnerMode="dialog"
             />
 
         <!-- 年代 -->

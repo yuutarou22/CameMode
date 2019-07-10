@@ -10,12 +10,12 @@
     tools:context=".MainActivity"
     tools:showIn="@layout/activity_main">
 
-    <ListView
+    <android.support.v7.widget.RecyclerView
         android:id="@+id/user_info_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#ffffff"
-        android:layout_margin="20dp">
-    </ListView>
+        android:layout_margin="20dp"
+        android:scrollbars="vertical"/>
 
 </android.support.constraint.ConstraintLayout>

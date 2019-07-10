@@ -8,7 +8,7 @@
                   android:layout_height="match_parent"
                   android:orientation="vertical">
 
-        <!-- 希望種別( :カメラマン、 :モデル) -->
+        <!-- 希望種別( :カメラマン、 :モデル、:どちらとも) -->
         <TextView
             android:id="@+id/category_role_label"
             android:layout_width="match_parent"

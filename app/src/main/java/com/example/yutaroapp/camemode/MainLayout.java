@@ -20,11 +20,18 @@ public class MainLayout extends RelativeLayout {
 
     /** コンテキスト. */
     private Context mContext;
+    LinearLayout mFabSearchLayout;
+    LinearLayout mFabAddLayout;
+    FloatingActionButton mFab;
 
     /* コンストラクタ（理由もわからずとりあえず3つ設けている） */
     public MainLayout(Context context) {
         super(context);
         mContext = context;
+        mFabSearchLayout = new LinearLayout(mContext);
+        mFabAddLayout = new LinearLayout(mContext);
+        /* 問題箇所 */
+//        mFab = new FloatingActionButton(mContext);
     }
     public MainLayout(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -74,9 +81,7 @@ public class MainLayout extends RelativeLayout {
     }
 
     private void fabOpen(int iconWhile) {
-        LinearLayout mFabSearchLayout = findViewById(R.id.fab_search_layout);
-        LinearLayout mFabAddLayout = findViewById(R.id.fab_add_layout);
-        FloatingActionButton mFab = findViewById(R.id.fab);
+
         View mFabBackground = findViewById(R.id.fab_background);
 
         mFabSearchLayout.setVisibility(View.VISIBLE);
@@ -88,6 +93,9 @@ public class MainLayout extends RelativeLayout {
         animator = ObjectAnimator.ofFloat(mFabAddLayout, "translationY", -iconWhile * 2);
         animator.setDuration(250);
         animator.start();
+
+        /* 問題箇所 */
+        mFab = new FloatingActionButton(mContext);
 
         mFab.setImageResource(R.drawable.ic_clear_button);
         animator = ObjectAnimator.ofFloat(mFab, "rotation", 270);

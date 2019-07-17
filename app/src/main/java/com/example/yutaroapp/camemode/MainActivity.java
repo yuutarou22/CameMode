@@ -1,33 +1,23 @@
 package com.example.yutaroapp.camemode;
 
-import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.os.Handler;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.AttributeSet;
 import android.util.Log;
-import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.nifcloud.mbaas.core.FindCallback;
 import com.nifcloud.mbaas.core.NCMB;
 import com.nifcloud.mbaas.core.NCMBException;
 import com.nifcloud.mbaas.core.NCMBObject;
-import com.nifcloud.mbaas.core.DoneCallback;
 import com.nifcloud.mbaas.core.NCMBQuery;
 
 import java.util.ArrayList;

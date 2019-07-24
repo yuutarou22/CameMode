@@ -30,20 +30,12 @@ public class MainActivity extends AppCompatActivity {
     /* onActivityResultで用いるREQUEST_CODE */
     private static final int REQUEST_CODE = 1;
 
-    /* FABの状態管理用列挙体 */
-    enum FABState {
-        OPEN,
-        CLOSE
-    }
-    static FABState mFABState = FABState.CLOSE;
-
     /* UserInfoDataクラスのデータを格納するList */
     List<NCMBObject> userInfoDataList = new ArrayList<NCMBObject>();
 
     /* UserInfoDataクラスのデータを取得するクエリ */
     NCMBQuery<NCMBObject> query = new NCMBQuery<>("UserInfoData");
 
-    @SuppressLint("ResourceType")
     private void setupViews() {
         mMainLayout = new MainLayout(getApplicationContext());
 //        mMainLayout = (MainLayout) findViewById(R.layout.activity_main);

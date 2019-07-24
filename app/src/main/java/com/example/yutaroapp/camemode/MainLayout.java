@@ -15,7 +15,6 @@ public class MainLayout extends RelativeLayout {
 
     /** コンテキスト. */
     private Context mContext;
-    private Activity mMainActivity;
 
     /* コンストラクタ（理由もわからずとりあえず3つ設けている） */
     public MainLayout(Context context) {

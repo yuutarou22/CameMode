@@ -1,5 +1,6 @@
 package com.example.yutaroapp.camemode;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -36,7 +37,8 @@ public class MainActivity extends AppCompatActivity {
     NCMBQuery<NCMBObject> query = new NCMBQuery<>("UserInfoData");
 
     private void setupViews() {
-        mMainLayout = new MainLayout(this);
+        mMainLayout = new MainLayout(getApplicationContext());
+//        mMainLayout = (MainLayout) findViewById(R.layout.activity_main);
         mMainLayout.setUpViews(getWindow().getDecorView());
     }
 
@@ -54,6 +56,11 @@ public class MainActivity extends AppCompatActivity {
         query.setLimit(15);
         displayListView(query, userInfoDataList);
     }
+//    @Override
+//    protected void onStart() {
+//        super.onStart();
+//        setupViews();
+//    }
 
     public static void startActivityforResult(Activity activity, Intent intent) {
         activity.startActivityForResult(intent, REQUEST_CODE);
@@ -82,9 +89,9 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "データ取得エラー", Toast.LENGTH_SHORT).show();
                 } else {
                     // 成功時
+                    // UserInfoDataList の確認
                     Toast.makeText(getApplicationContext(), "データ取得成功", Toast.LENGTH_SHORT).show();
 
-                    userInfoDataList.clear();
                     for (NCMBObject obj : list) {
                         Log.d("MainActivity", "userInfoDataList DispName: " + obj.getString("DisplayName"));
                         userInfoDataList.add(obj);

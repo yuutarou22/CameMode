@@ -1,8 +1,10 @@
 package com.example.yutaroapp.camemode;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.media.Image;
 import android.support.annotation.NonNull;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,6 +27,7 @@ public class UserListAdapter extends ArrayAdapter<UserListItem> {
     mInflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
   }
 
+  @SuppressLint("ResourceAsColor")
   @Override
   public View getView(int position, View convertView, ViewGroup parent) {
     View view;

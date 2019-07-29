@@ -104,7 +104,8 @@ public class MainActivity extends AppCompatActivity {
         ArrayList<UserListItem> userListItems = new ArrayList<>();
         for (NCMBObject obj : userInfoDataList) {
             Bitmap bmp = BitmapFactory.decodeResource(res, R.mipmap.ic_gohan);
-            UserListItem userItem = new UserListItem(bmp, obj.getString("DisplayName"));
+            UserListItem userItem = new UserListItem(bmp, obj.getString("DisplayName"), obj.getString("CategoryRole"));
+            android.util.Log.d("MainActivity", "UserItemInfo" + obj.getString("DisplayName") + " " + obj.getString("CategoryRole"));
             userListItems.add(userItem);
         }
 

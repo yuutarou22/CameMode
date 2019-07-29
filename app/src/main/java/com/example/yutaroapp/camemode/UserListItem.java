@@ -5,12 +5,14 @@ import android.graphics.Bitmap;
 public class UserListItem {
   private Bitmap mUserIcon = null;
   private String mUserName = null;
+  private String mCategoryRole = null;
 
   // constructor
   public UserListItem(){}
-  public UserListItem(Bitmap mUserIcon, String mUserName){
+  public UserListItem(Bitmap mUserIcon, String mUserName, String mCategoryRole){
     this.mUserIcon = mUserIcon;
     this.mUserName = mUserName;
+    this.mCategoryRole = mCategoryRole;
   }
 
   // setter
@@ -27,5 +29,8 @@ public class UserListItem {
   }
   public String getUserName() {
     return mUserName;
+  }
+  public String getCategoryRole() {
+    return mCategoryRole;
   }
 }

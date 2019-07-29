@@ -13,6 +13,21 @@
         android:id="@+id/user_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="30dp"
-        android:layout_margin="3dp"/>
+        android:textSize="25dp"
+        android:layout_margin="3dp"
+        android:gravity="left"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="right">
+        <TextView
+            android:id="@+id/category_role"
+            android:text="カテゴリー種別"
+            android:textSize="13dp"
+            android:layout_width="25dp"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:elevation="@dimen/cardview_default_elevation"/>
+    </LinearLayout>
 </LinearLayout>

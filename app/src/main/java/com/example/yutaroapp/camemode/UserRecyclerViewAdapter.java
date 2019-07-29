@@ -1,11 +1,15 @@
 package com.example.yutaroapp.camemode;
 
+import android.annotation.SuppressLint;
+import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.util.List;
 
@@ -25,10 +29,20 @@ public class UserRecyclerViewAdapter extends RecyclerView.Adapter<ViewHolder> {
         return viewHolder;
     }
 
+    @SuppressLint("ResourceAsColor")
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int position) {
         viewHolder.mUserIcon.setImageBitmap(list.get(position).getUserIcon());
         viewHolder.mUserName.setText(list.get(position).getUserName());
+        viewHolder.mCategoryRole.setText(list.get(position).getCategoryRole());
+
+        if (viewHolder.mCategoryRole.getText().equals("カメラマン")) {
+            viewHolder.mCategoryRole.setBackgroundColor(Color.argb(120, 0, 0, 255));
+        } else if (list.get(position).getCategoryRole().equals("モデル")) {
+            viewHolder.mCategoryRole.setBackgroundColor(Color.argb(120, 255, 0, 0));
+        } else {
+            viewHolder.mCategoryRole.setBackgroundColor(Color.argb(120, 100, 100, 100));
+        }
     }
 
     @Override

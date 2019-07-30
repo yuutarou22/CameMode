@@ -8,7 +8,6 @@ public class UserListItem {
   private String mCategoryRole = null;
 
   // constructor
-  public UserListItem(){}
   public UserListItem(Bitmap mUserIcon, String mUserName, String mCategoryRole){
     this.mUserIcon = mUserIcon;
     this.mUserName = mUserName;

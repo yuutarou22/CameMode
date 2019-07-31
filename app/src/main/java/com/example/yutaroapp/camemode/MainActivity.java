@@ -11,6 +11,7 @@ import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
 import com.nifcloud.mbaas.core.FindCallback;
@@ -120,5 +121,11 @@ public class MainActivity extends AppCompatActivity {
         userListView.setLayoutManager(llm);
 
         userListView.setAdapter(adapter);
+        adapter.setOnClickItemListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(MainActivity.this, "洗濯しました", Toast.LENGTH_SHORT);
+            }
+        });
     }
 }

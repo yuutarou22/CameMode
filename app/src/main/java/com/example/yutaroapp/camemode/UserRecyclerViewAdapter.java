@@ -13,6 +13,7 @@ import java.util.List;
 public class UserRecyclerViewAdapter extends RecyclerView.Adapter<ViewHolder> {
 
     private List<UserListItem> list;
+    private View.OnClickListener listener;
 
     /**
      * コンストラクタ
@@ -49,6 +50,13 @@ public class UserRecyclerViewAdapter extends RecyclerView.Adapter<ViewHolder> {
         viewHolder.mUserName.setText(list.get(position).getUserName());
         viewHolder.mCategoryRole.setText(list.get(position).getCategoryRole());
 
+        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                listener.onClick(view);
+            }
+        });
+
         if (viewHolder.mCategoryRole.getText().equals("カメラマン")) {
             viewHolder.mCategoryRole.setBackgroundColor(Color.argb(120, 0, 0, 255));
         } else if (list.get(position).getCategoryRole().equals("モデル")) {
@@ -56,6 +64,10 @@ public class UserRecyclerViewAdapter extends RecyclerView.Adapter<ViewHolder> {
         } else {
             viewHolder.mCategoryRole.setBackgroundColor(Color.argb(120, 100, 100, 100));
         }
+    }
+
+    public void setOnClickItemListener(View.OnClickListener listener) {
+        this.listener = listener;
     }
 
     /**

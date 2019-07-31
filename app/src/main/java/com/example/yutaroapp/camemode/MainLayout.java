@@ -34,6 +34,10 @@ public class MainLayout extends RelativeLayout {
         mContext = context;
     }
 
+    /**
+     * レイアウトの初期化
+     * @param view
+     */
     public void setUpViews(View view) {
         Button addButton = (Button) view.findViewById(R.id.add_content_button);
         addButton.setOnClickListener(new View.OnClickListener() {

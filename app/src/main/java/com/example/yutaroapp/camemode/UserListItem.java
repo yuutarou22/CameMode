@@ -7,7 +7,12 @@ public class UserListItem {
   private String mUserName = null;
   private String mCategoryRole = null;
 
-  // constructor
+  /**
+   * コンストラクタ
+   * @param mUserIcon アイコン
+   * @param mUserName 表示名
+   * @param mCategoryRole カテゴリー種別
+   */
   public UserListItem(Bitmap mUserIcon, String mUserName, String mCategoryRole){
     this.mUserIcon = mUserIcon;
     this.mUserName = mUserName;

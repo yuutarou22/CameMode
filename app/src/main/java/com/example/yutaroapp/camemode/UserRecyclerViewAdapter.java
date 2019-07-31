@@ -14,10 +14,21 @@ public class UserRecyclerViewAdapter extends RecyclerView.Adapter<ViewHolder> {
 
     private List<UserListItem> list;
 
+    /**
+     * コンストラクタ
+     * @param list MainActivity #display() からの userListItems
+     */
     public UserRecyclerViewAdapter (List<UserListItem> list) {
         this.list = list;
     }
 
+    /**
+     * ViewHolderの生成
+     *
+     * @param viewGroup
+     * @param i
+     * @return viewHolder
+     */
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
@@ -26,6 +37,11 @@ public class UserRecyclerViewAdapter extends RecyclerView.Adapter<ViewHolder> {
         return viewHolder;
     }
 
+    /**
+     * 指定された位置（position）のコンテンツを更新する
+     * @param viewHolder
+     * @param position
+     */
     @SuppressLint("ResourceAsColor")
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int position) {
@@ -42,6 +58,11 @@ public class UserRecyclerViewAdapter extends RecyclerView.Adapter<ViewHolder> {
         }
     }
 
+    /**
+     * UserListItemのリストサイズを返す
+     *
+     * @return list.size() リストサイズ
+     */
     @Override
     public int getItemCount() {
         return list.size();

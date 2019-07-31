@@ -46,13 +46,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         setupViews();
 
-        NCMB.initialize(this.getApplicationContext(), "7d6991b6ccf72cfbaf788b0f1315d58796c46f791165a8cb690238c217d2a6a7"
-                , "8c04c78a810b705ef1b8fd6f832f74f6edbe0d99444c95bc1e6fe115a730def7");
+        // 2019/07/31 キー再発行済み
+        NCMB.initialize(this.getApplicationContext(), Config.getApplicationKey(), Config.getClientKey());
 
         // updateDateフィールドの新しい順にデータ取得し、ListViewに出力
         query.addOrderByDescending("updateDate");
         query.setLimit(15);
-        displayListView(query, userInfoDataList);
+        applyUserInfoDataList(query, userInfoDataList);
     }
 
     public static void startActivityforResult(Activity activity, Intent intent) {
@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
                 if (resultCode == RESULT_OK || resultCode == RESULT_CANCELED) {
                     query.addOrderByDescending("updateDate");
                     query.setLimit(15);
-                    displayListView(query, userInfoDataList);
+                    applyUserInfoDataList(query, userInfoDataList);
                 }
                 break;
             default:
@@ -73,7 +73,12 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void displayListView(NCMBQuery query, final List<NCMBObject> userInfoDataList) {
+    /**
+     * User情報を取得し、リストを更新する
+     * @param query NCMBQuery 検索用のクエリー
+     * @param userInfoDataList List<NCMBObject> 更新するリスト
+     */
+    private void applyUserInfoDataList(NCMBQuery query, final List<NCMBObject> userInfoDataList) {
         query.findInBackground(new FindCallback<NCMBObject>() {
             @Override
             public void done(List<NCMBObject> list, NCMBException e) {
@@ -89,31 +94,31 @@ public class MainActivity extends AppCompatActivity {
                         Log.d("MainActivity", "userInfoDataList DispName: " + obj.getString("DisplayName"));
                         userInfoDataList.add(obj);
                     }
-                    display();
+                    displayListView();
                 }
             }
         });
     }
 
-    private void display() {
+    private void displayListView() {
         Resources res = getResources();
-        RecyclerView UserListView = (RecyclerView) findViewById(R.id.user_info_list);
+        RecyclerView userListView = (RecyclerView) findViewById(R.id.user_info_list);
         RecyclerView.ItemDecoration itemDecoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
-        UserListView.addItemDecoration(itemDecoration);
+        userListView.addItemDecoration(itemDecoration);
 
         ArrayList<UserListItem> userListItems = new ArrayList<>();
         for (NCMBObject obj : userInfoDataList) {
             Bitmap bmp = BitmapFactory.decodeResource(res, R.mipmap.ic_gohan);
+            // ユーザ情報アイテムを生成
             UserListItem userItem = new UserListItem(bmp, obj.getString("DisplayName"), obj.getString("CategoryRole"));
-            android.util.Log.d("MainActivity", "UserItemInfo" + obj.getString("DisplayName") + " " + obj.getString("CategoryRole"));
             userListItems.add(userItem);
         }
 
         UserRecyclerViewAdapter adapter = new UserRecyclerViewAdapter(userListItems);
         LinearLayoutManager llm = new LinearLayoutManager(getApplicationContext());
-        UserListView.setHasFixedSize(true);
-        UserListView.setLayoutManager(llm);
+        userListView.setHasFixedSize(true);
+        userListView.setLayoutManager(llm);
 
-        UserListView.setAdapter(adapter);
+        userListView.setAdapter(adapter);
     }
 }

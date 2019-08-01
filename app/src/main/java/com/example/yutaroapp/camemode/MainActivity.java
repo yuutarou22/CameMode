@@ -124,7 +124,7 @@ public class MainActivity extends AppCompatActivity {
         adapter.setOnClickItemListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(MainActivity.this, "洗濯しました", Toast.LENGTH_SHORT);
+                Log.d("display", "onClick!!!!!!!!!!!");
             }
         });
     }

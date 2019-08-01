@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,7 +46,7 @@ public class UserRecyclerViewAdapter extends RecyclerView.Adapter<ViewHolder> {
      */
     @SuppressLint("ResourceAsColor")
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder viewHolder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder viewHolder, final int position) {
         viewHolder.mUserIcon.setImageBitmap(list.get(position).getUserIcon());
         viewHolder.mUserName.setText(list.get(position).getUserName());
         viewHolder.mCategoryRole.setText(list.get(position).getCategoryRole());
@@ -54,6 +55,7 @@ public class UserRecyclerViewAdapter extends RecyclerView.Adapter<ViewHolder> {
             @Override
             public void onClick(View view) {
                 listener.onClick(view);
+                Log.d("onBindViewHolder", "onClick!!! getUserName:" + list.get(position).getUserName()); // リスナー検知は出来ている
             }
         });
 

@@ -21,81 +21,25 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
             <RadioButton
                 android:id="@+id/category_role_cameraman"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:checked="true"
                 android:text="カメラマン"/>
             <RadioButton
                 android:id="@+id/category_role_model"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:text="モデル"/>
             <RadioButton
                 android:id="@+id/category_role_none"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="指定なし"/>
-        </RadioGroup>
-
-        <!-- SNS種別(:Twitter、:instagram、:指定なし) -->
-        <TextView
-            android:id="@+id/category_sns_label"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="SNSの種類"
-            android:textSize="20dp"/>
-        <RadioGroup
-            android:id="@+id/category_sns"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:orientation="horizontal">
-            <RadioButton
-                android:id="@+id/category_sns_twitter"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:checked="true"
-                android:text="Twitter"/>
-            <RadioButton
-                android:id="@+id/category_sns_instagram"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="instagram"/>
-            <RadioButton
-                android:id="@+id/category_sns_none"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="指定なし"/>
+                android:text="どちらとも"/>
         </RadioGroup>
-
-        <!-- SNSのアカウント名 -->
-        <TextView
-            android:id="@+id/sns_user_name_label"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="SNSアカウント名"
-            android:textSize="20dp"
-            />
-        <EditText
-            android:id="@+id/sns_user_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:hint="SNSでのユーザ名"
-            android:inputType="text"
-            android:focusedByDefault="false"/>
 
         <!-- 空き日 -->
         <TextView
@@ -154,12 +98,7 @@
                 android:layout_weight="1"
                 android:checked="true"
                 android:text="日"/>
-            <CheckBox
-                android:id="@+id/free_day_none"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="指定なし"/>
+
         </LinearLayout>
 
         <!-- 有償・無償 -->
@@ -175,24 +114,21 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:orientation="horizontal">
+            android:orientation="vertical">
             <RadioButton
                 android:id="@+id/charge"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:text="有償"/>
             <RadioButton
                 android:id="@+id/no_charge"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:text="無償"/>
             <RadioButton
                 android:id="@+id/either"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:checked="true"
                 android:text="どちらでも"/>
         </RadioGroup>
@@ -247,27 +183,11 @@
             android:entries="@array/age_item"
             android:spinnerMode="dialog"/>
 
-        <!--&lt;!&ndash; ざっくりイメージ &ndash;&gt;-->
-        <!--<TextView-->
-            <!--android:id="@+id/imagination_hope_label"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_marginTop="5dp"-->
-            <!--android:text="キーワード検索"-->
-            <!--android:textSize="20dp"/>-->
-        <!--<EditText-->
-            <!--android:id="@+id/imagination_hope"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="100dp"-->
-            <!--android:layout_marginTop="8dp"-->
-            <!--android:layout_marginRight="100dp"-->
-            <!--android:layout_marginBottom="8dp"-->
-            <!--android:layout_marginLeft="8dp"-->
-            <!--android:hint=""-->
-            <!--android:maxLength="30"-->
-            <!--android:maxLines="2"-->
-            <!--android:focusedByDefault="false"/>-->
+        <Button
+            android:id="@+id/done_search_button"
+            android:text="Search!"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
     </LinearLayout>
-
 </ScrollView>

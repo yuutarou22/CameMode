@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -39,15 +38,15 @@ public class AddActivity extends AppCompatActivity {
   FloatingActionButton fab; // 登録FABボタン
 
   // データ送信用
-  int categoryRoleInt;
   RadioButton categoryRoleButton;
+  String categoryRoleString;
   String displayNameString;
   String passwordString;
-  int categorySnsInt;
   RadioButton categorySnsButton;
+  String categorySnsString;
   String snsUserNameString;
   List<Boolean> freeDayArrayList = new ArrayList<Boolean>();
-  int whichChargeInt;
+  String whichChargeString;
   RadioButton whichChargeButton;
   int spinnerRegionInt;
   int spinnerSexInt;
@@ -68,7 +67,10 @@ public class AddActivity extends AppCompatActivity {
                   @Override
                   public void onClick(DialogInterface dialog, int which) {
                     convertViewValue();
-                    onCreateLog();
+
+                    Utility.onCreateLog(categoryRoleString, displayNameString, passwordString, categorySnsString, snsUserNameString,
+                            freeDayArrayList, whichChargeString, spinnerRegionInt, spinnerSexInt, spinnerAgeInt, imaginationHopeString);
+
                     if (validationCheck(displayNameString, snsUserNameString)){
                       pushUserData();
                       freeDayArrayList.clear();
@@ -108,46 +110,30 @@ public class AddActivity extends AppCompatActivity {
     fab = (FloatingActionButton) findViewById(R.id.fab);
   }
 
-  protected void onCreateLog() {
-    Log.d("TAG", "categoryRoleInt: " + categoryRoleButton.getText().toString());
-    Log.d("TAG", "displayNameString: " + displayNameString);
-    Log.d("TAG", "PasswordString: " + passwordString);
-    Log.d("TAG", "categorySnsInt: " + categorySnsButton.getText().toString());
-    Log.d("TAG", "snsUserNameString: " + snsUserNameString);
-    for (boolean b : freeDayArrayList) {
-      Log.d("TAG", "freeDayArrayList: " + b);
-    }
-    Log.d("TAG", "whichChargeInt: " + whichChargeButton.getText().toString());
-    Log.d("TAG", "spinnerRegionInt: " + spinnerRegionInt);
-    Log.d("TAG", "spinnerSexInt: " + spinnerSexInt);
-    Log.d("TAG", "spinnerAgeInt: " + spinnerAgeInt);
-    Log.d("TAG", "imaginationHopeString: " + imaginationHopeString);
-  }
-
   protected void convertViewValue() {
-    categoryRoleInt = categoryRole.getCheckedRadioButtonId();
-    categoryRoleButton = findViewById(categoryRoleInt);
+    categoryRoleButton = findViewById(categoryRole.getCheckedRadioButtonId());
+    categoryRoleString = categoryRoleButton.getText().toString();
     displayNameString = displayName.getText().toString();
     passwordString = password.getText().toString();
-    categorySnsInt = categorySns.getCheckedRadioButtonId();
-    categorySnsButton = findViewById(categorySnsInt);
+    categorySnsButton = findViewById(categorySns.getCheckedRadioButtonId());
+    categorySnsString = categorySnsButton.getText().toString();
     snsUserNameString = snsUserName.getText().toString();
     for (int i = 0; i<freeDayArrayCount; i++) {
       freeDayArrayList.add(freeDay[i].isChecked());
     }
-    whichChargeInt = whichCharge.getCheckedRadioButtonId();
-    whichChargeButton = findViewById(whichChargeInt);
+    whichChargeButton = findViewById(whichCharge.getCheckedRadioButtonId());
+    whichChargeString = whichChargeButton.getText().toString();
     spinnerRegionInt = spinnerRegion.getSelectedItemPosition();
     spinnerSexInt = spinnerSex.getSelectedItemPosition();
     spinnerAgeInt = spinnerAge.getSelectedItemPosition();
     imaginationHopeString = imaginationHope.getText().toString();
   }
 
-  protected NCMBObject putUserInfo (NCMBObject userInfo) throws NCMBException {
-    userInfo.put("CategoryRole", categoryRoleButton.getText().toString());
+  protected NCMBObject putUserInfo(NCMBObject userInfo) throws NCMBException {
+    userInfo.put("CategoryRole", categoryRoleString);
     userInfo.put("DisplayName", displayNameString);
     userInfo.put("Password", passwordString); // 扱いに対してもう少し考慮が必要。平文すぎる。
-    userInfo.put("CategorySNS", categorySnsButton.getText().toString());
+    userInfo.put("CategorySNS", categorySnsString);
     userInfo.put("SNSUserName", snsUserNameString);
     userInfo.put("FreeDay", freeDayArrayList);
     userInfo.put("WhichCharge", whichChargeButton.getText().toString());

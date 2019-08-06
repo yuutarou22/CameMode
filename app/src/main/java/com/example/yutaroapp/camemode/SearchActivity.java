@@ -1,6 +1,8 @@
 package com.example.yutaroapp.camemode;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -8,6 +10,7 @@ import android.widget.CheckBox;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.nifcloud.mbaas.core.NCMBObject;
 import com.nifcloud.mbaas.core.NCMBQuery;
@@ -28,11 +31,11 @@ public class SearchActivity extends AppCompatActivity {
   Button searchButton;
 
   // データ送信用
-  int categoryRoleInt;
   RadioButton categoryRoleButton;
+  String categoryRoleString;
   List<Boolean> freeDayArrayList = new ArrayList<Boolean>();
-  int whichChargeInt;
   RadioButton whichChargeButton;
+  String whichChargeString;
   int spinnerRegionInt;
   int spinnerSexInt;
   int spinnerAgeInt;
@@ -48,10 +51,6 @@ public class SearchActivity extends AppCompatActivity {
     setContentView(R.layout.activity_search);
     onCreateView();
 
-    // 検索処理
-    query.addOrderByAscending("updateDate");
-    query.setLimit(15);
-
     // オブジェクトの検索(key というフィールドがvalueになっている)
 //    query.whereEqualTo("key","value");
 
@@ -59,8 +58,34 @@ public class SearchActivity extends AppCompatActivity {
     searchButton.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {
+        new AlertDialog.Builder(SearchActivity.this).setTitle("検索しますか？")
+                .setNeutralButton("はい", new DialogInterface.OnClickListener() {
+                  @Override
+                  public void onClick(DialogInterface dialog, int which) {
+                    convertViewValue();
+                    // ToDo: Utilityクラスに共通処理をまとめる。
+                    Utility.onCreateLog(categoryRoleString, freeDayArrayList, whichChargeString, spinnerSexInt, spinnerAgeInt);
+                    Toast.makeText(getApplicationContext(),"onClick",Toast.LENGTH_SHORT).show();
+//                    if (validationCheck(displayNameString, snsUserNameString)){
+//                      pushUserData();
+//                      freeDayArrayList.clear();
+//                      setResult(RESULT_OK);
+//                      finish();
+//                    }
+                    freeDayArrayList.clear();
+                  }
+                }).setPositiveButton("いいえ", new DialogInterface.OnClickListener() {
+          @Override
+          public void onClick(DialogInterface dialog, int which) {
+          }
+        }).show();
         // ToDo: 入力値のチェック
+        /**
+         *
+         */
+
         // ToDo: 検索
+
       }
     });
   }
@@ -81,5 +106,18 @@ public class SearchActivity extends AppCompatActivity {
     spinnerSex = (Spinner)findViewById(R.id.spinner_sex);
     spinnerAge = (Spinner)findViewById(R.id.spinner_age);
     searchButton = (Button)findViewById(R.id.search_button);
+  }
+
+  protected void convertViewValue() {
+    categoryRoleButton = findViewById(categoryRole.getCheckedRadioButtonId());
+    categoryRoleString = categoryRoleButton.getText().toString();
+    for (int i = 0; i<freeDayArrayCount; i++) {
+      freeDayArrayList.add(freeDay[i].isChecked());
+    }
+    whichChargeButton = findViewById(whichCharge.getCheckedRadioButtonId());
+    whichChargeString = whichChargeButton.getText().toString();
+    spinnerRegionInt = spinnerRegion.getSelectedItemPosition();
+    spinnerSexInt = spinnerSex.getSelectedItemPosition();
+    spinnerAgeInt = spinnerAge.getSelectedItemPosition();
   }
 }

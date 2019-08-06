@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ import java.util.List;
 public class UserRecyclerViewAdapter extends RecyclerView.Adapter<ViewHolder> {
 
     private List<UserListItem> list;
+    private View.OnClickListener listener;
 
     /**
      * コンストラクタ
@@ -44,10 +46,18 @@ public class UserRecyclerViewAdapter extends RecyclerView.Adapter<ViewHolder> {
      */
     @SuppressLint("ResourceAsColor")
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder viewHolder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder viewHolder, final int position) {
         viewHolder.mUserIcon.setImageBitmap(list.get(position).getUserIcon());
         viewHolder.mUserName.setText(list.get(position).getUserName());
         viewHolder.mCategoryRole.setText(list.get(position).getCategoryRole());
+
+        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                listener.onClick(view);
+                Log.d("onBindViewHolder", "onClick!!! getUserName:" + list.get(position).getUserName()); // リスナー検知は出来ている
+            }
+        });
 
         if (viewHolder.mCategoryRole.getText().equals("カメラマン")) {
             viewHolder.mCategoryRole.setBackgroundColor(Color.argb(120, 0, 0, 255));
@@ -56,6 +66,10 @@ public class UserRecyclerViewAdapter extends RecyclerView.Adapter<ViewHolder> {
         } else {
             viewHolder.mCategoryRole.setBackgroundColor(Color.argb(120, 100, 100, 100));
         }
+    }
+
+    public void setOnClickItemListener(View.OnClickListener listener) {
+        this.listener = listener;
     }
 
     /**

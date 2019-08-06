@@ -184,7 +184,7 @@
             android:spinnerMode="dialog"/>
 
         <Button
-            android:id="@+id/done_search_button"
+            android:id="@+id/search_button"
             android:text="Search!"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />

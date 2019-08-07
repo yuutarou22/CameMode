@@ -25,10 +25,8 @@ public class Utility {
     public static void onCreateLog(String categoryRoleString, String displayNameString, String passwordString, String categorySnsString,
                                    String snsUserNameString, List<Boolean> freeDayArrayList, String whichChargeString, int spinnerRegionInt,
                                    int spinnerSexInt, int spinnerAgeInt, String imaginationHopeString) {
-        // ToDo: パスワードの扱いに注意。
         Log.d("onCreateLog", "categoryRoleString: " + categoryRoleString);
         Log.d("onCreateLog", "displayNameString: " + displayNameString);
-        Log.d("onCreateLog", "PasswordString: " + passwordString);
         Log.d("onCreateLog", "categorySnsInt: " + categorySnsString);
         Log.d("onCreateLog", "snsUserNameString: " + snsUserNameString);
         for (boolean b : freeDayArrayList) {
@@ -45,6 +43,4 @@ public class Utility {
     public boolean validationCheck() {
         return true;
     }
-
-    /*  */
 }

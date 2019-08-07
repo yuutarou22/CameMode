@@ -46,7 +46,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         setupViews();
 
-        // 2019/07/31 キー再発行済み
         NCMB.initialize(this.getApplicationContext(), Config.getApplicationKey(), Config.getClientKey());
 
         // updateDateフィールドの新しい順にデータ取得し、ListViewに出力

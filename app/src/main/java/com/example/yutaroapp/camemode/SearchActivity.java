@@ -23,16 +23,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SearchActivity extends AppCompatActivity {
-  int freeDayArrayCount = 7;
-
-  // レイアウト定義用
-  RadioGroup categoryRole;
-  CheckBox[] freeDay = new CheckBox[freeDayArrayCount];
-  RadioGroup whichCharge;
-  Spinner spinnerRegion;
-  Spinner spinnerSex;
-  Spinner spinnerAge;
-  Button searchButton;
+  /* SearchLayout */
+  private SearchLayout mSearchLayout;
 
   // データ送信用
   RadioButton categoryRoleButton;
@@ -49,13 +41,19 @@ public class SearchActivity extends AppCompatActivity {
   // UserInfoDataクラスのデータを取得するクエリを作成
   NCMBQuery<NCMBObject> query = new NCMBQuery<>("UserInfoData");
 
+  private void setUpViews() {
+    mSearchLayout = new SearchLayout(this);
+    mSearchLayout.setUpViews(getWindow().getDecorView());
+  }
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_search);
-    onCreateView();
 
-    searchButton.setOnClickListener(new View.OnClickListener() {
+    setUpViews();
+
+    mSearchLayout.searchButton.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {
         new AlertDialog.Builder(SearchActivity.this).setTitle("検索しますか？")
@@ -109,34 +107,20 @@ public class SearchActivity extends AppCompatActivity {
     });
   }
 
-  protected void onCreateView() {
-    categoryRole = (RadioGroup)findViewById(R.id.category_role);
-
-    freeDay[0] = (CheckBox)findViewById(R.id.free_day_mon);
-    freeDay[1] = (CheckBox)findViewById(R.id.free_day_tue);
-    freeDay[2] = (CheckBox)findViewById(R.id.free_day_wed);
-    freeDay[3] = (CheckBox)findViewById(R.id.free_day_thu);
-    freeDay[4] = (CheckBox)findViewById(R.id.free_day_fri);
-    freeDay[5] = (CheckBox)findViewById(R.id.free_day_sat);
-    freeDay[6] = (CheckBox)findViewById(R.id.free_day_sun);
-
-    whichCharge = (RadioGroup)findViewById(R.id.which_charge);
-    spinnerRegion = (Spinner)findViewById(R.id.spinner_region);
-    spinnerSex = (Spinner)findViewById(R.id.spinner_sex);
-    spinnerAge = (Spinner)findViewById(R.id.spinner_age);
-    searchButton = (Button)findViewById(R.id.search_button);
-  }
-
+  /**
+   * レイアウトから値を取得し、データ送信用変数に格納する
+   */
   protected void convertViewValue() {
-    categoryRoleButton = findViewById(categoryRole.getCheckedRadioButtonId());
+    // ToDo: ”mSearchLayout.”といちいちつけるのが冗長に感じる、気持ち悪い。
+    categoryRoleButton = findViewById(mSearchLayout.categoryRole.getCheckedRadioButtonId());
     categoryRoleString = categoryRoleButton.getText().toString();
-    for (int i = 0; i<freeDayArrayCount; i++) {
-      freeDayArrayList.add(freeDay[i].isChecked());
+    for (int i = 0; i<mSearchLayout.freeDayArrayCount; i++) {
+      freeDayArrayList.add(mSearchLayout.freeDay[i].isChecked());
     }
-    whichChargeButton = findViewById(whichCharge.getCheckedRadioButtonId());
+    whichChargeButton = findViewById(mSearchLayout.whichCharge.getCheckedRadioButtonId());
     whichChargeString = whichChargeButton.getText().toString();
-    spinnerRegionInt = spinnerRegion.getSelectedItemPosition();
-    spinnerSexInt = spinnerSex.getSelectedItemPosition();
-    spinnerAgeInt = spinnerAge.getSelectedItemPosition();
+    spinnerRegionInt = mSearchLayout.spinnerRegion.getSelectedItemPosition();
+    spinnerSexInt = mSearchLayout.spinnerSex.getSelectedItemPosition();
+    spinnerAgeInt = mSearchLayout.spinnerAge.getSelectedItemPosition();
   }
 }

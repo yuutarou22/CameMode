@@ -1,6 +1,7 @@
 package com.example.yutaroapp.camemode;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -62,30 +63,18 @@ public class SearchActivity extends AppCompatActivity {
                   @Override
                   public void onClick(DialogInterface dialog, int which) {
                     convertViewValue();
-                    // ToDo: Utilityクラスに共通処理をまとめる。
                     Utility.onCreateLog(categoryRoleString, freeDayArrayList, whichChargeString, spinnerSexInt, spinnerAgeInt);
                     Toast.makeText(getApplicationContext(),"onClick",Toast.LENGTH_SHORT).show();
-//                    if (validationCheck(displayNameString, snsUserNameString)){
-//                      pushUserData();
-//                      freeDayArrayList.clear();
-//                      setResult(RESULT_OK);
-//                      finish();
-//                    }
                     searchUserData(query, userInfoDataList);
                     freeDayArrayList.clear();
+                    Intent intent = new Intent(getApplicationContext(), SearchResultActivity.class);
+                    startActivity(intent);
                   }
                 }).setPositiveButton("いいえ", new DialogInterface.OnClickListener() {
           @Override
           public void onClick(DialogInterface dialog, int which) {
           }
         }).show();
-        // ToDo: 入力値のチェック
-        /**
-         *
-         */
-
-        // ToDo: 検索
-
       }
     });
   }

@@ -1,9 +1,11 @@
 package com.example.yutaroapp.camemode;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -12,6 +14,8 @@ import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.nifcloud.mbaas.core.FindCallback;
+import com.nifcloud.mbaas.core.NCMBException;
 import com.nifcloud.mbaas.core.NCMBObject;
 import com.nifcloud.mbaas.core.NCMBQuery;
 
@@ -51,10 +55,6 @@ public class SearchActivity extends AppCompatActivity {
     setContentView(R.layout.activity_search);
     onCreateView();
 
-    // オブジェクトの検索(key というフィールドがvalueになっている)
-//    query.whereEqualTo("key","value");
-
-    // ボタンが押された時、入力されている値を取得しクエリーにぶっこむ
     searchButton.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {
@@ -63,29 +63,48 @@ public class SearchActivity extends AppCompatActivity {
                   @Override
                   public void onClick(DialogInterface dialog, int which) {
                     convertViewValue();
-                    // ToDo: Utilityクラスに共通処理をまとめる。
                     Utility.onCreateLog(categoryRoleString, freeDayArrayList, whichChargeString, spinnerSexInt, spinnerAgeInt);
                     Toast.makeText(getApplicationContext(),"onClick",Toast.LENGTH_SHORT).show();
-//                    if (validationCheck(displayNameString, snsUserNameString)){
-//                      pushUserData();
-//                      freeDayArrayList.clear();
-//                      setResult(RESULT_OK);
-//                      finish();
-//                    }
+                    searchUserData(query, userInfoDataList);
                     freeDayArrayList.clear();
+                    Intent intent = new Intent(getApplicationContext(), SearchResultActivity.class);
+                    startActivity(intent);
                   }
                 }).setPositiveButton("いいえ", new DialogInterface.OnClickListener() {
           @Override
           public void onClick(DialogInterface dialog, int which) {
           }
         }).show();
-        // ToDo: 入力値のチェック
-        /**
-         *
-         */
+      }
+    });
+  }
 
-        // ToDo: 検索
+  private void searchUserData(NCMBQuery query, final List<NCMBObject> userInfoDataList) {
+    // クエリー作成
+    query.whereEqualTo("CategoryRole", categoryRoleString);
+//    freeDayArrayList
+    query.whereEqualTo("WhichCharge", whichChargeString);
+    query.whereEqualTo("SpinnerRegionInt", spinnerRegionInt);
+    query.whereEqualTo("SpinnerSex", spinnerSexInt);
+    query.whereEqualTo("SpinnerAgeInt", spinnerAgeInt);
 
+    query.addOrderByDescending("updateDate");
+    query.setLimit(15);
+    query.findInBackground(new FindCallback<NCMBObject>() {
+      @Override
+      public void done(List<NCMBObject> list, NCMBException e) {
+        if (e != null) {
+          Toast.makeText(getApplicationContext(), "データ取得エラー", Toast.LENGTH_SHORT).show();
+        } else {
+          Toast.makeText(getApplicationContext(), "データ取得成功", Toast.LENGTH_SHORT).show();
+          userInfoDataList.clear();
+          for (NCMBObject obj : list) {
+            Log.d("SearchActivity", "userInfoDataList DispName: " + obj.getString("DisplayName"));
+            userInfoDataList.add(obj);
+          }
+          // ToDo: リスト表示
+//          displayListView;
+        }
       }
     });
   }

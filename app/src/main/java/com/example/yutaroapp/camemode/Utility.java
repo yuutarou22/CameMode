@@ -5,12 +5,11 @@ import android.util.Log;
 import java.util.List;
 
 public class Utility {
-    /* ログの出力 */
+    /* ログの出力(検索用) */
     public static void onCreateLog(String categoryRoleString, List<Boolean> freeDayArrayList,
                                    String whichChargeString, int spinnerSexInt, int spinnerAgeInt) {
 
         Log.d("onCreateLog","categoryRoleString: " + categoryRoleString);
-        Log.d("onCreateLog", "freeDayArrayList.size: " + freeDayArrayList.size());
         for (int i = 0; i < freeDayArrayList.size(); i++) {
             Log.d("onCreateLog", "freeDayArrayList: " + freeDayArrayList.get(i));
         }
@@ -22,13 +21,12 @@ public class Utility {
         Log.d("onCreateLog", "spinnerAgeInt: " + spinnerAgeInt);
     }
 
+    /* ログの出力(登録用) */
     public static void onCreateLog(String categoryRoleString, String displayNameString, String passwordString, String categorySnsString,
                                    String snsUserNameString, List<Boolean> freeDayArrayList, String whichChargeString, int spinnerRegionInt,
                                    int spinnerSexInt, int spinnerAgeInt, String imaginationHopeString) {
-        // ToDo: パスワードの扱いに注意。
         Log.d("onCreateLog", "categoryRoleString: " + categoryRoleString);
         Log.d("onCreateLog", "displayNameString: " + displayNameString);
-        Log.d("onCreateLog", "PasswordString: " + passwordString);
         Log.d("onCreateLog", "categorySnsInt: " + categorySnsString);
         Log.d("onCreateLog", "snsUserNameString: " + snsUserNameString);
         for (boolean b : freeDayArrayList) {
@@ -45,6 +43,4 @@ public class Utility {
     public boolean validationCheck() {
         return true;
     }
-
-    /*  */
 }

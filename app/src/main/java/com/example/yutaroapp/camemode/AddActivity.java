@@ -59,6 +59,7 @@ public class AddActivity extends AppCompatActivity {
     setContentView(R.layout.activity_add);
     onCreateView();
 
+    // 登録用FABを押下すると、ダイアログが出力される。
     fab.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {

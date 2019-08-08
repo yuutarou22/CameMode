@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * User情報を取得し、リストを更新する
+     * ユーザ情報を取得し、リストを更新する
      * @param query NCMBQuery 検索用のクエリー
      * @param userInfoDataList List<NCMBObject> 更新するリスト
      */
@@ -88,6 +88,7 @@ public class MainActivity extends AppCompatActivity {
                     // 成功時
                     Toast.makeText(getApplicationContext(), "データ取得成功", Toast.LENGTH_SHORT).show();
 
+                    // ユーザ情報をクリアし、新たに取得したユーザ情報をAddする
                     userInfoDataList.clear();
                     for (NCMBObject obj : list) {
                         Log.d("MainActivity", "userInfoDataList DispName: " + obj.getString("DisplayName"));
@@ -99,6 +100,9 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * 取得したユーザ情報をリストビューに出力する
+     */
     private void displayListView() {
         Resources res = getResources();
         RecyclerView userListView = (RecyclerView) findViewById(R.id.user_info_list);
@@ -106,6 +110,7 @@ public class MainActivity extends AppCompatActivity {
         userListView.addItemDecoration(itemDecoration);
 
         ArrayList<UserListItem> userListItems = new ArrayList<>();
+        // 取得したユーザ情報をもとに、アイテムに格納
         for (NCMBObject obj : userInfoDataList) {
             Bitmap bmp = BitmapFactory.decodeResource(res, R.mipmap.ic_gohan);
             // ユーザ情報アイテムを生成

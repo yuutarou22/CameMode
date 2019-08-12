@@ -19,8 +19,11 @@ import com.nifcloud.mbaas.core.NCMBException;
 import com.nifcloud.mbaas.core.NCMBObject;
 import com.nifcloud.mbaas.core.NCMBQuery;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+
+import static android.icu.lang.UCharacter.GraphemeClusterBreak.T;
 
 public class SearchActivity extends AppCompatActivity {
   /* SearchLayout */
@@ -41,86 +44,75 @@ public class SearchActivity extends AppCompatActivity {
   // UserInfoDataクラスのデータを取得するクエリを作成
   NCMBQuery<NCMBObject> query = new NCMBQuery<>("UserInfoData");
 
-  private void setUpViews() {
+    private void setUpViews() {
     mSearchLayout = new SearchLayout(this);
     mSearchLayout.setUpViews(getWindow().getDecorView());
   }
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_search);
+      super.onCreate(savedInstanceState);
+      setContentView(R.layout.activity_search);
+      setUpViews();
 
-    setUpViews();
-
-    mSearchLayout.searchButton.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View view) {
-        new AlertDialog.Builder(SearchActivity.this).setTitle("検索しますか？")
-                .setNeutralButton("はい", new DialogInterface.OnClickListener() {
-                  @Override
-                  public void onClick(DialogInterface dialog, int which) {
-                    convertViewValue();
-                    Utility.onCreateLog(categoryRoleString, freeDayArrayList, whichChargeString, spinnerSexInt, spinnerAgeInt);
-                    Toast.makeText(getApplicationContext(),"onClick",Toast.LENGTH_SHORT).show();
-                    searchUserData(query, userInfoDataList);
-                    freeDayArrayList.clear();
-                    Intent intent = new Intent(getApplicationContext(), SearchResultActivity.class);
-                    startActivity(intent);
-                  }
-                }).setPositiveButton("いいえ", new DialogInterface.OnClickListener() {
+      mSearchLayout.searchButton.setOnClickListener(new View.OnClickListener() {
           @Override
-          public void onClick(DialogInterface dialog, int which) {
+          public void onClick(View view) {
+              convertViewValue();
+              Utility.onCreateLog(categoryRoleString, freeDayArrayList, whichChargeString, spinnerSexInt, spinnerAgeInt);
+              Toast.makeText(getApplicationContext(), "onClick", Toast.LENGTH_SHORT).show();
+              searchUserData(query, userInfoDataList);
+              freeDayArrayList.clear();
+              Intent intent = new Intent(getApplicationContext(), SearchResultActivity.class);
+              intent.putExtra("LIST", (Serializable) userInfoDataList);
+              startActivity(intent);
           }
-        }).show();
-      }
-    });
+      });
   }
 
   private void searchUserData(NCMBQuery query, final List<NCMBObject> userInfoDataList) {
-    // クエリー作成
-    query.whereEqualTo("CategoryRole", categoryRoleString);
+      // クエリー作成
+      query.whereEqualTo("CategoryRole", categoryRoleString);
+      // ToDo: 空き日の検索条件を実装
 //    freeDayArrayList
-    query.whereEqualTo("WhichCharge", whichChargeString);
-    query.whereEqualTo("SpinnerRegionInt", spinnerRegionInt);
-    query.whereEqualTo("SpinnerSex", spinnerSexInt);
-    query.whereEqualTo("SpinnerAgeInt", spinnerAgeInt);
+      query.whereEqualTo("WhichCharge", whichChargeString);
+      query.whereEqualTo("SpinnerRegionInt", spinnerRegionInt);
+      query.whereEqualTo("SpinnerSex", spinnerSexInt);
+      query.whereEqualTo("SpinnerAgeInt", spinnerAgeInt);
 
-    query.addOrderByDescending("updateDate");
-    query.setLimit(15);
-    query.findInBackground(new FindCallback<NCMBObject>() {
-      @Override
-      public void done(List<NCMBObject> list, NCMBException e) {
-        if (e != null) {
-          Toast.makeText(getApplicationContext(), "データ取得エラー", Toast.LENGTH_SHORT).show();
-        } else {
-          Toast.makeText(getApplicationContext(), "データ取得成功", Toast.LENGTH_SHORT).show();
-          userInfoDataList.clear();
-          for (NCMBObject obj : list) {
-            Log.d("SearchActivity", "userInfoDataList DispName: " + obj.getString("DisplayName"));
-            userInfoDataList.add(obj);
+      query.addOrderByDescending("updateDate");
+      query.setLimit(15);
+      query.findInBackground(new FindCallback<NCMBObject>() {
+          @Override
+          public void done(List<NCMBObject> list, NCMBException e) {
+              if (e != null) {
+                  Toast.makeText(getApplicationContext(), "データ取得エラー", Toast.LENGTH_SHORT).show();
+              } else {
+                  Toast.makeText(getApplicationContext(), "データ取得成功", Toast.LENGTH_SHORT).show();
+                  userInfoDataList.clear();
+                  for (NCMBObject obj : list) {
+                      Log.d("SearchActivity", "userInfoDataList DispName: " + obj.getString("DisplayName"));
+                      userInfoDataList.add(obj);
+                  }
+              }
           }
-          // ToDo: リスト表示
-//          displayListView;
-        }
-      }
-    });
+      });
   }
 
   /**
    * レイアウトから値を取得し、データ送信用変数に格納する
    */
   protected void convertViewValue() {
-    // ToDo: ”mSearchLayout.”といちいちつけるのが冗長に感じる、気持ち悪い。
-    categoryRoleButton = findViewById(mSearchLayout.categoryRole.getCheckedRadioButtonId());
-    categoryRoleString = categoryRoleButton.getText().toString();
-    for (int i = 0; i<mSearchLayout.freeDayArrayCount; i++) {
-      freeDayArrayList.add(mSearchLayout.freeDay[i].isChecked());
-    }
-    whichChargeButton = findViewById(mSearchLayout.whichCharge.getCheckedRadioButtonId());
-    whichChargeString = whichChargeButton.getText().toString();
-    spinnerRegionInt = mSearchLayout.spinnerRegion.getSelectedItemPosition();
-    spinnerSexInt = mSearchLayout.spinnerSex.getSelectedItemPosition();
-    spinnerAgeInt = mSearchLayout.spinnerAge.getSelectedItemPosition();
+      // ToDo: ”mSearchLayout.”といちいちつけるのが冗長に感じる、気持ち悪い。
+      categoryRoleButton = findViewById(mSearchLayout.categoryRole.getCheckedRadioButtonId());
+      categoryRoleString = categoryRoleButton.getText().toString();
+      for (int i = 0; i<mSearchLayout.freeDayArrayCount; i++) {
+          freeDayArrayList.add(mSearchLayout.freeDay[i].isChecked());
+      }
+      whichChargeButton = findViewById(mSearchLayout.whichCharge.getCheckedRadioButtonId());
+      whichChargeString = whichChargeButton.getText().toString();
+      spinnerRegionInt = mSearchLayout.spinnerRegion.getSelectedItemPosition();
+      spinnerSexInt = mSearchLayout.spinnerSex.getSelectedItemPosition();
+      spinnerAgeInt = mSearchLayout.spinnerAge.getSelectedItemPosition();
   }
 }

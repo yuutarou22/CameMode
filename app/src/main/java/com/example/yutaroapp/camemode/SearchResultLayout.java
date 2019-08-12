@@ -1,5 +1,6 @@
 package com.example.yutaroapp.camemode;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.util.AttributeSet;
@@ -43,6 +44,7 @@ public class SearchResultLayout extends RelativeLayout {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(mContext, SearchActivity.class);
+                ((Activity)mContext).finish();
                 mContext.startActivity(intent);
             }
         });

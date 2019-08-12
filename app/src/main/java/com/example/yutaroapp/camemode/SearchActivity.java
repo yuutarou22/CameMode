@@ -63,8 +63,10 @@ public class SearchActivity extends AppCompatActivity {
               Toast.makeText(getApplicationContext(), "onClick", Toast.LENGTH_SHORT).show();
               searchUserData(query, userInfoDataList);
               freeDayArrayList.clear();
+              // 検索結果をSearchResultActivityに渡す
               Intent intent = new Intent(getApplicationContext(), SearchResultActivity.class);
               intent.putExtra("LIST", (Serializable) userInfoDataList);
+              finish();
               startActivity(intent);
           }
       });

@@ -5,17 +5,9 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
-import com.nifcloud.mbaas.core.NCMBObject;
-
-import java.io.Serializable;
-import java.util.ArrayList;
-
 public class SearchResultActivity extends AppCompatActivity {
     /* SearchResultLayout */
     private SearchResultLayout mSearchResultLayout;
-
-    /* UserInfoDataクラスを格納するList */
-    Serializable userInfoDataList = new ArrayList<NCMBObject>();
 
     private void setupViews() {
         mSearchResultLayout = new SearchResultLayout(this);
@@ -29,14 +21,9 @@ public class SearchResultActivity extends AppCompatActivity {
         setupViews();
 
         Intent intent = getIntent();
-//        Bundle bundle = intent.getExtras();
-//        userInfoDataList = (List<NCMBObject>) bundle.get("LIST");
-        userInfoDataList = intent.getSerializableExtra("LIST");
-
-        Log.d("SearchResultActivity", "userInfoDataList size(): " + userInfoDataList.size());
-
-        for (int i = 0; i<userInfoDataList.size(); i++) {
-            Log.d("SearchResultActivity", "userInfoDataList DispName: " + userInfoDataList.get(i).getString("DisplayName"));
+        Log.d("onCreate", "intent: " + intent.toString());
+        for (int i = 0; i<Utility.userInfoDataList.size(); i++) {
+            Log.d("onCreate", "getStringArrayList " + Utility.userInfoDataList.get(i));
         }
     }
 }

@@ -1,17 +1,11 @@
 package com.example.yutaroapp.camemode;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.nifcloud.mbaas.core.FindCallback;
@@ -19,11 +13,8 @@ import com.nifcloud.mbaas.core.NCMBException;
 import com.nifcloud.mbaas.core.NCMBObject;
 import com.nifcloud.mbaas.core.NCMBQuery;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-
-import static android.icu.lang.UCharacter.GraphemeClusterBreak.T;
 
 public class SearchActivity extends AppCompatActivity {
   /* SearchLayout */
@@ -39,8 +30,6 @@ public class SearchActivity extends AppCompatActivity {
   int spinnerSexInt;
   int spinnerAgeInt;
 
-  // UserInfoDataクラスのデータを格納するListを作成
-  List<NCMBObject> userInfoDataList = new ArrayList<NCMBObject>();
   // UserInfoDataクラスのデータを取得するクエリを作成
   NCMBQuery<NCMBObject> query = new NCMBQuery<>("UserInfoData");
 
@@ -61,18 +50,17 @@ public class SearchActivity extends AppCompatActivity {
               convertViewValue();
               Utility.onCreateLog(categoryRoleString, freeDayArrayList, whichChargeString, spinnerSexInt, spinnerAgeInt);
               Toast.makeText(getApplicationContext(), "onClick", Toast.LENGTH_SHORT).show();
-              searchUserData(query, userInfoDataList);
+              searchUserData(query);
               freeDayArrayList.clear();
-              // 検索結果をSearchResultActivityに渡す
+              // 検索結果（SearchResultActivity）へ遷移する
               Intent intent = new Intent(getApplicationContext(), SearchResultActivity.class);
-              intent.putExtra("LIST", (Serializable) userInfoDataList);
               finish();
               startActivity(intent);
           }
       });
   }
 
-  private void searchUserData(NCMBQuery query, final List<NCMBObject> userInfoDataList) {
+  private void searchUserData(NCMBQuery query) {
       // クエリー作成
       query.whereEqualTo("CategoryRole", categoryRoleString);
       // ToDo: 空き日の検索条件を実装
@@ -91,10 +79,10 @@ public class SearchActivity extends AppCompatActivity {
                   Toast.makeText(getApplicationContext(), "データ取得エラー", Toast.LENGTH_SHORT).show();
               } else {
                   Toast.makeText(getApplicationContext(), "データ取得成功", Toast.LENGTH_SHORT).show();
-                  userInfoDataList.clear();
+                  Utility.userInfoDataList.clear();
                   for (NCMBObject obj : list) {
                       Log.d("SearchActivity", "userInfoDataList DispName: " + obj.getString("DisplayName"));
-                      userInfoDataList.add(obj);
+                      Utility.userInfoDataList.add(obj);
                   }
               }
           }

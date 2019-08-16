@@ -31,6 +31,7 @@ public class SearchResultActivity extends AppCompatActivity {
         setupViews();
     }
 
+    // ToDo: Listへの出力はonResumeで問題ないか調査
     @Override
     protected void onResume() {
         super.onResume();

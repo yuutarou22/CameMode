@@ -16,7 +16,7 @@ import com.nifcloud.mbaas.core.NCMBQuery;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SearchActivity extends AppCompatActivity {
+public class SearchActivity extends AppCompatActivity implements SearchTask.SearchResultListener {
   /* SearchLayout */
   private SearchLayout mSearchLayout;
 
@@ -51,16 +51,11 @@ public class SearchActivity extends AppCompatActivity {
               Utility.onCreateLog(categoryRoleString, freeDayArrayList, whichChargeString, spinnerSexInt, spinnerAgeInt);
               Toast.makeText(getApplicationContext(), "onClick", Toast.LENGTH_SHORT).show();
               searchUserData(query);
-              freeDayArrayList.clear();
-              // 検索結果（SearchResultActivity）へ遷移する
-              Intent intent = new Intent(getApplicationContext(), SearchResultActivity.class);
-              finish();
-              startActivity(intent);
           }
       });
   }
 
-  private void searchUserData(NCMBQuery query) {
+  protected void searchUserData(NCMBQuery query) {
       // クエリー作成
       query.whereEqualTo("CategoryRole", categoryRoleString);
       // ToDo: 空き日の検索条件を実装
@@ -72,18 +67,16 @@ public class SearchActivity extends AppCompatActivity {
 
       query.addOrderByDescending("updateDate");
       query.setLimit(15);
+      final SearchTask searchTask = new SearchTask();
+      searchTask.setListener(this);
+
       query.findInBackground(new FindCallback<NCMBObject>() {
           @Override
           public void done(List<NCMBObject> list, NCMBException e) {
               if (e != null) {
                   Toast.makeText(getApplicationContext(), "データ取得エラー", Toast.LENGTH_SHORT).show();
               } else {
-                  Toast.makeText(getApplicationContext(), "データ取得成功", Toast.LENGTH_SHORT).show();
-                  Utility.userInfoDataList.clear();
-                  for (NCMBObject obj : list) {
-                      Log.d("SearchActivity", "userInfoDataList DispName: " + obj.getString("DisplayName"));
-                      Utility.userInfoDataList.add(obj);
-                  }
+                  searchTask.taskStart(list);
               }
           }
       });
@@ -104,5 +97,17 @@ public class SearchActivity extends AppCompatActivity {
       spinnerRegionInt = mSearchLayout.spinnerRegion.getSelectedItemPosition();
       spinnerSexInt = mSearchLayout.spinnerSex.getSelectedItemPosition();
       spinnerAgeInt = mSearchLayout.spinnerAge.getSelectedItemPosition();
+  }
+
+  /**
+   * 検索（searchTask）が終わったら、検索結果Activityへ遷移する。
+   */
+  @Override
+  public void onSuccess() {
+      // ToDo: 空き日の検索条件を実装
+      freeDayArrayList.clear();
+      Intent intent = new Intent(getApplicationContext(), SearchResultActivity.class);
+      finish();
+      startActivity(intent);
   }
 }

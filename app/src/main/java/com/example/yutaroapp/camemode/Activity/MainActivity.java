@@ -1,4 +1,4 @@
-package com.example.yutaroapp.camemode;
+package com.example.yutaroapp.camemode.Activity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -14,6 +14,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.yutaroapp.camemode.Config;
+import com.example.yutaroapp.camemode.Layout.MainLayout;
+import com.example.yutaroapp.camemode.R;
+import com.example.yutaroapp.camemode.UserListItem;
+import com.example.yutaroapp.camemode.UserRecyclerViewAdapter;
 import com.nifcloud.mbaas.core.FindCallback;
 import com.nifcloud.mbaas.core.NCMB;
 import com.nifcloud.mbaas.core.NCMBException;

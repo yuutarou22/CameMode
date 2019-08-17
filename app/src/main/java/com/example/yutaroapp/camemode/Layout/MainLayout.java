@@ -1,4 +1,4 @@
-package com.example.yutaroapp.camemode;
+package com.example.yutaroapp.camemode.Layout;
 
 import android.app.Activity;
 import android.content.Context;
@@ -8,7 +8,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 
-import static com.example.yutaroapp.camemode.MainActivity.startActivityforResult;
+import com.example.yutaroapp.camemode.Activity.AddActivity;
+import com.example.yutaroapp.camemode.Activity.SearchActivity;
+import com.example.yutaroapp.camemode.R;
+
+import static com.example.yutaroapp.camemode.Activity.MainActivity.startActivityforResult;
 
 
 public class MainLayout extends RelativeLayout {

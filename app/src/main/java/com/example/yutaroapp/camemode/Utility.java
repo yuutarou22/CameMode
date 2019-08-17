@@ -9,7 +9,7 @@ import java.util.List;
 
 public class Utility {
     /* UserInfoDataクラスを格納するList */
-    static List<NCMBObject> userInfoDataList = new ArrayList<NCMBObject>();
+    public static List<NCMBObject> userInfoDataList = new ArrayList<NCMBObject>();
 
     /* ログの出力(検索用) */
     public static void onCreateLog(String categoryRoleString, List<Boolean> freeDayArrayList,

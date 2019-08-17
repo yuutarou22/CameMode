@@ -1,10 +1,6 @@
-package com.example.yutaroapp.camemode;
+package com.example.yutaroapp.camemode.Layout;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.support.v7.app.AlertDialog;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.Button;
@@ -12,22 +8,21 @@ import android.widget.CheckBox;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
-import android.widget.Toast;
 
-import static com.example.yutaroapp.camemode.MainActivity.startActivityforResult;
+import com.example.yutaroapp.camemode.R;
 
 
 public class SearchLayout extends RelativeLayout {
 
-    int freeDayArrayCount = 7;
+    public int freeDayArrayCount = 7;
     // レイアウト定義用
-    RadioGroup categoryRole;
-    CheckBox[] freeDay = new CheckBox[freeDayArrayCount];
-    RadioGroup whichCharge;
-    Spinner spinnerRegion;
-    Spinner spinnerSex;
-    Spinner spinnerAge;
-    Button searchButton;
+    public RadioGroup categoryRole;
+    public CheckBox[] freeDay = new CheckBox[freeDayArrayCount];
+    public RadioGroup whichCharge;
+    public Spinner spinnerRegion;
+    public Spinner spinnerSex;
+    public Spinner spinnerAge;
+    public Button searchButton;
 
     /**
      * コンテキスト.

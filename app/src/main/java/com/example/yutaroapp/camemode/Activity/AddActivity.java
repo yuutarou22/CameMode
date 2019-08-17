@@ -1,4 +1,4 @@
-package com.example.yutaroapp.camemode;
+package com.example.yutaroapp.camemode.Activity;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -13,6 +13,8 @@ import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.yutaroapp.camemode.R;
+import com.example.yutaroapp.camemode.Utility;
 import com.nifcloud.mbaas.core.DoneCallback;
 import com.nifcloud.mbaas.core.NCMBException;
 import com.nifcloud.mbaas.core.NCMBObject;

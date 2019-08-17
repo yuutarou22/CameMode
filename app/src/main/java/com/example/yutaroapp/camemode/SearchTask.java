@@ -10,16 +10,16 @@ public class SearchTask {
     private SearchResultListener listener;
 
     // interface設定
-    interface SearchResultListener {
+    public interface SearchResultListener {
         void onSuccess();
     }
 
     // listener
-    void setListener(SearchResultListener _listener) {
+    public void setListener(SearchResultListener _listener) {
         this.listener = _listener;
     }
 
-    void taskStart(List<NCMBObject> list) {
+    public void taskStart(List<NCMBObject> list) {
         Utility.userInfoDataList.clear();
         for (NCMBObject obj : list) {
             Log.d("SearchTask", "userInfoDataList DispName: " + obj.getString("DisplayName"));
@@ -30,6 +30,7 @@ public class SearchTask {
         Log.d("SearchTask", "size(): " + Utility.userInfoDataList.size());
 
         if (listener != null) {
+            // listener(SearchActivity) の onSuccess()を実行
             listener.onSuccess();
         }
     }

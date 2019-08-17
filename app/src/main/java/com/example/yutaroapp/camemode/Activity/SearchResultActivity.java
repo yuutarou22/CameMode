@@ -1,4 +1,4 @@
-package com.example.yutaroapp.camemode;
+package com.example.yutaroapp.camemode.Activity;
 
 import android.content.Intent;
 import android.content.res.Resources;
@@ -11,6 +11,11 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
+import com.example.yutaroapp.camemode.R;
+import com.example.yutaroapp.camemode.Layout.SearchResultLayout;
+import com.example.yutaroapp.camemode.UserListItem;
+import com.example.yutaroapp.camemode.UserRecyclerViewAdapter;
+import com.example.yutaroapp.camemode.Utility;
 import com.nifcloud.mbaas.core.NCMBObject;
 
 import java.util.ArrayList;
@@ -37,7 +42,7 @@ public class SearchResultActivity extends AppCompatActivity {
         super.onResume();
         Intent intent = getIntent();
         Log.d("onCreate", "intent: " + intent.toString());
-        for (int i = 0; i<Utility.userInfoDataList.size(); i++) {
+        for (int i = 0; i < Utility.userInfoDataList.size(); i++) {
             Log.d("onCreate", "getStringArrayList " + Utility.userInfoDataList.get(i));
         }
         displayListView();

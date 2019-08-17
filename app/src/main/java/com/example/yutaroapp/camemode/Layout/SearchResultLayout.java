@@ -1,4 +1,4 @@
-package com.example.yutaroapp.camemode;
+package com.example.yutaroapp.camemode.Layout;
 
 import android.app.Activity;
 import android.content.Context;
@@ -7,6 +7,9 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RelativeLayout;
+
+import com.example.yutaroapp.camemode.Activity.SearchActivity;
+import com.example.yutaroapp.camemode.R;
 
 
 public class SearchResultLayout extends RelativeLayout {

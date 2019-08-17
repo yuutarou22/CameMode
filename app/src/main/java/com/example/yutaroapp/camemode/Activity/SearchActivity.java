@@ -1,13 +1,16 @@
-package com.example.yutaroapp.camemode;
+package com.example.yutaroapp.camemode.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
+import com.example.yutaroapp.camemode.R;
+import com.example.yutaroapp.camemode.Layout.SearchLayout;
+import com.example.yutaroapp.camemode.SearchTask;
+import com.example.yutaroapp.camemode.Utility;
 import com.nifcloud.mbaas.core.FindCallback;
 import com.nifcloud.mbaas.core.NCMBException;
 import com.nifcloud.mbaas.core.NCMBObject;
@@ -67,6 +70,7 @@ public class SearchActivity extends AppCompatActivity implements SearchTask.Sear
 
       query.addOrderByDescending("updateDate");
       query.setLimit(15);
+      // 検索処理タスクを生成
       final SearchTask searchTask = new SearchTask();
       searchTask.setListener(this);
 
@@ -76,6 +80,7 @@ public class SearchActivity extends AppCompatActivity implements SearchTask.Sear
               if (e != null) {
                   Toast.makeText(getApplicationContext(), "データ取得エラー", Toast.LENGTH_SHORT).show();
               } else {
+                  // 検索処理を同期実行
                   searchTask.taskStart(list);
               }
           }

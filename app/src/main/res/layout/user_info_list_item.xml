@@ -2,12 +2,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="horizontal"
               android:layout_width="match_parent"
-              android:layout_height="wrap_content">
+              android:layout_height="82dp">
     <ImageView
         android:id="@+id/user_icon"
         android:layout_width="70dp"
         android:layout_height="70dp"
-        android:layout_margin="6dp" />
+        android:layout_margin="6dp"
+        android:layout_gravity="center_vertical" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -21,7 +22,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="3dp"
             android:textSize="25dp"
-            android:textColor="#444444"
+            android:textColor="#55555d"
             android:singleLine="true"
             android:ellipsize="end"
             android:gravity="left" />
@@ -40,6 +41,5 @@
                 android:gravity="center_horizontal" />
         </LinearLayout>
     </LinearLayout>
-
 
 </LinearLayout>

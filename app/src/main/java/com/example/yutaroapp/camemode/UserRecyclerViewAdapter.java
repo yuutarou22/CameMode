@@ -64,7 +64,7 @@ public class UserRecyclerViewAdapter extends RecyclerView.Adapter<ViewHolder> {
         } else if (list.get(position).getCategoryRole().equals("モデル")) {
             viewHolder.mCategoryRole.setBackgroundColor(Color.argb(120, 255, 0, 0));
         } else {
-            viewHolder.mCategoryRole.setBackgroundColor(Color.argb(120, 100, 100, 100));
+            viewHolder.mCategoryRole.setBackgroundColor(Color.argb(120, 255, 241, 0));
         }
     }
 

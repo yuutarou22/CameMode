@@ -7,27 +7,39 @@
         android:id="@+id/user_icon"
         android:layout_width="70dp"
         android:layout_height="70dp"
-        android:layout_margin="6dp"/>
-
-    <TextView
-        android:id="@+id/user_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="25dp"
-        android:layout_margin="3dp"
-        android:gravity="left"/>
+        android:layout_margin="6dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="right">
+        android:gravity="left" >
+
         <TextView
-            android:id="@+id/category_role"
-            android:text="カテゴリー種別"
-            android:textSize="13dp"
-            android:layout_width="25dp"
+            android:id="@+id/user_name"
+            android:layout_weight="13"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="3dp"
+            android:textSize="25dp"
+            android:textColor="#444444"
+            android:singleLine="true"
+            android:ellipsize="end"
+            android:gravity="left" />
+
+        <LinearLayout
+            android:layout_weight="1"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:gravity="center_horizontal"
-            android:elevation="@dimen/cardview_default_elevation"/>
+            android:gravity="right">
+            <TextView
+                android:id="@+id/category_role"
+                android:text="カテゴリー種別"
+                android:textSize="13dp"
+                android:layout_width="25dp"
+                android:layout_height="match_parent"
+                android:gravity="center_horizontal" />
+        </LinearLayout>
     </LinearLayout>
+
+
 </LinearLayout>

@@ -114,7 +114,7 @@
 - Webサービス化してもっと利用しやすくする。
   - アプリをインストールせずともアクセスするだけで利用できるようにするという意味
 
-## 2019_0816 実際に撮影させてもらったモデルさんにアプリを操作してもらった際に気づいた点
+## 2019_0817 実際に撮影させてもらったモデルさんにアプリを操作してもらった際に気づいた点
 - SNSの種類→Twitter,Instagram両方選べない
 - 投稿表示名と、SNSアカウント名の区別がわからない。説明不足。<br>
 口頭で説明が必要になるということは、ユーザは想定している操作とは全く別の操作をしてしまう。
@@ -127,3 +127,4 @@
 - RecyclerViewの基本的な実装 https://qiita.com/HideMatsu/items/a9ab48608e4f681d31fe
 - NCMBReferences https://mbaas.nifcloud.com/assets/sdk_doc/ios/doc/html/index.html
 - 独自リスナーを作成 https://techbooster.org/android/9054/
+- Activityのライフサイクル https://www.javadrive.jp/android/activity/index2.html

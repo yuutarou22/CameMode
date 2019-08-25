@@ -6,17 +6,17 @@ public class UserListItem {
   private Bitmap mUserIcon = null;
   private String mUserName = null;
   private String mCategoryRole = null;
+  private String mImaginationHope = null;
 
   /**
    * コンストラクタ
-   * @param mUserIcon アイコン
    * @param mUserName 表示名
    * @param mCategoryRole カテゴリー種別
    */
-  public UserListItem(Bitmap mUserIcon, String mUserName, String mCategoryRole){
-    this.mUserIcon = mUserIcon;
+  public UserListItem(String mUserName, String mCategoryRole, String mImaginationHope){
     this.mUserName = mUserName;
     this.mCategoryRole = mCategoryRole;
+    this.mImaginationHope = mImaginationHope;
   }
 
   // setter
@@ -25,6 +25,9 @@ public class UserListItem {
   }
   public void setUserName(String mUserName) {
     this.mUserName = mUserName;
+  }
+  public void setImaginationHope(String mImaginationHope) {
+      this.mImaginationHope = mImaginationHope;
   }
 
   // getter
@@ -36,5 +39,8 @@ public class UserListItem {
   }
   public String getCategoryRole() {
     return mCategoryRole;
+  }
+  public String getImaginationHope() {
+      return mImaginationHope;
   }
 }

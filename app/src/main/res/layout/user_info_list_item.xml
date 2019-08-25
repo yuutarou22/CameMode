@@ -2,44 +2,55 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="horizontal"
               android:layout_width="match_parent"
-              android:layout_height="82dp">
-    <ImageView
-        android:id="@+id/user_icon"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:layout_margin="6dp"
-        android:layout_gravity="center_vertical" />
+              android:layout_height="wrap_content">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="6dp">
+        <ImageView
+            android:id="@+id/user_icon"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:background="@color/colorAccent"
+            android:padding="3dp"
+            android:layout_gravity="center"/>
+        <TextView
+            android:id="@+id/category_role"
+            android:text="aaaaaaaaaaaaaaaaaa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="10dp"
+            android:layout_gravity="center"/>
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:orientation="vertical"
         android:gravity="left" >
 
         <TextView
             android:id="@+id/user_name"
-            android:layout_weight="13"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="3dp"
-            android:textSize="25dp"
-            android:textColor="#55555d"
+            android:textSize="22dp"
+            android:textStyle="bold"
+            android:textColor="#444444"
             android:singleLine="true"
             android:ellipsize="end"
             android:gravity="left" />
 
-        <LinearLayout
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:gravity="right">
-            <TextView
-                android:id="@+id/category_role"
-                android:text="カテゴリー種別"
-                android:textSize="13dp"
-                android:layout_width="25dp"
-                android:layout_height="match_parent"
-                android:gravity="center_horizontal" />
-        </LinearLayout>
+        <TextView
+            android:id="@+id/imagination_hope"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="3dp"
+            android:textSize="17dp"
+            android:text="初めまして、こういうの撮りたいんです。よろしくお願いいたします。よろしくよろしくよろしくよろしくよろしくよろしくよろしくよろしくよろしくよろしくよろしくよろしくよろしくよろしくよろしくよろしくよろしくよろしくよろしくよろしくよろしくよろしくよろしくよろしく"
+            android:ellipsize="end"
+            android:lines="2"/>
     </LinearLayout>
 
 </LinearLayout>

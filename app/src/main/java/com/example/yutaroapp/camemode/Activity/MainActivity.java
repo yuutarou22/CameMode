@@ -3,8 +3,6 @@ package com.example.yutaroapp.camemode.Activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DividerItemDecoration;
@@ -110,17 +108,14 @@ public class MainActivity extends AppCompatActivity {
      * 取得したユーザ情報をリストビューに出力する
      */
     private void displayListView() {
-        Resources res = getResources();
         RecyclerView userListView = (RecyclerView) findViewById(R.id.user_info_list);
         RecyclerView.ItemDecoration itemDecoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
         userListView.addItemDecoration(itemDecoration);
 
         ArrayList<UserListItem> userListItems = new ArrayList<>();
-        // 取得したユーザ情報をもとに、アイテムに格納
+        // 取得したユーザ情報をもとに、ユーザ情報アイテムを生成し、格納する
         for (NCMBObject obj : userInfoDataList) {
-            Bitmap bmp = BitmapFactory.decodeResource(res, R.mipmap.ic_gohan);
-            // ユーザ情報アイテムを生成
-            UserListItem userItem = new UserListItem(bmp, obj.getString("DisplayName"), obj.getString("CategoryRole"));
+            UserListItem userItem = new UserListItem(obj.getString("DisplayName"), obj.getString("CategoryRole"), obj.getString("ImaginationHope"));
             userListItems.add(userItem);
         }
 

@@ -9,12 +9,10 @@ public class UserListItem {
 
   /**
    * コンストラクタ
-   * @param mUserIcon アイコン
    * @param mUserName 表示名
    * @param mCategoryRole カテゴリー種別
    */
-  public UserListItem(Bitmap mUserIcon, String mUserName, String mCategoryRole){
-    this.mUserIcon = mUserIcon;
+  public UserListItem(String mUserName, String mCategoryRole){
     this.mUserName = mUserName;
     this.mCategoryRole = mCategoryRole;
   }

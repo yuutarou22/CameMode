@@ -1,6 +1,7 @@
 package com.example.yutaroapp.camemode;
 
 import android.annotation.SuppressLint;
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -55,16 +56,20 @@ public class UserRecyclerViewAdapter extends RecyclerView.Adapter<ViewHolder> {
             @Override
             public void onClick(View view) {
                 listener.onClick(view);
+                // Fragment 生成するか？
                 Log.d("onBindViewHolder", "onClick!!! getUserName:" + list.get(position).getUserName()); // リスナー検知は出来ている
             }
         });
 
-        if (viewHolder.mCategoryRole.getText().equals("カメラマン")) {
-            viewHolder.mCategoryRole.setBackgroundColor(Color.argb(120, 0, 0, 255));
+        if (list.get(position).getCategoryRole().equals("カメラマン")) {
+            viewHolder.mUserIcon.setImageResource(R.drawable.cameraman);
+            viewHolder.mUserIcon.setBackgroundColor(Color.argb(120, 0, 11111153, 204));
         } else if (list.get(position).getCategoryRole().equals("モデル")) {
-            viewHolder.mCategoryRole.setBackgroundColor(Color.argb(120, 255, 0, 0));
+            viewHolder.mUserIcon.setImageResource(R.drawable.model);
+            viewHolder.mUserIcon.setBackgroundColor(Color.argb(120, 255, 0, 0));
         } else {
-            viewHolder.mCategoryRole.setBackgroundColor(Color.argb(120, 255, 241, 0));
+            viewHolder.mUserIcon.setImageResource(R.drawable.camera_and_model);
+            viewHolder.mUserIcon.setBackgroundColor(Color.argb(120, 255, 241, 0));
         }
     }
 

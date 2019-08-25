@@ -118,9 +118,9 @@ public class MainActivity extends AppCompatActivity {
         ArrayList<UserListItem> userListItems = new ArrayList<>();
         // 取得したユーザ情報をもとに、アイテムに格納
         for (NCMBObject obj : userInfoDataList) {
-            Bitmap bmp = BitmapFactory.decodeResource(res, R.mipmap.ic_gohan);
+//            Bitmap bmp = BitmapFactory.decodeResource(res, R.mipmap.ic_gohan);
             // ユーザ情報アイテムを生成
-            UserListItem userItem = new UserListItem(bmp, obj.getString("DisplayName"), obj.getString("CategoryRole"));
+            UserListItem userItem = new UserListItem(obj.getString("DisplayName"), obj.getString("CategoryRole"));
             userListItems.add(userItem);
         }
 

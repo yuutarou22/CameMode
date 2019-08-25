@@ -1,7 +1,6 @@
 package com.example.yutaroapp.camemode;
 
 import android.annotation.SuppressLint;
-import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -51,6 +50,7 @@ public class UserRecyclerViewAdapter extends RecyclerView.Adapter<ViewHolder> {
         viewHolder.mUserIcon.setImageBitmap(list.get(position).getUserIcon());
         viewHolder.mUserName.setText(list.get(position).getUserName());
         viewHolder.mCategoryRole.setText(list.get(position).getCategoryRole());
+        viewHolder.mImaginationHope.setText(list.get(position).getImaginationHope());
 
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,7 +63,7 @@ public class UserRecyclerViewAdapter extends RecyclerView.Adapter<ViewHolder> {
 
         if (list.get(position).getCategoryRole().equals("カメラマン")) {
             viewHolder.mUserIcon.setImageResource(R.drawable.cameraman);
-            viewHolder.mUserIcon.setBackgroundColor(Color.argb(120, 0, 11111153, 204));
+            viewHolder.mUserIcon.setBackgroundColor(Color.argb(120, 0, 153, 204));
         } else if (list.get(position).getCategoryRole().equals("モデル")) {
             viewHolder.mUserIcon.setImageResource(R.drawable.model);
             viewHolder.mUserIcon.setBackgroundColor(Color.argb(120, 255, 0, 0));

@@ -62,7 +62,7 @@ public class SearchResultActivity extends AppCompatActivity {
         for (NCMBObject obj : Utility.userInfoDataList) {
             Bitmap bmp = BitmapFactory.decodeResource(res, R.mipmap.ic_gohan);
             // ユーザ情報アイテムを生成
-            UserListItem userItem = new UserListItem(obj.getString("DisplayName"), obj.getString("CategoryRole"));
+            UserListItem userItem = new UserListItem(obj.getString("DisplayName"), obj.getString("CategoryRole"), obj.getString("ImaginationHope"));
             userListItems.add(userItem);
         }
 

@@ -3,6 +3,7 @@ package com.example.yutaroapp.camemode.Layout;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.Button;
@@ -43,8 +44,10 @@ public class MainLayout extends RelativeLayout {
      * @param view
      */
     public void setUpViews(View view) {
+        Button mainButton = (Button) view.findViewById(R.id.main_content_button);
+
         Button addButton = (Button) view.findViewById(R.id.add_content_button);
-        addButton.setOnClickListener(new View.OnClickListener() {
+        addButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(mContext, AddActivity.class);
@@ -53,7 +56,7 @@ public class MainLayout extends RelativeLayout {
         });
 
         Button searchButton = (Button) view.findViewById(R.id.search_content_button);
-        searchButton.setOnClickListener(new View.OnClickListener() {
+        searchButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(mContext, SearchActivity.class);

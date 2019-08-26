@@ -9,13 +9,27 @@
                   android:orientation="vertical">
 
         <!-- 希望種別( :カメラマン、 :モデル、:どちらとも) -->
-        <TextView
-            android:id="@+id/category_role_label"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="希望種別"
-            android:textSize="20dp"/>
+            android:layout_height="match_parent"
+            android:orientation="horizontal" >
+            <TextView
+                android:id="@+id/category_role_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="希望種別"
+                android:textSize="20dp"/>
+
+            <ImageView
+                android:id="@+id/category_role_help"
+                android:layout_width="30dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="5dp"
+                android:gravity="left"
+                android:src="@drawable/help_image" />
+        </LinearLayout>
+
         <RadioGroup
             android:id="@+id/category_role"
             android:layout_width="match_parent"
@@ -42,13 +56,27 @@
         </RadioGroup>
 
         <!-- 表示名(入力:そのまま使用、未入力:NG.同じ名前がある場合はNG→表示名で検索する時困る) -->
-        <TextView
-            android:id="@+id/display_name_label"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="投稿表示名"
-            android:textSize="20dp"/>
+            android:layout_height="match_parent"
+            android:orientation="horizontal" >
+            <TextView
+                android:id="@+id/display_name_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="投稿表示名"
+                android:textSize="20dp"/>
+
+            <ImageView
+                android:id="@+id/display_name_help"
+                android:layout_width="30dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="5dp"
+                android:gravity="left"
+                android:src="@drawable/help_image" />
+        </LinearLayout>
+
         <EditText
             android:id="@+id/display_name"
             android:layout_width="match_parent"
@@ -104,14 +132,27 @@
         </RadioGroup>
 
         <!-- SNSのアカウント名 -->
-        <TextView
-            android:id="@+id/sns_user_name_label"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="SNSアカウント名"
-            android:textSize="20dp"
-            />
+            android:layout_height="match_parent"
+            android:orientation="horizontal" >
+            <TextView
+                android:id="@+id/sns_user_name_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="SNSアカウント名"
+                android:textSize="20dp" />
+
+            <ImageView
+                android:id="@+id/sns_user_name_help"
+                android:layout_width="30dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="5dp"
+                android:gravity="left"
+                android:src="@drawable/help_image" />
+        </LinearLayout>
+
         <EditText
             android:id="@+id/sns_user_name"
             android:layout_width="match_parent"
@@ -279,13 +320,26 @@
             android:spinnerMode="dialog"/>
 
         <!-- ざっくりイメージ -->
-        <TextView
-            android:id="@+id/imagination_hope_label"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="撮りたい（撮られたい）イメージ"
-            android:textSize="20dp"/>
+            android:layout_height="match_parent"
+            android:orientation="horizontal" >
+            <TextView
+                android:id="@+id/imagination_hope_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="撮りたい（撮られたい）イメージ"
+                android:textSize="20dp" />
+
+            <ImageView
+                android:id="@+id/imagination_hope_help"
+                android:layout_width="30dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="5dp"
+                android:gravity="left"
+                android:src="@drawable/help_image" />
+        </LinearLayout>
         <EditText
             android:id="@+id/imagination_hope"
             android:layout_width="match_parent"

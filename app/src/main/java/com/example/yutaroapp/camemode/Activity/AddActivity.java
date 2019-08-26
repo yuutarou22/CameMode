@@ -1,20 +1,16 @@
 package com.example.yutaroapp.camemode.Activity;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.CheckBox;
-import android.widget.EditText;
 import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.yutaroapp.camemode.Layout.AddLayout;
 import com.example.yutaroapp.camemode.R;
-import com.example.yutaroapp.camemode.Utility;
 import com.nifcloud.mbaas.core.DoneCallback;
 import com.nifcloud.mbaas.core.NCMBException;
 import com.nifcloud.mbaas.core.NCMBObject;
@@ -23,31 +19,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AddActivity extends AppCompatActivity {
-  int freeDayArrayCount = 7;
+  /* AddActivity */
+  private AddLayout mAddLayout;
 
-  // レイアウト定義用
-  RadioGroup categoryRole;
-  EditText displayName;
-  EditText password;
-  RadioGroup categorySns;
-  EditText snsUserName;
-  CheckBox[] freeDay = new CheckBox[freeDayArrayCount];
-  RadioGroup whichCharge;
-  Spinner spinnerRegion;
-  Spinner spinnerSex;
-  Spinner spinnerAge;
-  EditText imaginationHope;
-  FloatingActionButton fab; // 登録FABボタン
+  int freeDayArrayCount = 7;
 
   // データ送信用
   RadioButton categoryRoleButton;
   String categoryRoleString;
-  String displayNameString;
+  public String displayNameString;
   String passwordString;
   RadioButton categorySnsButton;
   String categorySnsString;
-  String snsUserNameString;
-  List<Boolean> freeDayArrayList = new ArrayList<Boolean>();
+  public String snsUserNameString;
+  public List<Boolean> freeDayArrayList = new ArrayList<Boolean>();
   String whichChargeString;
   RadioButton whichChargeButton;
   int spinnerRegionInt;
@@ -55,24 +40,19 @@ public class AddActivity extends AppCompatActivity {
   int spinnerAgeInt;
   String imaginationHopeString;
 
-  @Override
-  protected void onCreate(final Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_add);
-    onCreateView();
+  private void setUpViews() {
+    mAddLayout = new AddLayout(this);
+    mAddLayout.setUpViews(getWindow().getDecorView());
 
-    // 登録用FABを押下すると、ダイアログが出力される。
-    fab.setOnClickListener(new View.OnClickListener() {
+    mAddLayout.fab.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {
-        new AlertDialog.Builder(AddActivity.this).setTitle("登録しますか？")
+        new AlertDialog.Builder(getApplicationContext()).setTitle("登録しますか？")
                 .setNeutralButton("はい", new DialogInterface.OnClickListener() {
                   @Override
                   public void onClick(DialogInterface dialog, int which) {
                     convertViewValue();
 
-                    Utility.onCreateLog(categoryRoleString, displayNameString, passwordString, categorySnsString, snsUserNameString,
-                            freeDayArrayList, whichChargeString, spinnerRegionInt, spinnerSexInt, spinnerAgeInt, imaginationHopeString);
 
                     if (validationCheck(displayNameString, snsUserNameString)){
                       pushUserData();
@@ -82,54 +62,39 @@ public class AddActivity extends AppCompatActivity {
                     }
                   }
                 }).setPositiveButton("いいえ", new DialogInterface.OnClickListener() {
-                  @Override
-                  public void onClick(DialogInterface dialog, int which) {
-                  }
-                }).show();
+          @Override
+          public void onClick(DialogInterface dialog, int which) {
+          }
+        }).show();
       }
     });
   }
 
-  protected void onCreateView() {
-    categoryRole = (RadioGroup)findViewById(R.id.category_role);
-    displayName = (EditText)findViewById(R.id.display_name);
-    password = (EditText)findViewById(R.id.password);
-    categorySns = (RadioGroup)findViewById(R.id.category_sns);
-    snsUserName = (EditText)findViewById(R.id.sns_user_name);
-
-    freeDay[0] = (CheckBox)findViewById(R.id.free_day_mon);
-    freeDay[1] = (CheckBox)findViewById(R.id.free_day_tue);
-    freeDay[2] = (CheckBox)findViewById(R.id.free_day_wed);
-    freeDay[3] = (CheckBox)findViewById(R.id.free_day_thu);
-    freeDay[4] = (CheckBox)findViewById(R.id.free_day_fri);
-    freeDay[5] = (CheckBox)findViewById(R.id.free_day_sat);
-    freeDay[6] = (CheckBox)findViewById(R.id.free_day_sun);
-
-    whichCharge = (RadioGroup)findViewById(R.id.which_charge);
-    spinnerRegion = (Spinner)findViewById(R.id.spinner_region);
-    spinnerSex = (Spinner)findViewById(R.id.spinner_sex);
-    spinnerAge = (Spinner)findViewById(R.id.spinner_age);
-    imaginationHope = (EditText)findViewById(R.id.imagination_hope);
-    fab = (FloatingActionButton) findViewById(R.id.fab);
+  @Override
+  protected void onCreate(final Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_add);
+    setUpViews();
   }
 
-  protected void convertViewValue() {
-    categoryRoleButton = findViewById(categoryRole.getCheckedRadioButtonId());
+  public void convertViewValue() {
+    // ToDo: ”mSearchLayout.”といちいちつけるのが冗長に感じる、気持ち悪い。
+    categoryRoleButton = findViewById(mAddLayout.categoryRole.getCheckedRadioButtonId());
     categoryRoleString = categoryRoleButton.getText().toString();
-    displayNameString = displayName.getText().toString();
-    passwordString = password.getText().toString();
-    categorySnsButton = findViewById(categorySns.getCheckedRadioButtonId());
+    displayNameString = mAddLayout.displayName.getText().toString();
+    passwordString = mAddLayout.password.getText().toString();
+    categorySnsButton = findViewById(mAddLayout.categorySns.getCheckedRadioButtonId());
     categorySnsString = categorySnsButton.getText().toString();
-    snsUserNameString = snsUserName.getText().toString();
+    snsUserNameString = mAddLayout.snsUserName.getText().toString();
     for (int i = 0; i<freeDayArrayCount; i++) {
-      freeDayArrayList.add(freeDay[i].isChecked());
+      freeDayArrayList.add(mAddLayout.freeDay[i].isChecked());
     }
-    whichChargeButton = findViewById(whichCharge.getCheckedRadioButtonId());
+    whichChargeButton = findViewById(mAddLayout.whichCharge.getCheckedRadioButtonId());
     whichChargeString = whichChargeButton.getText().toString();
-    spinnerRegionInt = spinnerRegion.getSelectedItemPosition();
-    spinnerSexInt = spinnerSex.getSelectedItemPosition();
-    spinnerAgeInt = spinnerAge.getSelectedItemPosition();
-    imaginationHopeString = imaginationHope.getText().toString();
+    spinnerRegionInt = mAddLayout.spinnerRegion.getSelectedItemPosition();
+    spinnerSexInt = mAddLayout.spinnerSex.getSelectedItemPosition();
+    spinnerAgeInt = mAddLayout.spinnerAge.getSelectedItemPosition();
+    imaginationHopeString = mAddLayout.imaginationHope.getText().toString();
   }
 
   protected NCMBObject putUserInfo(NCMBObject userInfo) throws NCMBException {
@@ -148,22 +113,22 @@ public class AddActivity extends AppCompatActivity {
     return userInfo;
   }
 
-  protected boolean validationCheck(String displayNameString, String snsUserNameString){
+  public boolean validationCheck(String displayNameString, String snsUserNameString){
     if (displayNameString.isEmpty() || snsUserNameString.isEmpty()) {
       if (displayNameString.isEmpty()) {
-        displayName.setError("表示名を入力してください。");
-        displayName.setFocusable(true);
+        mAddLayout.displayName.setError("表示名を入力してください。");
+        mAddLayout.displayName.setFocusable(true);
       }
       if (snsUserNameString.isEmpty()) {
-        snsUserName.setError("SNSアカウント名を入力してください。");
-        snsUserName.setFocusable(true);
+        mAddLayout.snsUserName.setError("SNSアカウント名を入力してください。");
+        mAddLayout.snsUserName.setFocusable(true);
       }
       return false;
     }
     return true;
   }
 
-  protected void pushUserData() {
+  public void pushUserData() {
     NCMBObject saveUserInfoData = null;
     try {
       saveUserInfoData = putUserInfo(new NCMBObject("UserInfoData"));

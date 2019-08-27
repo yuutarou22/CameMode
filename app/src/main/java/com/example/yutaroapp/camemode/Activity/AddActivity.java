@@ -145,14 +145,5 @@ public class AddActivity extends AppCompatActivity {
       }
     });
   }
-
-  public void addButton() {
-    convertViewValue();
-    if (validationCheck(displayNameString, snsUserNameString)) {
-      pushUserData();
-      freeDayArrayList.clear();
-      setResult(RESULT_OK);
-      finish();
-    }
-  }
+  
 }

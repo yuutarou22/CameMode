@@ -12,7 +12,6 @@ import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 
-import com.example.yutaroapp.camemode.Activity.AddActivity;
 import com.example.yutaroapp.camemode.R;
 
 public class AddLayout extends RelativeLayout {
@@ -92,7 +91,7 @@ public class AddLayout extends RelativeLayout {
             CategoryRoleHelp.setTooltipText("あなたがやりたい「種別」を\n選択してください。");
             DisplayNameHelp.setTooltipText("当アプリ内での表示名です。");
             SnsUserNameHelp.setTooltipText("上記項目で選択した\nSNSのアカウント名[ID]を\nご入力ください。");
-            ImaginationHopeHelp.setTooltipText("撮影のイメージを\n170文字までご入力ください。");
+            ImaginationHopeHelp.setTooltipText("撮影時のイメージを\n170文字までご入力ください。");
         }
 
         fab = (FloatingActionButton) view.findViewById(R.id.fab);

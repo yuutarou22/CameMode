@@ -1,6 +1,5 @@
 package com.example.yutaroapp.camemode.Activity;
 
-import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
@@ -47,14 +46,12 @@ public class AddActivity extends AppCompatActivity {
     mAddLayout.fab.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {
-        new AlertDialog.Builder(getApplicationContext()).setTitle("登録しますか？")
+        new AlertDialog.Builder(AddActivity.this).setTitle("登録しますか？")
                 .setNeutralButton("はい", new DialogInterface.OnClickListener() {
                   @Override
                   public void onClick(DialogInterface dialog, int which) {
                     convertViewValue();
-
-
-                    if (validationCheck(displayNameString, snsUserNameString)){
+                    if (validationCheck(displayNameString, snsUserNameString)) {
                       pushUserData();
                       freeDayArrayList.clear();
                       setResult(RESULT_OK);
@@ -147,5 +144,15 @@ public class AddActivity extends AppCompatActivity {
         }
       }
     });
+  }
+
+  public void addButton() {
+    convertViewValue();
+    if (validationCheck(displayNameString, snsUserNameString)) {
+      pushUserData();
+      freeDayArrayList.clear();
+      setResult(RESULT_OK);
+      finish();
+    }
   }
 }

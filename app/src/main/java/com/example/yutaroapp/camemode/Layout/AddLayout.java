@@ -1,14 +1,10 @@
 package com.example.yutaroapp.camemode.Layout;
 
 import android.content.Context;
-import android.content.DialogInterface;
-import android.media.Image;
 import android.os.Build;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v7.app.AlertDialog;
 import android.util.AttributeSet;
 import android.view.View;
-import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -18,14 +14,8 @@ import android.widget.Spinner;
 
 import com.example.yutaroapp.camemode.Activity.AddActivity;
 import com.example.yutaroapp.camemode.R;
-import com.example.yutaroapp.camemode.Utility;
-
-import static android.app.Activity.RESULT_OK;
-
 
 public class AddLayout extends RelativeLayout {
-
-    private AddActivity mAddActivity;
 
     public int freeDayArrayCount = 7;
 
@@ -57,19 +47,16 @@ public class AddLayout extends RelativeLayout {
     public AddLayout(Context context) {
         super(context);
         mContext = context;
-        mAddActivity = new AddActivity();
     }
 
     public AddLayout(Context context, AttributeSet attrs) {
         super(context, attrs);
         mContext = context;
-        mAddActivity = new AddActivity();
     }
 
     public AddLayout(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         mContext = context;
-        mAddActivity = new AddActivity();
     }
 
     /**

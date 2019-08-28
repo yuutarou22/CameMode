@@ -2,9 +2,9 @@ package com.example.yutaroapp.camemode.Layout;
 
 import android.content.Context;
 import android.os.Build;
-import android.support.design.widget.FloatingActionButton;
 import android.util.AttributeSet;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -30,7 +30,7 @@ public class AddLayout extends RelativeLayout {
     public Spinner spinnerSex;
     public Spinner spinnerAge;
     public EditText imaginationHope;
-    public FloatingActionButton fab; // 登録FABボタン
+    public Button addButton; // 登録ボタン
     /* HELPボタン */
     public ImageView CategoryRoleHelp;
     public ImageView DisplayNameHelp;
@@ -94,6 +94,6 @@ public class AddLayout extends RelativeLayout {
             ImaginationHopeHelp.setTooltipText("撮影時のイメージを\n170文字までご入力ください。");
         }
 
-        fab = (FloatingActionButton) view.findViewById(R.id.fab);
+        addButton = (Button) view.findViewById(R.id.add_button);
     }
 }

@@ -43,7 +43,7 @@ public class AddActivity extends AppCompatActivity {
         mAddLayout = new AddLayout(this);
         mAddLayout.setUpViews(getWindow().getDecorView());
 
-        mAddLayout.fab.setOnClickListener(new View.OnClickListener() {
+        mAddLayout.addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 new AlertDialog.Builder(AddActivity.this).setTitle("登録しますか？")

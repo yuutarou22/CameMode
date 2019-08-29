@@ -20,13 +20,5 @@ public class ViewHolder extends RecyclerView.ViewHolder {
         mUserName = (TextView) itemView.findViewById(R.id.user_name);
         mCategoryRole = (TextView) itemView.findViewById(R.id.category_role);
         mImaginationHope = (TextView) itemView.findViewById(R.id.imagination_hope);
-//        itemView.setOnClickListener(new View.OnClickListener() {
-////            @Override
-////            public void onClick(View view) {
-////                FragmentTransaction fragmentTransaction = beginTransaction();
-////                fragmentTransaction.replace(R.id.container, new ListItemFragment());
-////                fragmentTransaction.addToBackStack(null).commit();
-////            }
-////        });
     }
 }

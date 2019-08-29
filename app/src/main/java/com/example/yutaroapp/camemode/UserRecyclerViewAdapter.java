@@ -11,6 +11,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.yutaroapp.camemode.Activity.AddActivity;
+
 import java.util.List;
 
 public class UserRecyclerViewAdapter extends RecyclerView.Adapter<ViewHolder> {
@@ -60,13 +62,13 @@ public class UserRecyclerViewAdapter extends RecyclerView.Adapter<ViewHolder> {
             @Override
             public void onClick(View view) {
                 listener.onClick(view);
-                // Fragment 生成するか？
                 Log.d("onBindViewHolder", "onClick!!! getUserName:" + list.get(position).getUserName()); // リスナー検知は出来ている
 //                Log.d("onBindViewHolder","Utility.userInfoDataList DisplayName: " + Utility.userInfoDataList.get(position).getString("DisplayName"));
 
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.container, new ListItemFragment());
-                fragmentTransaction.addToBackStack(null).commit();
+                // リスト項目を選択するとFragment生成する。
+                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                    fragmentTransaction.replace(R.id.container, new ListItemFragment());
+                    fragmentTransaction.commit();
             }
         });
 

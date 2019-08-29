@@ -3,6 +3,8 @@ package com.example.yutaroapp.camemode;
 import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.support.annotation.NonNull;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -15,13 +17,15 @@ public class UserRecyclerViewAdapter extends RecyclerView.Adapter<ViewHolder> {
 
     private List<UserListItem> list;
     private View.OnClickListener listener;
+    private FragmentManager fragmentManager;
 
     /**
      * コンストラクタ
      * @param list MainActivity #display() からの userListItems
      */
-    public UserRecyclerViewAdapter (List<UserListItem> list) {
+    public UserRecyclerViewAdapter (List<UserListItem> list, FragmentManager fragmentManager) {
         this.list = list;
+        this.fragmentManager = fragmentManager;
     }
 
     /**
@@ -58,6 +62,11 @@ public class UserRecyclerViewAdapter extends RecyclerView.Adapter<ViewHolder> {
                 listener.onClick(view);
                 // Fragment 生成するか？
                 Log.d("onBindViewHolder", "onClick!!! getUserName:" + list.get(position).getUserName()); // リスナー検知は出来ている
+//                Log.d("onBindViewHolder","Utility.userInfoDataList DisplayName: " + Utility.userInfoDataList.get(position).getString("DisplayName"));
+
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.container, new ListItemFragment());
+                fragmentTransaction.addToBackStack(null).commit();
             }
         });
 

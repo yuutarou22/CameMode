@@ -1,6 +1,8 @@
 package com.example.yutaroapp.camemode;
 
 import android.support.annotation.NonNull;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
@@ -18,5 +20,13 @@ public class ViewHolder extends RecyclerView.ViewHolder {
         mUserName = (TextView) itemView.findViewById(R.id.user_name);
         mCategoryRole = (TextView) itemView.findViewById(R.id.category_role);
         mImaginationHope = (TextView) itemView.findViewById(R.id.imagination_hope);
+//        itemView.setOnClickListener(new View.OnClickListener() {
+////            @Override
+////            public void onClick(View view) {
+////                FragmentTransaction fragmentTransaction = beginTransaction();
+////                fragmentTransaction.replace(R.id.container, new ListItemFragment());
+////                fragmentTransaction.addToBackStack(null).commit();
+////            }
+////        });
     }
 }

@@ -66,7 +66,7 @@ public class SearchResultActivity extends AppCompatActivity {
             userListItems.add(userItem);
         }
 
-        UserRecyclerViewAdapter adapter = new UserRecyclerViewAdapter(userListItems);
+        UserRecyclerViewAdapter adapter = new UserRecyclerViewAdapter(userListItems, getSupportFragmentManager());
         LinearLayoutManager llm = new LinearLayoutManager(getApplicationContext());
         userListView.setHasFixedSize(true);
         userListView.setLayoutManager(llm);

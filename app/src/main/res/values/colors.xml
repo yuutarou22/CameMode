@@ -4,4 +4,5 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#30A0FF</color>
     <color name="colorEditTextBackground">#ededed</color>
+    <color name="colorFragmentBackground">#dd30A0FF</color>
 </resources>

@@ -116,6 +116,8 @@
 
 - Webサービス化してもっと利用しやすくする。
   - アプリをインストールせずともアクセスするだけで利用できるようにするという意味
+  
+- ProGuardでソースを難読化する（完全に逆解析を防ぐことは出来ないけど）
 
 ## 2019_0817 実際に撮影させてもらったモデルさんにアプリを操作してもらった際に気づいた点
 - SNSの種類→Twitter,Instagram両方選べない
@@ -128,10 +130,12 @@
 ## References
 - ボタンを等間隔で配置する https://qiita.com/k_keisuke/items/fa56434dc11ec6608f67
 - RecyclerViewの基本的な実装 https://qiita.com/HideMatsu/items/a9ab48608e4f681d31fe
+- RecyclerViewのタッチイベント実装（どこに実装するのが正解かわからん！） https://qiita.com/konifar/items/5ad771b3e3a78e1eda4f
 - NCMBReferences https://mbaas.nifcloud.com/assets/sdk_doc/ios/doc/html/index.html
 - 独自リスナーを作成 https://techbooster.org/android/9054/
 - Activityのライフサイクル https://www.javadrive.jp/android/activity/index2.html
 - Twitterライクな入力文字数を表示する https://unsolublesugar.com/20140102/170914/
 - 長押しで説明が出るツールチップの実装 https://android.roof-balcony.com/view/toast/
-  
-
+- 動的にFragmentをレイアウトに追加する方法 https://rakuishi.com/archives/6637/
+- 重ねたViewの親Viewへタッチイベントを無効にする方法 http://java-lang-programming.com/ja/articles/83
+- Fragment内のテキストを変更する https://codeday.me/jp/qa/20190211/258925.html

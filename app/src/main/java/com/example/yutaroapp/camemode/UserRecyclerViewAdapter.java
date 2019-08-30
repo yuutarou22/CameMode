@@ -4,14 +4,11 @@ import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
-import com.example.yutaroapp.camemode.Activity.AddActivity;
 
 import java.util.List;
 
@@ -66,9 +63,7 @@ public class UserRecyclerViewAdapter extends RecyclerView.Adapter<ViewHolder> {
 //                Log.d("onBindViewHolder","Utility.userInfoDataList DisplayName: " + Utility.userInfoDataList.get(position).getString("DisplayName"));
 
                 // リスト項目を選択するとFragment生成する。
-                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                    fragmentTransaction.replace(R.id.container, new ListItemFragment());
-                    fragmentTransaction.commit();
+
             }
         });
 

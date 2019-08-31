@@ -14,9 +14,11 @@ public class ListItemFragment extends Fragment {
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        Bundle bundle = getArguments();
+        String displayName = bundle.getString("DisplayName");
         View mInflatedView = inflater.inflate(R.layout.fragment_list_item, container, false);
         TextView t = (TextView)mInflatedView.findViewById(R.id.display_name);
-        t.setText("testtest");
+        t.setText(displayName);
         return mInflatedView;
     }
 

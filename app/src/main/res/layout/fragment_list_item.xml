@@ -11,6 +11,7 @@
         android:id="@+id/display_name"
         android:background="@color/colorFragmentBackground"
         android:text="@string/hello_blank_fragment"
+        android:textSize="20dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

@@ -22,6 +22,7 @@ import com.example.yutaroapp.camemode.ListItemFragment;
 import com.example.yutaroapp.camemode.R;
 import com.example.yutaroapp.camemode.UserListItem;
 import com.example.yutaroapp.camemode.UserRecyclerViewAdapter;
+import com.example.yutaroapp.camemode.Utility;
 import com.nifcloud.mbaas.core.FindCallback;
 import com.nifcloud.mbaas.core.NCMB;
 import com.nifcloud.mbaas.core.NCMBException;
@@ -102,6 +103,7 @@ public class MainActivity extends AppCompatActivity {
                     for (NCMBObject obj : list) {
                         Log.d("MainActivity", "userInfoDataList DispName: " + obj.getString("DisplayName"));
                         userInfoDataList.add(obj);
+                        Utility.userInfoDataList.add(obj);
                     }
                     displayListView();
                 }
@@ -113,18 +115,18 @@ public class MainActivity extends AppCompatActivity {
      * 取得したユーザ情報をリストビューに出力する
      */
     private void displayListView() {
-        RecyclerView userListView = (RecyclerView) findViewById(R.id.user_info_list);
+        final RecyclerView userListView = (RecyclerView) findViewById(R.id.user_info_list);
         RecyclerView.ItemDecoration itemDecoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
         userListView.addItemDecoration(itemDecoration);
 
-        ArrayList<UserListItem> userListItems = new ArrayList<>();
+        final ArrayList<UserListItem> userListItems = new ArrayList<>();
         // 取得したユーザ情報をもとに、ユーザ情報アイテムを生成し、格納する
         for (NCMBObject obj : userInfoDataList) {
             UserListItem userItem = new UserListItem(obj.getString("DisplayName"), obj.getString("CategoryRole"), obj.getString("ImaginationHope"));
             userListItems.add(userItem);
         }
 
-        UserRecyclerViewAdapter adapter = new UserRecyclerViewAdapter(userListItems, getSupportFragmentManager());
+        final UserRecyclerViewAdapter adapter = new UserRecyclerViewAdapter(userListItems, getSupportFragmentManager());
         LinearLayoutManager llm = new LinearLayoutManager(getApplicationContext());
         userListView.setHasFixedSize(true);
         userListView.setLayoutManager(llm);
@@ -134,16 +136,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Log.d("display", "onClick!!!!!!!!!!!");
-                Slide slide = new Slide();
-                slide.setSlideEdge(Gravity.RIGHT);
-
-                FragmentManager fragmentManager = getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                Fragment listItemFragment = new ListItemFragment();
-                listItemFragment.setEnterTransition(slide);
-                fragmentTransaction.replace(R.id.container, listItemFragment);
-                fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.commit();
             }
         });
     }

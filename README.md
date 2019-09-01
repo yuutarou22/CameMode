@@ -165,3 +165,4 @@
 - 動的にFragmentをレイアウトに追加する方法 https://rakuishi.com/archives/6637/
 - 重ねたViewの親Viewへタッチイベントを無効にする方法 http://java-lang-programming.com/ja/articles/83
 - Fragment内のテキストを変更する https://codeday.me/jp/qa/20190211/258925.html
+- EditTextの入力タイプ指定 https://qiita.com/joji/items/41cc6cbedb7b84b632df

@@ -17,7 +17,7 @@ public class ListItemFragment extends Fragment {
         Bundle bundle = getArguments();
         String displayName = bundle.getString("DisplayName");
         View mInflatedView = inflater.inflate(R.layout.fragment_list_item, container, false);
-        TextView t = (TextView)mInflatedView.findViewById(R.id.display_name);
+        TextView t = (TextView) mInflatedView.findViewById(R.id.display_name);
         t.setText(displayName);
         return mInflatedView;
     }

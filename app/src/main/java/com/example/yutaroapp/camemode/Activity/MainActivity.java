@@ -3,22 +3,16 @@ package com.example.yutaroapp.camemode.Activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.transition.Slide;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.View;
 import android.widget.Toast;
 
 import com.example.yutaroapp.camemode.Config;
 import com.example.yutaroapp.camemode.Layout.MainLayout;
-import com.example.yutaroapp.camemode.ListItemFragment;
 import com.example.yutaroapp.camemode.R;
 import com.example.yutaroapp.camemode.UserListItem;
 import com.example.yutaroapp.camemode.UserRecyclerViewAdapter;
@@ -84,7 +78,8 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * ユーザ情報を取得し、リストを更新する
-     * @param query NCMBQuery 検索用のクエリー
+     *
+     * @param query            NCMBQuery 検索用のクエリー
      * @param userInfoDataList List<NCMBObject> 更新するリスト
      */
     private void applyUserInfoDataList(NCMBQuery query, final List<NCMBObject> userInfoDataList) {

@@ -60,6 +60,7 @@ public class AddLayout extends RelativeLayout {
 
     /**
      * レイアウトの初期化
+     *
      * @param view
      */
     public void setUpViews(View view) {

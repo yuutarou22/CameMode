@@ -25,9 +25,10 @@ public class UserRecyclerViewAdapter extends RecyclerView.Adapter<ViewHolder> {
 
     /**
      * コンストラクタ
+     *
      * @param list MainActivity #display() からの userListItems
      */
-    public UserRecyclerViewAdapter (List<UserListItem> list, FragmentManager fragmentManager) {
+    public UserRecyclerViewAdapter(List<UserListItem> list, FragmentManager fragmentManager) {
         this.list = list;
         this.fragmentManager = fragmentManager;
     }
@@ -49,6 +50,7 @@ public class UserRecyclerViewAdapter extends RecyclerView.Adapter<ViewHolder> {
 
     /**
      * 指定された位置（position）のコンテンツを更新する
+     *
      * @param viewHolder
      * @param position
      */

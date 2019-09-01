@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AddActivity extends AppCompatActivity {
-    /* AddActivity */
+    /* AddLayout */
     private AddLayout mAddLayout;
 
     int freeDayArrayCount = 7;

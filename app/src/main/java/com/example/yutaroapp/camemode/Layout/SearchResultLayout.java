@@ -39,6 +39,7 @@ public class SearchResultLayout extends RelativeLayout {
 
     /**
      * レイアウトの初期化
+     *
      * @param view
      */
     public void setUpViews(View view) {
@@ -47,7 +48,7 @@ public class SearchResultLayout extends RelativeLayout {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(mContext, SearchActivity.class);
-                ((Activity)mContext).finish();
+                ((Activity) mContext).finish();
                 mContext.startActivity(intent);
             }
         });

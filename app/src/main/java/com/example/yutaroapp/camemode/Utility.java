@@ -15,7 +15,7 @@ public class Utility {
     public static void onCreateLog(String categoryRoleString, List<Boolean> freeDayArrayList,
                                    String whichChargeString, int spinnerSexInt, int spinnerAgeInt) {
 
-        Log.d("onCreateLog","categoryRoleString: " + categoryRoleString);
+        Log.d("onCreateLog", "categoryRoleString: " + categoryRoleString);
         for (int i = 0; i < freeDayArrayList.size(); i++) {
             Log.d("onCreateLog", "freeDayArrayList: " + freeDayArrayList.get(i));
         }

@@ -3,7 +3,6 @@ package com.example.yutaroapp.camemode.Layout;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Build;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.Button;
@@ -41,6 +40,7 @@ public class MainLayout extends RelativeLayout {
 
     /**
      * レイアウトの初期化
+     *
      * @param view
      */
     public void setUpViews(View view) {

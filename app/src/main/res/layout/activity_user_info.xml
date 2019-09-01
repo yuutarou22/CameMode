@@ -8,10 +8,12 @@
         android:id="@+id/user_icon"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+
     <TextView
         android:id="@+id/user_name"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+
     <TextView
         android:id="@+id/category_role"
         android:layout_width="match_parent"

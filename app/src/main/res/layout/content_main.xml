@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
     android:background="#dddddd"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".Activity.MainActivity"
     tools:showIn="@layout/activity_main">
 
@@ -19,42 +18,42 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:src="@mipmap/logo"/>
+            android:src="@mipmap/logo" />
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/user_info_list"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_weight="9"
             android:background="#ffffff"
-            android:scrollbars="vertical"
-            android:layout_weight="9"/>
+            android:scrollbars="vertical" />
 
         <LinearLayout
-            android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:orientation="horizontal">
 
             <Button
                 android:id="@+id/main_content_button"
-                android:text="Main"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="2" />
+                android:layout_weight="2"
+                android:text="Main" />
 
             <Button
                 android:id="@+id/add_content_button"
-                android:text="Add"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="3" />
+                android:layout_weight="3"
+                android:text="Add" />
 
             <Button
                 android:id="@+id/search_content_button"
-                android:text="Search"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="2" />
+                android:layout_weight="2"
+                android:text="Search" />
         </LinearLayout>
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

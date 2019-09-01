@@ -57,7 +57,6 @@ public class UserRecyclerViewAdapter extends RecyclerView.Adapter<ViewHolder> {
     @SuppressLint("ResourceAsColor")
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, final int position) {
-        viewHolder.mUserIcon.setImageBitmap(list.get(position).getUserIcon());
         viewHolder.mUserName.setText(list.get(position).getUserName());
         viewHolder.mCategoryRole.setText(list.get(position).getCategoryRole());
         viewHolder.mImaginationHope.setText(list.get(position).getImaginationHope());
@@ -66,18 +65,7 @@ public class UserRecyclerViewAdapter extends RecyclerView.Adapter<ViewHolder> {
             public void onClick(View view) {
                 listener.onClick(view);
                 Log.d("onBindViewHolder", "onClick!!! getUserName:" + list.get(position).getUserName());
-                Slide slide = new Slide();
-                slide.setSlideEdge(Gravity.BOTTOM);
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                Fragment listItemFragment = new ListItemFragment();
-                listItemFragment.setEnterTransition(slide);
-
-                Bundle bundle = new Bundle();
-                bundle.putString("DisplayName", Utility.userInfoDataList.get(position).getString("DisplayName"));
-                listItemFragment.setArguments(bundle);
-                fragmentTransaction.replace(R.id.container, listItemFragment);
-                fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.commit();
+                createFragment(position);
             }
         });
 
@@ -105,5 +93,27 @@ public class UserRecyclerViewAdapter extends RecyclerView.Adapter<ViewHolder> {
     @Override
     public int getItemCount() {
         return list.size();
+    }
+
+    private void createFragment(int position) {
+        Slide slide = new Slide();
+        slide.setSlideEdge(Gravity.BOTTOM);
+
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        Fragment listItemFragment = new ListItemFragment();
+        listItemFragment.setEnterTransition(slide);
+
+        Bundle bundle = getUserInfoBundle(position);
+        listItemFragment.setArguments(bundle);
+        fragmentTransaction.replace(R.id.container, listItemFragment);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
+    }
+
+    private Bundle getUserInfoBundle(int position) {
+        Bundle bundle = new Bundle();
+        bundle.putString("DisplayName", Utility.userInfoDataList.get(position).getString("DisplayName"));
+//        bundle.putString("", Utility.userInfoDataList.get(position).getString(""));
+        return bundle;
     }
 }

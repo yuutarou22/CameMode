@@ -2,6 +2,7 @@ package com.example.yutaroapp.camemode;
 
 import android.annotation.SuppressLint;
 import android.graphics.Color;
+import android.hardware.camera2.params.BlackLevelPattern;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -14,6 +15,8 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.nifcloud.mbaas.core.NCMBObject;
 
 import java.util.List;
 
@@ -103,17 +106,32 @@ public class UserRecyclerViewAdapter extends RecyclerView.Adapter<ViewHolder> {
         Fragment listItemFragment = new ListItemFragment();
         listItemFragment.setEnterTransition(slide);
 
-        Bundle bundle = getUserInfoBundle(position);
+        Bundle bundle = setUserInfoToBundle(position);
         listItemFragment.setArguments(bundle);
         fragmentTransaction.replace(R.id.container, listItemFragment);
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
     }
 
-    private Bundle getUserInfoBundle(int position) {
+    private Bundle setUserInfoToBundle(int position) {
+        NCMBObject SelectedUserInfo = Utility.userInfoDataList.get(position);
+
         Bundle bundle = new Bundle();
-        bundle.putString("DisplayName", Utility.userInfoDataList.get(position).getString("DisplayName"));
-//        bundle.putString("", Utility.userInfoDataList.get(position).getString(""));
+        bundle.putString("DisplayName", SelectedUserInfo.getString("DisplayName"));
+        bundle.putString("CategoryRole", SelectedUserInfo.getString("CategoryRole"));
+        bundle.putString("CategorySNS", SelectedUserInfo.getString("CategorySNS"));
+        List<Boolean> list = SelectedUserInfo.getList("FreeDay");
+        boolean[] array = new boolean[list.size()];
+        for (int i = 0; i<list.size(); i++) {
+            array[i] = list.get(i).booleanValue();
+        }
+        bundle.putBooleanArray("FreeDay", array);
+        bundle.putString("ImaginationHope", SelectedUserInfo.getString("ImaginationHope"));
+        bundle.putString("SNSUserName", SelectedUserInfo.getString("SNSUserName"));
+        bundle.putInt("SpinnerAgeInt", SelectedUserInfo.getInt("SpinnerAgeInt"));
+        bundle.putInt("SpinnerRegionInt", SelectedUserInfo.getInt("SpinnerRegionInt"));
+        bundle.putInt("SpinnerSex", SelectedUserInfo.getInt("SpinnerSex"));
+        bundle.putString("WhichCharge", SelectedUserInfo.getString("WhichCharge"));
         return bundle;
     }
 }

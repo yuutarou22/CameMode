@@ -1,18 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_gravity="center"
+    android:orientation="vertical"
     android:clickable="true"
-    tools:context=".ListItemFragment">
+    android:background="@color/colorFragmentBackground" >
 
     <TextView
         android:id="@+id/display_name"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/colorFragmentBackground"
-        android:text="@string/hello_blank_fragment"
+        android:layout_height="wrap_content"
         android:textSize="20dp" />
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/category_role"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/category_sns"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <!-- FreeDay -->
+
+    <TextView
+        android:id="@+id/imagination_hope"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/sns_user_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/age"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/region"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/sex"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/which_charge"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</LinearLayout>

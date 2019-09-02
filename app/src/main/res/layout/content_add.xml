@@ -82,19 +82,14 @@
                 android:src="@drawable/help_image" />
         </LinearLayout>
 
-        <android.support.design.widget.TextInputEditText
+        <EditText
+            android:id="@+id/display_name"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <EditText
-                android:id="@+id/display_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:focusedByDefault="false"
-                android:hint="表示名"
-                android:inputType="text" />
-        </android.support.design.widget.TextInputEditText>
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:focusedByDefault="false"
+            android:hint="表示名"
+            android:inputType="text" />
 
         <!--編集・削除パスワード(未入力可だが、未入力の場合、チェック時に注意文言を表示する)-->
         <!-- 数字のみにしよう -->

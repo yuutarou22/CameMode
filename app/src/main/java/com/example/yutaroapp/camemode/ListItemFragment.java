@@ -1,5 +1,7 @@
 package com.example.yutaroapp.camemode;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -8,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 
@@ -51,6 +54,40 @@ public class ListItemFragment extends Fragment {
 
         TextView categorySNSTextView = (TextView) inflatedView.findViewById(R.id.category_sns);
         categorySNSTextView.setText(categorySNS);
+
+        // freeDay
+
+        TextView imaginationHopeTextView = (TextView) inflatedView.findViewById(R.id.imagination_hope);
+        imaginationHopeTextView.setText(imaginationHope);
+
+        TextView snsUserNameTextView = (TextView) inflatedView.findViewById(R.id.sns_user_name);
+        snsUserNameTextView.setText(snsUserName);
+
+        TextView ageTextView = (TextView) inflatedView.findViewById(R.id.age);
+        String[] ageArray = {"10代", "20代", "30代", "40代", "50代", "60代以上"};
+        ageTextView.setText(ageArray[age]);
+
+        TextView regionTextView = (TextView) inflatedView.findViewById(R.id.region);
+        String[] regionArray = {"北海道", "東北", "関東", "北陸", "中部", "近畿", "四国", "中国", "九州", "沖縄"};
+        regionTextView.setText(regionArray[region]);
+
+        TextView sexTextView = (TextView) inflatedView.findViewById(R.id.sex);
+        String[] sexArray = {"未選択", "男性", "女性"};
+        sexTextView.setText(sexArray[sex]);
+
+        TextView whichChargeTextView = (TextView) inflatedView.findViewById(R.id.which_charge);
+        whichChargeTextView.setText(whichCharge);
+
+        Button snsTransitionButton = (Button) inflatedView.findViewById(R.id.sns_transition);
+        snsTransitionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.d("ListItemFragment", "onClick snsUserName: " + snsUserName);
+                Uri uri = Uri.parse("https://twitter.com/" + snsUserName + "/");
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
+            }
+        });
 
         return inflatedView;
     }

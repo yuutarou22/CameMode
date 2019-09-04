@@ -1,6 +1,8 @@
 package com.example.yutaroapp.camemode;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -11,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 
@@ -46,6 +49,19 @@ public class ListItemFragment extends Fragment {
     }
 
     private View setInflateFragmentLayout(View inflatedView) {
+        ImageView categoryImageView = (ImageView) inflatedView.findViewById(R.id.category_image);
+
+        if (categoryRole.equals("カメラマン")) {
+            categoryImageView.setImageResource(R.drawable.cameraman);
+            categoryImageView.setBackgroundColor(Color.argb(120, 0, 153, 204));
+        } else if (categoryRole.equals("モデル")) {
+            categoryImageView.setImageResource(R.drawable.model);
+            categoryImageView.setBackgroundColor(Color.argb(120, 255, 0, 0));
+        } else {
+            categoryImageView.setImageResource(R.drawable.camera_and_model);
+            categoryImageView.setBackgroundColor(Color.argb(120, 255, 241, 0));
+        }
+
         TextView displayNameTextView = (TextView) inflatedView.findViewById(R.id.display_name);
         displayNameTextView.setText(displayName);
 

@@ -7,6 +7,7 @@ import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
 
 import com.example.yutaroapp.camemode.R;
 import com.example.yutaroapp.camemode.Layout.SearchResultLayout;
@@ -49,11 +50,11 @@ public class SearchResultActivity extends AppCompatActivity {
      * 取得したユーザ情報をリストビューに出力する
      */
     private void displayListView() {
-        RecyclerView userListView = (RecyclerView) findViewById(R.id.user_info_list);
+        final RecyclerView userListView = (RecyclerView) findViewById(R.id.user_info_list);
         RecyclerView.ItemDecoration itemDecoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
         userListView.addItemDecoration(itemDecoration);
 
-        ArrayList<UserListItem> userListItems = new ArrayList<>();
+        final ArrayList<UserListItem> userListItems = new ArrayList<>();
         // 取得したユーザ情報をもとに、アイテムに格納
         for (NCMBObject obj : Utility.userInfoDataList) {
             // ユーザ情報アイテムを生成
@@ -61,11 +62,17 @@ public class SearchResultActivity extends AppCompatActivity {
             userListItems.add(userItem);
         }
 
-        UserRecyclerViewAdapter adapter = new UserRecyclerViewAdapter(userListItems, getSupportFragmentManager());
+        final UserRecyclerViewAdapter adapter = new UserRecyclerViewAdapter(userListItems, getSupportFragmentManager());
         LinearLayoutManager llm = new LinearLayoutManager(getApplicationContext());
         userListView.setHasFixedSize(true);
         userListView.setLayoutManager(llm);
 
         userListView.setAdapter(adapter);
+        adapter.setOnClickItemListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.d("display", "onClick!!!!!!!!!!!");
+            }
+        });
     }
 }

@@ -58,12 +58,17 @@ public class SearchActivity extends AppCompatActivity implements SearchTask.Sear
         });
     }
 
+    /**
+     * クエリーに条件を指定し、検索をする。
+     * @param query
+     */
     protected void searchUserData(NCMBQuery query) {
         // クエリー作成
         query.whereEqualTo("CategoryRole", categoryRoleString);
         // ToDo: 空き日の検索条件を実装
 //    freeDayArrayList
         query.whereEqualTo("WhichCharge", whichChargeString);
+        // ToDo: 以下3項目のOR条件を作成する。
         query.whereEqualTo("SpinnerRegionInt", spinnerRegionInt);
         query.whereEqualTo("SpinnerSex", spinnerSexInt);
         query.whereEqualTo("SpinnerAgeInt", spinnerAgeInt);

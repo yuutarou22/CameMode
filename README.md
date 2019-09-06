@@ -166,3 +166,4 @@
 - 重ねたViewの親Viewへタッチイベントを無効にする方法 http://java-lang-programming.com/ja/articles/83
 - Fragment内のテキストを変更する https://codeday.me/jp/qa/20190211/258925.html
 - EditTextの入力タイプ指定 https://qiita.com/joji/items/41cc6cbedb7b84b632df
+- Styleを適用して画像を丸角にする https://github.com/araemon/AndroidExercise/tree/master/TryRadius/app/src/main/java/com/apppppp/tryradius

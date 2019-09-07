@@ -43,7 +43,7 @@ public class ListItemFragment extends Fragment {
         snsUserName = bundle.getString("SNSUserName");
         age = bundle.getInt("SpinnerAgeInt");
         region = bundle.getInt("SpinnerRegionInt");
-        sex = bundle.getInt("SpinnerSexInt");
+        sex = bundle.getInt("SpinnerSex");
         whichCharge = bundle.getString("WhichCharge");
 
         View mInflatedView = inflater.inflate(R.layout.fragment_list_item, container, false);
@@ -69,9 +69,6 @@ public class ListItemFragment extends Fragment {
         TextView displayNameTextView = (TextView) inflatedView.findViewById(R.id.display_name);
         displayNameTextView.setText(displayName);
 
-        TextView categoryRoleTextView = (TextView) inflatedView.findViewById(R.id.category_role);
-        categoryRoleTextView.setText(categoryRole);
-
         TextView categorySNSTextView = (TextView) inflatedView.findViewById(R.id.category_sns);
         categorySNSTextView.setText(categorySNS);
 
@@ -79,9 +76,6 @@ public class ListItemFragment extends Fragment {
         snsUserNameTextView.setText(snsUserName);
 
         // freeDay
-
-        TextView imaginationHopeTextView = (TextView) inflatedView.findViewById(R.id.imagination_hope);
-        imaginationHopeTextView.setText(imaginationHope);
 
         TextView ageTextView = (TextView) inflatedView.findViewById(R.id.age);
 
@@ -95,6 +89,9 @@ public class ListItemFragment extends Fragment {
 
         TextView whichChargeTextView = (TextView) inflatedView.findViewById(R.id.which_charge);
         whichChargeTextView.setText(whichCharge);
+
+        TextView imaginationHopeTextView = (TextView) inflatedView.findViewById(R.id.imagination_hope);
+        imaginationHopeTextView.setText(imaginationHope);
 
         Button snsTransitionButton = (Button) inflatedView.findViewById(R.id.sns_transition);
         snsTransitionButton.setOnClickListener(new View.OnClickListener() {

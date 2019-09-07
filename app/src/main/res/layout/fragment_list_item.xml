@@ -1,88 +1,212 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:background="@color/colorFragmentBackground"
     android:clickable="true"
-    android:background="@color/colorFragmentBackground" >
+    android:orientation="vertical">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:orientation="vertical">
+        android:layout_height="wrap_content">
 
-        <ImageView
-            android:id="@+id/category_image"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:padding="15dp"
-            android:layout_gravity="center"
-            android:background="@drawable/fragment_icon_style"/>
-        
-        <TextView
-            android:id="@+id/display_name"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="15dp"
-            android:textStyle="bold"
-            android:textSize="30dp"
-            android:text="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
-            android:gravity="center"/>
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/category_role"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
 
-        <TextView
-            android:id="@+id/category_sns"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/user_detail_item_margin_top"
+                android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/sns_user_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+                <ImageView
+                    android:id="@+id/category_image"
+                    android:layout_width="@dimen/user_detail_category_role_icon_size"
+                    android:layout_height="@dimen/user_detail_category_role_icon_size"
+                    android:layout_gravity="center"
+                    android:background="@drawable/fragment_icon_style"
+                    android:padding="15dp" />
 
-        <!-- FreeDay -->
+                <TextView
+                    android:id="@+id/display_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="15dp"
+                    android:gravity="center"
+                    android:text="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                    android:textSize="@dimen/user_detail_display_name_text_size"
+                    android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/imagination_hope"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/category_sns"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
 
-        <TextView
-            android:id="@+id/region"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="@dimen/user_detail_item_padding_horizontal">
 
-        <TextView
-            android:id="@+id/age"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+                    <ImageView
+                        android:layout_width="@dimen/user_detail_item_icon_size"
+                        android:layout_height="@dimen/user_detail_item_icon_size"
+                        android:layout_marginEnd="@dimen/user_detail_item_icon_margin_end"
+                        android:src="@drawable/image_sns_user_name" />
 
-        <TextView
-            android:id="@+id/sex"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+                    <TextView
+                        android:id="@+id/sns_user_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/user_detail_item_text_size" />
 
-        <TextView
-            android:id="@+id/which_charge"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
+                </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="vertical"
-        android:gravity="center|bottom">
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/user_detail_item_separator_height"
+                    android:layout_marginHorizontal="@dimen/user_detail_item_separator_margin_horizontal"
+                    android:layout_marginVertical="@dimen/user_detail_item_separator_margin_vertical"
+                    android:background="#cccccc" />
 
-        <Button
-            android:id="@+id/sns_transition"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
+                <!-- FreeDay -->
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="@dimen/user_detail_item_padding_horizontal">
+
+                    <ImageView
+                        android:layout_width="@dimen/user_detail_item_icon_size"
+                        android:layout_height="@dimen/user_detail_item_icon_size"
+                        android:layout_marginEnd="@dimen/user_detail_item_icon_margin_end"
+                        android:src="@drawable/image_region" />
+
+                    <TextView
+                        android:id="@+id/region"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/user_detail_item_text_size" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/user_detail_item_separator_height"
+                    android:layout_marginHorizontal="@dimen/user_detail_item_separator_margin_horizontal"
+                    android:layout_marginVertical="@dimen/user_detail_item_separator_margin_vertical"
+                    android:background="#cccccc" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="@dimen/user_detail_item_padding_horizontal">
+
+                    <ImageView
+                        android:layout_width="@dimen/user_detail_item_icon_size"
+                        android:layout_height="@dimen/user_detail_item_icon_size"
+                        android:layout_marginEnd="@dimen/user_detail_item_icon_margin_end"
+                        android:src="@drawable/image_age" />
+
+                    <TextView
+                        android:id="@+id/age"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/user_detail_item_text_size" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/user_detail_item_separator_height"
+                    android:layout_marginHorizontal="@dimen/user_detail_item_separator_margin_horizontal"
+                    android:layout_marginVertical="@dimen/user_detail_item_separator_margin_vertical"
+                    android:background="#cccccc" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="@dimen/user_detail_item_padding_horizontal">
+
+                    <ImageView
+                        android:layout_width="@dimen/user_detail_item_icon_size"
+                        android:layout_height="@dimen/user_detail_item_icon_size"
+                        android:layout_marginEnd="@dimen/user_detail_item_icon_margin_end"
+                        android:src="@drawable/image_sex" />
+
+                    <TextView
+                        android:id="@+id/sex"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/user_detail_item_text_size" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/user_detail_item_separator_height"
+                    android:layout_marginHorizontal="@dimen/user_detail_item_separator_margin_horizontal"
+                    android:layout_marginVertical="@dimen/user_detail_item_separator_margin_vertical"
+                    android:background="#cccccc" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="@dimen/user_detail_item_padding_horizontal">
+
+                    <ImageView
+                        android:layout_width="@dimen/user_detail_item_icon_size"
+                        android:layout_height="@dimen/user_detail_item_icon_size"
+                        android:layout_marginEnd="@dimen/user_detail_item_icon_margin_end"
+                        android:src="@drawable/image_which_charge" />
+
+                    <TextView
+                        android:id="@+id/which_charge"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/user_detail_item_text_size" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/user_detail_item_separator_height"
+                    android:layout_marginHorizontal="@dimen/user_detail_item_separator_margin_horizontal"
+                    android:layout_marginVertical="@dimen/user_detail_item_separator_margin_vertical"
+                    android:background="#cccccc" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="20dp">
+
+                    <ImageView
+                        android:layout_width="@dimen/user_detail_item_icon_size"
+                        android:layout_height="@dimen/user_detail_item_icon_size"
+                        android:layout_marginEnd="@dimen/user_detail_item_icon_margin_end"
+                        android:src="@drawable/image_imagination" />
+
+                    <TextView
+                        android:id="@+id/imagination_hope"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/user_detail_item_text_size" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center|bottom"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/sns_transition"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/user_detail_item_padding_horizontal" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
 </LinearLayout>

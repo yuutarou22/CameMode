@@ -1,3 +1,18 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <dimen name="fab_margin">16dp</dimen>
+
+    <!-- User Detail Fragment -->
+    <dimen name="user_detail_display_name_text_size">30dp</dimen>
+    <dimen name="user_detail_category_role_icon_size">120dp</dimen>
+    <dimen name="user_detail_item_margin_top">60dp</dimen>
+    <dimen name="user_detail_item_icon_size">25dp</dimen>
+    <dimen name="user_detail_item_text_size">20dp</dimen>
+    <dimen name="user_detail_item_icon_margin_end">5dp</dimen>
+    <dimen name="user_detail_item_padding_horizontal">20dp</dimen>
+
+
+    <dimen name="user_detail_item_separator_height">1dp</dimen>
+    <dimen name="user_detail_item_separator_margin_horizontal">30dp</dimen>
+    <dimen name="user_detail_item_separator_margin_vertical">10dp</dimen>
+
 </resources>

@@ -2,7 +2,6 @@ package com.example.yutaroapp.camemode;
 
 import android.annotation.SuppressLint;
 import android.graphics.Color;
-import android.hardware.camera2.params.BlackLevelPattern;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -72,6 +71,7 @@ public class UserRecyclerViewAdapter extends RecyclerView.Adapter<ViewHolder> {
             }
         });
 
+        // ToDo: 画像そのものに色をつけておく
         if (list.get(position).getCategoryRole().equals("カメラマン")) {
             viewHolder.mUserIcon.setImageResource(R.drawable.cameraman);
             viewHolder.mUserIcon.setBackgroundColor(Color.argb(120, 0, 153, 204));

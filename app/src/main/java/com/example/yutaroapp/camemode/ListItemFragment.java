@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 
@@ -25,6 +26,11 @@ public class ListItemFragment extends Fragment {
     int region;
     int sex;
     String whichCharge;
+
+    // 表示用文字列配列
+    String[] ageArray = {"10代", "20代", "30代", "40代", "50代", "60代以上"};
+    String[] sexArray = {"未選択", "男性", "女性"};
+    String[] regionArray = {"北海道", "東北", "関東", "北陸", "中部", "近畿", "四国", "中国", "九州", "沖縄"};
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -46,6 +52,20 @@ public class ListItemFragment extends Fragment {
     }
 
     private View setInflateFragmentLayout(View inflatedView) {
+        ImageView categoryImageView = (ImageView) inflatedView.findViewById(R.id.category_image);
+
+        if (categoryRole.equals("カメラマン")) {
+            categoryImageView.setImageResource(R.drawable.cameraman);
+            // ToDo: 画像そのものに色をつけておく
+//            categoryImageView.setBackgroundColor(Color.argb(120, 0, 153, 204));
+        } else if (categoryRole.equals("モデル")) {
+            categoryImageView.setImageResource(R.drawable.model);
+//            categoryImageView.setBackgroundColor(Color.argb(120, 255, 0, 0));
+        } else {
+            categoryImageView.setImageResource(R.drawable.camera_and_model);
+//            categoryImageView.setBackgroundColor(Color.argb(120, 255, 241, 0));
+        }
+
         TextView displayNameTextView = (TextView) inflatedView.findViewById(R.id.display_name);
         displayNameTextView.setText(displayName);
 
@@ -55,24 +75,22 @@ public class ListItemFragment extends Fragment {
         TextView categorySNSTextView = (TextView) inflatedView.findViewById(R.id.category_sns);
         categorySNSTextView.setText(categorySNS);
 
+        TextView snsUserNameTextView = (TextView) inflatedView.findViewById(R.id.sns_user_name);
+        snsUserNameTextView.setText(snsUserName);
+
         // freeDay
 
         TextView imaginationHopeTextView = (TextView) inflatedView.findViewById(R.id.imagination_hope);
         imaginationHopeTextView.setText(imaginationHope);
 
-        TextView snsUserNameTextView = (TextView) inflatedView.findViewById(R.id.sns_user_name);
-        snsUserNameTextView.setText(snsUserName);
-
         TextView ageTextView = (TextView) inflatedView.findViewById(R.id.age);
-        String[] ageArray = {"10代", "20代", "30代", "40代", "50代", "60代以上"};
-        ageTextView.setText(ageArray[age]);
 
         TextView regionTextView = (TextView) inflatedView.findViewById(R.id.region);
-        String[] regionArray = {"北海道", "東北", "関東", "北陸", "中部", "近畿", "四国", "中国", "九州", "沖縄"};
         regionTextView.setText(regionArray[region]);
 
+        ageTextView.setText(ageArray[age]);
+
         TextView sexTextView = (TextView) inflatedView.findViewById(R.id.sex);
-        String[] sexArray = {"未選択", "男性", "女性"};
         sexTextView.setText(sexArray[sex]);
 
         TextView whichChargeTextView = (TextView) inflatedView.findViewById(R.id.which_charge);

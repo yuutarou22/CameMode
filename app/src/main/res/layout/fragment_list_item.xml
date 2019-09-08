@@ -37,14 +37,33 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="15dp"
                     android:gravity="center"
-                    android:text="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
                     android:textSize="@dimen/user_detail_display_name_text_size"
                     android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/category_sns"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="@dimen/user_detail_item_padding_horizontal">
+
+                    <ImageView
+                        android:layout_width="@dimen/user_detail_item_icon_size"
+                        android:layout_height="@dimen/user_detail_item_icon_size"
+                        android:layout_marginEnd="@dimen/user_detail_item_icon_margin_end"
+                        android:src="@drawable/image_category_sns" />
+
+                    <TextView
+                        android:id="@+id/category_sns"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/user_detail_item_text_size" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/user_detail_item_separator_height"
+                    android:layout_marginHorizontal="@dimen/user_detail_item_separator_margin_horizontal"
+                    android:layout_marginVertical="@dimen/user_detail_item_separator_margin_vertical"
+                    android:background="#cccccc" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -189,6 +208,7 @@
                         android:id="@+id/imagination_hope"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:breakStrategy="simple"
                         android:textSize="@dimen/user_detail_item_text_size" />
                 </LinearLayout>
             </LinearLayout>

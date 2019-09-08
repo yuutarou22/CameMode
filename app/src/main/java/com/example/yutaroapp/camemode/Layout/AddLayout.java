@@ -1,7 +1,10 @@
 package com.example.yutaroapp.camemode.Layout;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Build;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.Button;
@@ -11,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.example.yutaroapp.camemode.R;
 
@@ -30,6 +34,7 @@ public class AddLayout extends RelativeLayout {
     public Spinner spinnerSex;
     public Spinner spinnerAge;
     public EditText imaginationHope;
+    public TextView imaginationTextCount;
     public Button addButton; // 登録ボタン
     /* HELPボタン */
     public ImageView CategoryRoleHelp;
@@ -83,6 +88,7 @@ public class AddLayout extends RelativeLayout {
         spinnerSex = (Spinner) view.findViewById(R.id.spinner_sex);
         spinnerAge = (Spinner) view.findViewById(R.id.spinner_age);
         imaginationHope = (EditText) view.findViewById(R.id.imagination_hope);
+        imaginationTextCount = (TextView) view.findViewById(R.id.imagination_text_count);
 
         CategoryRoleHelp = (ImageView) view.findViewById(R.id.category_role_help);
         DisplayNameHelp = (ImageView) view.findViewById(R.id.display_name_help);
@@ -92,9 +98,32 @@ public class AddLayout extends RelativeLayout {
             CategoryRoleHelp.setTooltipText("あなたがやりたい「種別」を\n選択してください。");
             DisplayNameHelp.setTooltipText("当アプリ内での表示名です。");
             SnsUserNameHelp.setTooltipText("上記項目で選択した\nSNSのアカウント名[ID]を\nご入力ください。");
-            ImaginationHopeHelp.setTooltipText("撮影時のイメージを\n170文字までご入力ください。");
+            ImaginationHopeHelp.setTooltipText("撮影時のイメージを\n200文字まででご入力ください。");
         }
 
         addButton = (Button) view.findViewById(R.id.add_button);
+
+        imaginationHope.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void onTextChanged(CharSequence str, int start, int before, int count) {
+                int textColor = Color.GRAY;
+                int textLength = str.length();
+                imaginationTextCount.setText(Integer.toString(textLength) + "/200");
+                if (textLength >= 200) {
+                    textColor = Color.RED;
+                }
+                imaginationTextCount.setTextColor(textColor);
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
     }
 }

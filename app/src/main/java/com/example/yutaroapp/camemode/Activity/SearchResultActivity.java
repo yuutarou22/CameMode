@@ -55,9 +55,8 @@ public class SearchResultActivity extends AppCompatActivity {
         userListView.addItemDecoration(itemDecoration);
 
         final ArrayList<UserListItem> userListItems = new ArrayList<>();
-        // 取得したユーザ情報をもとに、アイテムに格納
+        // 取得したユーザ情報をもとに、ユーザ情報アイテムを生成し、格納する
         for (NCMBObject obj : Utility.userInfoDataList) {
-            // ユーザ情報アイテムを生成
             UserListItem userItem = new UserListItem(obj.getString("DisplayName"), obj.getString("CategoryRole"), obj.getString("ImaginationHope"));
             userListItems.add(userItem);
         }

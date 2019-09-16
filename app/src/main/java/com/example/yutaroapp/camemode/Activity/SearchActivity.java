@@ -53,25 +53,17 @@ public class SearchActivity extends AppCompatActivity implements SearchTask.Sear
                 convertViewValue();
                 Utility.onCreateLog(categoryRoleString, freeDayArrayList, whichChargeString, spinnerSexInt, spinnerAgeInt);
                 Toast.makeText(getApplicationContext(), "onClick", Toast.LENGTH_SHORT).show();
-                searchUserData(query);
+                searchUserData();
             }
         });
     }
 
     /**
      * クエリーに条件を指定し、検索をする。
-     * @param query
      */
-    protected void searchUserData(NCMBQuery query) {
-        // クエリー作成
-        query.whereEqualTo("CategoryRole", categoryRoleString);
-        // ToDo: 空き日の検索条件を実装
-//    freeDayArrayList
-        query.whereEqualTo("WhichCharge", whichChargeString);
-        // ToDo: 以下3項目のOR条件を作成する。
-        query.whereEqualTo("SpinnerRegionInt", spinnerRegionInt);
-        query.whereEqualTo("SpinnerSex", spinnerSexInt);
-        query.whereEqualTo("SpinnerAgeInt", spinnerAgeInt);
+    protected void searchUserData() {
+
+        createQuery();
 
         query.addOrderByDescending("updateDate");
         query.setLimit(15);
@@ -90,6 +82,90 @@ public class SearchActivity extends AppCompatActivity implements SearchTask.Sear
                 }
             }
         });
+    }
+
+    /**
+     * クエリに条件を指定する
+     *   - 希望種別
+     *   - 有償無償
+     *   - 地域
+     *   - 性別
+     *   - 年代
+     */
+    private void createQuery() {
+        query.whereEqualTo("CategoryRole", categoryRoleString);
+
+        // ToDo: 空き日の検索条件を実装
+//    freeDayArrayList
+
+        query.whereEqualTo("WhichCharge", whichChargeString);
+
+        setQueryRegion();
+        setQuerySex();
+        setQueryAge();
+    }
+
+    /**
+     * 地域の検索条件を指定する
+     * 「未選択」を選択した場合、全ての地域を検索
+     */
+    private void setQueryRegion() {
+        if (spinnerRegionInt == 0) {
+            ArrayList<NCMBQuery> queryArrayList = new ArrayList<NCMBQuery>();
+
+            for (int i = 0; i < 9; i++) {
+                queryArrayList.add(new NCMBQuery<>("UserInfoData"));
+            }
+            for (int i = 0; i < 9; i++) {
+                queryArrayList.get(i).whereEqualTo("SpinnerRegionInt", i + 1);
+            }
+            query.or(queryArrayList);
+
+        } else {
+            query.whereEqualTo("SpinnerRegionInt", spinnerRegionInt - 1);
+        }
+    }
+
+    /**
+     * 性別の検索条件を指定する
+     * 「未選択」を選択した場合、全ての性別を検索
+     */
+    private void setQuerySex() {
+        if (spinnerSexInt == 0) {
+            ArrayList<NCMBQuery> queryArrayList = new ArrayList<NCMBQuery>();
+
+            for (int i = 0; i < 3; i++) {
+                queryArrayList.add(new NCMBQuery<>("UserInfoData"));
+            }
+            for (int i = 0; i < 3; i++) {
+                queryArrayList.get(i).whereEqualTo("SpinnerSex", i + 1);
+            }
+            query.or(queryArrayList);
+
+        } else {
+            query.whereEqualTo("SpinnerSex", spinnerSexInt - 1);
+        }
+    }
+
+    /**
+     * 年代の検索条件を指定する
+     * 「未選択」を選択した場合、全ての年代を検索
+     */
+    private void setQueryAge() {
+        if (spinnerAgeInt == 0) {
+            ArrayList<NCMBQuery> queryArrayList = new ArrayList<NCMBQuery>();
+
+            for (int i = 0; i < 3; i++) {
+                queryArrayList.add(new NCMBQuery<>("UserInfoData"));
+            }
+            for (int i = 0; i < 3; i++) {
+                queryArrayList.get(i).whereEqualTo("SpinnerAgeInt", i + 1);
+            }
+            query.or(queryArrayList);
+
+        } else {
+            query.whereEqualTo("SpinnerAgeInt", spinnerAgeInt - 1);
+        }
     }
 
     /**

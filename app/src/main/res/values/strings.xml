@@ -5,7 +5,21 @@
     <string name="title_activity_search">SearchActivity</string>
     <string name="title_activity_search_result">SearchResultActivity</string>
 
-    <string-array name="region_item">
+    <string-array name="region_item_add">
+        <item>北海道</item>
+        <item>東北</item>
+        <item>関東</item>
+        <item>北陸</item>
+        <item>中部</item>
+        <item>近畿</item>
+        <item>四国</item>
+        <item>中国</item>
+        <item>九州</item>
+        <item>沖縄</item>
+    </string-array>
+
+    <string-array name="region_item_search">
+        <item>未選択</item>
         <item>北海道</item>
         <item>東北</item>
         <item>関東</item>
@@ -24,7 +38,17 @@
         <item>女性</item>
     </string-array>
 
-    <string-array name="age_item">
+    <string-array name="age_item_add">
+        <item>10代</item>
+        <item>20代</item>
+        <item>30代</item>
+        <item>40代</item>
+        <item>50代</item>
+        <item>60代以上</item>
+    </string-array>
+
+    <string-array name="age_item_search">
+        <item>未選択</item>
         <item>10代</item>
         <item>20代</item>
         <item>30代</item>

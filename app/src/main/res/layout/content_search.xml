@@ -162,7 +162,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:entries="@array/region_item"
+            android:entries="@array/region_item_search"
             android:spinnerMode="dialog" />
 
         <!-- 性別 -->
@@ -196,7 +196,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:entries="@array/age_item"
+            android:entries="@array/age_item_search"
             android:spinnerMode="dialog" />
 
         <Button

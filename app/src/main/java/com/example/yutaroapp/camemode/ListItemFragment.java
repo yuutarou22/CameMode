@@ -28,6 +28,7 @@ public class ListItemFragment extends Fragment {
     String whichCharge;
 
     // 表示用文字列配列
+    // ToDo: Stringsに定義しておくことはできないか
     String[] ageArray = {"10代", "20代", "30代", "40代", "50代", "60代以上"};
     String[] sexArray = {"未選択", "男性", "女性"};
     String[] regionArray = {"北海道", "東北", "関東", "北陸", "中部", "近畿", "四国", "中国", "九州", "沖縄"};
@@ -53,7 +54,7 @@ public class ListItemFragment extends Fragment {
 
     private View setInflateFragmentLayout(View inflatedView) {
         ImageView categoryImageView = (ImageView) inflatedView.findViewById(R.id.category_image);
-
+        // ToDo: Stringsを元に判定する
         if (categoryRole.equals("カメラマン")) {
             categoryImageView.setImageResource(R.drawable.cameraman);
             // ToDo: 画像そのものに色をつけておく
@@ -98,6 +99,7 @@ public class ListItemFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Log.d("ListItemFragment", "onClick snsUserName: " + snsUserName);
+                // ToDo: Stringsに定義する
                 Uri uri = Uri.parse("https://twitter.com/" + snsUserName + "/");
                 Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                 startActivity(intent);

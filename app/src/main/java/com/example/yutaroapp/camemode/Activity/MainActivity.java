@@ -111,8 +111,6 @@ public class MainActivity extends AppCompatActivity {
      */
     private void displayListView() {
         final RecyclerView userListView = (RecyclerView) findViewById(R.id.user_info_list);
-        RecyclerView.ItemDecoration itemDecoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
-        userListView.addItemDecoration(itemDecoration);
 
         final ArrayList<UserListItem> userListItems = new ArrayList<>();
         // 取得したユーザ情報をもとに、ユーザ情報アイテムを生成し、格納する

@@ -1,6 +1,7 @@
 package com.example.yutaroapp.camemode;
 
 import android.content.Intent;
+import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -11,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -52,7 +54,15 @@ public class ListItemFragment extends Fragment {
         return setInflateFragmentLayout(mInflatedView);
     }
 
-    private View setInflateFragmentLayout(View inflatedView) {
+    private View setInflateFragmentLayout(final View inflatedView) {
+        ImageView backButton = (ImageView) inflatedView.findViewById(R.id.back_button);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getFragmentManager().popBackStack();
+            }
+        });
+
         ImageView categoryImageView = (ImageView) inflatedView.findViewById(R.id.category_image);
         // ToDo: Stringsを元に判定する
         if (categoryRole.equals("カメラマン")) {

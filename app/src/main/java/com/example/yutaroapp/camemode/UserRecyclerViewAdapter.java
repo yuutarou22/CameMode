@@ -71,16 +71,12 @@ public class UserRecyclerViewAdapter extends RecyclerView.Adapter<ViewHolder> {
             }
         });
 
-        // ToDo: 画像そのものに色をつけておく
         if (list.get(position).getCategoryRole().equals("カメラマン")) {
             viewHolder.mUserIcon.setImageResource(R.drawable.cameraman);
-            viewHolder.mUserIcon.setBackgroundColor(Color.argb(120, 0, 153, 204));
         } else if (list.get(position).getCategoryRole().equals("モデル")) {
             viewHolder.mUserIcon.setImageResource(R.drawable.model);
-            viewHolder.mUserIcon.setBackgroundColor(Color.argb(120, 255, 0, 0));
         } else {
             viewHolder.mUserIcon.setImageResource(R.drawable.camera_and_model);
-            viewHolder.mUserIcon.setBackgroundColor(Color.argb(120, 255, 241, 0));
         }
     }
 

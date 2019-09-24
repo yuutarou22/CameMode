@@ -31,28 +31,35 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
-            <Button
-                android:id="@+id/main_content_button"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:text="Main" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="4dp"
+                android:background="@drawable/frame"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:elevation="2dp"
+            android:background="@color/colorBottomButtonBackground">
 
-            <Button
+            <ImageView
                 android:id="@+id/add_content_button"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="3"
-                android:text="Add" />
+                android:src="@drawable/add_button"
+                android:layout_weight="5" />
 
-            <Button
+            <ImageView
                 android:id="@+id/search_content_button"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:text="Search" />
+                android:src="@drawable/search_button"
+                android:layout_weight="5" />
+
+        </LinearLayout>
+
         </LinearLayout>
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

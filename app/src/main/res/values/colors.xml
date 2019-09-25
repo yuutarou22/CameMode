@@ -5,4 +5,5 @@
     <color name="colorAccent">#30A0FF</color>
     <color name="colorEditTextBackground">#EDEDED</color>
     <color name="colorFragmentBackground">#FFFFFF</color>
+    <color name="colorBottomButtonBackground">#FFFFFF</color>
 </resources>

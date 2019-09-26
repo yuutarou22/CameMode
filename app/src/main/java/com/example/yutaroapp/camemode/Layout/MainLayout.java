@@ -18,7 +18,9 @@ import com.example.yutaroapp.camemode.Activity.SearchActivity;
 import com.example.yutaroapp.camemode.R;
 
 import uk.co.deanwild.materialshowcaseview.IShowcaseListener;
+import uk.co.deanwild.materialshowcaseview.MaterialShowcaseSequence;
 import uk.co.deanwild.materialshowcaseview.MaterialShowcaseView;
+import uk.co.deanwild.materialshowcaseview.ShowcaseConfig;
 
 import static com.example.yutaroapp.camemode.Activity.MainActivity.startActivityforResult;
 
@@ -78,41 +80,35 @@ public class MainLayout extends RelativeLayout {
         new Handler().post(new Runnable() {
             @Override
             public void run() {
-                new MaterialShowcaseView.Builder(activity)
+
+                ShowcaseConfig config = new ShowcaseConfig();
+                config.setDelay(200);
+
+                MaterialShowcaseSequence sequence = new MaterialShowcaseSequence(activity, "R.id.add_content_button");
+                sequence.setConfig(config);
+
+                sequence.addSequenceItem(
+                        new MaterialShowcaseView.Builder(activity)
                         .setTarget(addButton)
-                        .setContentText("ここから追加することができます。")
-                        .setDismissText("了解です！")
-                        .singleUse("R.id.add_content_button")
-                        .setListener(new IShowcaseListener() {
-                            @Override
-                            public void onShowcaseDisplayed(MaterialShowcaseView showcaseView) {
+                        .setContentText("このボタンから追加することができます")
+                        .setDismissText("OK")
+                        .build()
+                );
 
-                            }
+                sequence.addSequenceItem(
+                        new MaterialShowcaseView.Builder(activity)
+                                .setTarget(searchButton)
+                                .setContentText("このボタンから検索することができます")
+                                .setDismissText("OK")
+                                .setDismissOnTouch(true)
+                                .build()
+                );
 
-                            @Override
-                            public void onShowcaseDismissed(MaterialShowcaseView showcaseView) {
+                if (sequence.hasFired()) {
 
-                            }
-                        })
-                        .show();
+                }
 
-                new MaterialShowcaseView.Builder(activity)
-                        .setTarget(searchButton)
-                        .setContentText("ここから検索することができます。")
-                        .setDismissText("OKOK！")
-                        .singleUse("R.id.search_content_button")
-                        .setListener(new IShowcaseListener() {
-                            @Override
-                            public void onShowcaseDisplayed(MaterialShowcaseView showcaseView) {
-
-                            }
-
-                            @Override
-                            public void onShowcaseDismissed(MaterialShowcaseView showcaseView) {
-
-                            }
-                        })
-                        .show();
+                sequence.start();
             }
         });
     }

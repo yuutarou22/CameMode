@@ -42,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
     private void setupViews() {
         mMainLayout = new MainLayout(this);
         mMainLayout.setUpViews(getWindow().getDecorView());
+        mMainLayout.createTutorial(this);
     }
 
     @Override

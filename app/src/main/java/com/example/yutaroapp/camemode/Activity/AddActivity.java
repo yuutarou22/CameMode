@@ -65,6 +65,8 @@ public class AddActivity extends AppCompatActivity {
                 }).show();
             }
         });
+
+        mAddLayout.createTutorial(this);
     }
 
     @Override

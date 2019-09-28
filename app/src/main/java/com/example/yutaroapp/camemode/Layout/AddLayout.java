@@ -3,6 +3,7 @@ package com.example.yutaroapp.camemode.Layout;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Build;
+import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
@@ -16,7 +17,12 @@ import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.example.yutaroapp.camemode.Activity.AddActivity;
 import com.example.yutaroapp.camemode.R;
+
+import uk.co.deanwild.materialshowcaseview.MaterialShowcaseSequence;
+import uk.co.deanwild.materialshowcaseview.MaterialShowcaseView;
+import uk.co.deanwild.materialshowcaseview.ShowcaseConfig;
 
 public class AddLayout extends RelativeLayout {
 
@@ -123,6 +129,31 @@ public class AddLayout extends RelativeLayout {
             @Override
             public void afterTextChanged(Editable editable) {
 
+            }
+        });
+    }
+
+    public void createTutorial(final AddActivity activity) {
+        new Handler().post(new Runnable() {
+            @Override
+            public void run() {
+                ShowcaseConfig config = new ShowcaseConfig();
+                config.setDelay(100);
+                config.setFadeDuration(200);
+
+                MaterialShowcaseSequence sequence = new MaterialShowcaseSequence(activity, "R.id.category_role_help");
+                sequence.setConfig(config);
+
+                sequence.addSequenceItem(
+                        new MaterialShowcaseView.Builder(activity)
+                                .setTarget(CategoryRoleHelp)
+                                .setContentText("入力項目について詳細はこちらを長押ししてください")
+                                .setDismissText("[OK]")
+                                .setDismissOnTouch(true)
+                                .build()
+                );
+
+                sequence.start();
             }
         });
     }

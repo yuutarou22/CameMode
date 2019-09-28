@@ -32,6 +32,7 @@ public class MainLayout extends RelativeLayout {
      */
     private Context mContext;
 
+    ImageView appLogoImage;
     ImageView addButton;
     ImageView searchButton;
 
@@ -57,6 +58,8 @@ public class MainLayout extends RelativeLayout {
      * @param view
      */
     public void setUpViews(View view) {
+        appLogoImage = (ImageView) view.findViewById(R.id.application_logo);
+
         addButton = (ImageView) view.findViewById(R.id.add_content_button);
         addButton.setOnClickListener(new OnClickListener() {
             @Override
@@ -80,33 +83,41 @@ public class MainLayout extends RelativeLayout {
         new Handler().post(new Runnable() {
             @Override
             public void run() {
-
                 ShowcaseConfig config = new ShowcaseConfig();
-                config.setDelay(200);
+                config.setDelay(100);
+                config.setFadeDuration(200);
+                MaterialShowcaseSequence sequence = new MaterialShowcaseSequence(activity, "R.id.application_logo");
 
-                MaterialShowcaseSequence sequence = new MaterialShowcaseSequence(activity, "R.id.add_content_button");
                 sequence.setConfig(config);
 
                 sequence.addSequenceItem(
                         new MaterialShowcaseView.Builder(activity)
-                        .setTarget(addButton)
-                        .setContentText("このボタンから追加することができます")
-                        .setDismissText("OK")
-                        .build()
+                                .setTarget(appLogoImage)
+                                .setContentText("CameMode はカメラマンとモデルを繋げる手助けをするアプリです。")
+                                .setDismissText("[OK]")
+                                .setShapePadding(-150)
+                                .build()
+                );
+
+                sequence.setConfig(config);
+
+                sequence.addSequenceItem(
+                        new MaterialShowcaseView.Builder(activity)
+                                .setTarget(addButton)
+                                .setContentText("このボタンから追加することができます")
+                                .setDismissText("[OK]")
+                                .setShapePadding(-100)
+                                .build()
                 );
 
                 sequence.addSequenceItem(
                         new MaterialShowcaseView.Builder(activity)
                                 .setTarget(searchButton)
                                 .setContentText("このボタンから検索することができます")
-                                .setDismissText("OK")
-                                .setDismissOnTouch(true)
+                                .setDismissText("[OK]")
+                                .setShapePadding(-100)
                                 .build()
                 );
-
-                if (sequence.hasFired()) {
-
-                }
 
                 sequence.start();
             }

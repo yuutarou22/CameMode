@@ -39,6 +39,7 @@ public class SearchActivity extends AppCompatActivity implements SearchTask.Sear
     private void setUpViews() {
         mSearchLayout = new SearchLayout(this);
         mSearchLayout.setUpViews(getWindow().getDecorView());
+        mSearchLayout.createTutorial(this);
     }
 
     @Override

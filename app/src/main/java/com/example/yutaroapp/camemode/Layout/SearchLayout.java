@@ -1,6 +1,7 @@
 package com.example.yutaroapp.camemode.Layout;
 
 import android.content.Context;
+import android.os.Handler;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.Button;
@@ -9,7 +10,13 @@ import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 
+import com.example.yutaroapp.camemode.Activity.AddActivity;
+import com.example.yutaroapp.camemode.Activity.SearchActivity;
 import com.example.yutaroapp.camemode.R;
+
+import uk.co.deanwild.materialshowcaseview.MaterialShowcaseSequence;
+import uk.co.deanwild.materialshowcaseview.MaterialShowcaseView;
+import uk.co.deanwild.materialshowcaseview.ShowcaseConfig;
 
 
 public class SearchLayout extends RelativeLayout {
@@ -67,5 +74,30 @@ public class SearchLayout extends RelativeLayout {
         spinnerAge = (Spinner) view.findViewById(R.id.spinner_age);
         searchButton = (Button) view.findViewById(R.id.search_button);
 
+    }
+
+    public void createTutorial(final SearchActivity activity) {
+        new Handler().post(new Runnable() {
+            @Override
+            public void run() {
+                ShowcaseConfig config = new ShowcaseConfig();
+                config.setDelay(100);
+                config.setFadeDuration(200);
+
+                MaterialShowcaseSequence sequence = new MaterialShowcaseSequence(activity, "R.id.search_button");
+                sequence.setConfig(config);
+
+                sequence.addSequenceItem(
+                        new MaterialShowcaseView.Builder(activity)
+                                .setTarget(searchButton)
+                                .setContentText("条件を入力して、下の検索ボタンを押すと他のユーザ情報が見つけられます。")
+                                .setDismissText("[OK]")
+                                .setShapePadding(-100)
+                                .build()
+                );
+
+                sequence.start();
+            }
+        });
     }
 }

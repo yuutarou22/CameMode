@@ -172,3 +172,4 @@
 - Fragment内のテキストを変更する https://codeday.me/jp/qa/20190211/258925.html
 - EditTextの入力タイプ指定 https://qiita.com/joji/items/41cc6cbedb7b84b632df
 - Styleを適用して画像を丸角にする https://github.com/araemon/AndroidExercise/tree/master/TryRadius/app/src/main/java/com/apppppp/tryradius
+- ライブラリを使ってチュートリアルの実装 https://phicdy.hatenablog.com/entry/2017/06/25/%E3%80%90Android%E3%80%91MaterialShowcaseView%E3%83%A9%E3%82%A4%E3%83%96%E3%83%A9%E3%83%AA%E3%81%A7%E3%83%81%E3%83%A5%E3%83%BC%E3%83%88%E3%83%AA%E3%82%A2%E3%83%AB%E3%82%92%E5%AE%9F%E8%A3%85%E3%81%99

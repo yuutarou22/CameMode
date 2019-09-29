@@ -100,11 +100,12 @@ public class AddLayout extends RelativeLayout {
         DisplayNameHelp = (ImageView) view.findViewById(R.id.display_name_help);
         SnsUserNameHelp = (ImageView) view.findViewById(R.id.sns_user_name_help);
         ImaginationHopeHelp = (ImageView) view.findViewById(R.id.imagination_hope_help);
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            CategoryRoleHelp.setTooltipText("あなたがやりたい「種別」を\n選択してください。");
-            DisplayNameHelp.setTooltipText("当アプリ内での表示名です。");
-            SnsUserNameHelp.setTooltipText("上記項目で選択した\nSNSのアカウント名[ID]を\nご入力ください。");
-            ImaginationHopeHelp.setTooltipText("撮影時のイメージを\n200文字まででご入力ください。");
+            CategoryRoleHelp.setTooltipText(getResources().getString(R.string.tooltip_category));
+            DisplayNameHelp.setTooltipText(getResources().getString(R.string.tooltip_display_name));
+            SnsUserNameHelp.setTooltipText(getResources().getString(R.string.tooltip_sns_user_name));
+            ImaginationHopeHelp.setTooltipText(getResources().getString(R.string.tooltip_imagination));
         }
 
         addButton = (Button) view.findViewById(R.id.add_button);
@@ -147,8 +148,8 @@ public class AddLayout extends RelativeLayout {
                 sequence.addSequenceItem(
                         new MaterialShowcaseView.Builder(activity)
                                 .setTarget(CategoryRoleHelp)
-                                .setContentText("入力項目について詳細はこちらを長押ししてください")
-                                .setDismissText("[OK]")
+                                .setContentText(R.string.add_tutorial_01)
+                                .setDismissText(R.string.tutorial_ok_text)
                                 .setDismissOnTouch(true)
                                 .build()
                 );

@@ -99,7 +99,8 @@ public class AddActivity extends AppCompatActivity {
     protected NCMBObject putUserInfo(NCMBObject userInfo) throws NCMBException {
         userInfo.put("CategoryRole", categoryRoleString);
         userInfo.put("DisplayName", displayNameString);
-        userInfo.put("Password", passwordString); // 扱いに対してもう少し考慮が必要。平文すぎる。
+        // ToDo: 扱いに対してもう少し考慮が必要。平文のままですよ。
+        userInfo.put("Password", passwordString);
         userInfo.put("CategorySNS", categorySnsString);
         userInfo.put("SNSUserName", snsUserNameString);
         userInfo.put("FreeDay", freeDayArrayList);
@@ -115,15 +116,15 @@ public class AddActivity extends AppCompatActivity {
     public boolean validationCheck(String displayNameString, String snsUserNameString, String imaginationHopeString) {
         if (displayNameString.isEmpty() || snsUserNameString.isEmpty() || imaginationHopeString.isEmpty()) {
             if (displayNameString.isEmpty()) {
-                mAddLayout.displayName.setError("表示名を入力してください。");
+                mAddLayout.displayName.setError(getString(R.string.display_name_input_error));
                 mAddLayout.displayName.setFocusable(true);
             }
             if (snsUserNameString.isEmpty()) {
-                mAddLayout.snsUserName.setError("SNSアカウント名を入力してください。");
+                mAddLayout.snsUserName.setError(getString(R.string.sns_user_name_input_error));
                 mAddLayout.snsUserName.setFocusable(true);
             }
             if (imaginationHopeString.isEmpty()) {
-                mAddLayout.imaginationHope.setError("撮影時のイメージを入力してください");
+                mAddLayout.imaginationHope.setError(getString(R.string.imagination_input_error));
                 mAddLayout.imaginationHope.setFocusable(true);
             }
             return false;
@@ -143,10 +144,10 @@ public class AddActivity extends AppCompatActivity {
             public void done(NCMBException e) {
                 if (e != null) {
                     // error
-                    Toast.makeText(getApplicationContext(), "登録エラー", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), R.string.data_put_error, Toast.LENGTH_SHORT).show();
                 } else {
                     // success
-                    Toast.makeText(getApplicationContext(), "登録成功", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), R.string.data_put_success, Toast.LENGTH_SHORT).show();
                 }
             }
         });

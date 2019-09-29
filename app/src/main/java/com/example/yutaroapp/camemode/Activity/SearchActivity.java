@@ -76,7 +76,7 @@ public class SearchActivity extends AppCompatActivity implements SearchTask.Sear
             @Override
             public void done(List<NCMBObject> list, NCMBException e) {
                 if (e != null) {
-                    Toast.makeText(getApplicationContext(), "データ取得エラー", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), R.string.data_get_error, Toast.LENGTH_SHORT).show();
                 } else {
                     // 検索処理を同期実行
                     searchTask.taskStart(list);

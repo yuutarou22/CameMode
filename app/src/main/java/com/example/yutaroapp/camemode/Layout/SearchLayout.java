@@ -10,7 +10,6 @@ import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 
-import com.example.yutaroapp.camemode.Activity.AddActivity;
 import com.example.yutaroapp.camemode.Activity.SearchActivity;
 import com.example.yutaroapp.camemode.R;
 
@@ -90,8 +89,8 @@ public class SearchLayout extends RelativeLayout {
                 sequence.addSequenceItem(
                         new MaterialShowcaseView.Builder(activity)
                                 .setTarget(searchButton)
-                                .setContentText("条件を入力して、下の検索ボタンを押すと他のユーザ情報が見つけられます。")
-                                .setDismissText("[OK]")
+                                .setContentText(R.string.search_tutorial_01)
+                                .setDismissText(R.string.tutorial_ok_text)
                                 .setShapePadding(-100)
                                 .build()
                 );

@@ -1,14 +1,11 @@
 package com.example.yutaroapp.camemode.Layout;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
 import android.util.AttributeSet;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
@@ -17,7 +14,6 @@ import com.example.yutaroapp.camemode.Activity.MainActivity;
 import com.example.yutaroapp.camemode.Activity.SearchActivity;
 import com.example.yutaroapp.camemode.R;
 
-import uk.co.deanwild.materialshowcaseview.IShowcaseListener;
 import uk.co.deanwild.materialshowcaseview.MaterialShowcaseSequence;
 import uk.co.deanwild.materialshowcaseview.MaterialShowcaseView;
 import uk.co.deanwild.materialshowcaseview.ShowcaseConfig;
@@ -93,19 +89,17 @@ public class MainLayout extends RelativeLayout {
                 sequence.addSequenceItem(
                         new MaterialShowcaseView.Builder(activity)
                                 .setTarget(appLogoImage)
-                                .setContentText("CameMode はカメラマンとモデルを繋げる手助けをするアプリです。")
-                                .setDismissText("[OK]")
+                                .setContentText(R.string.main_tutorial_01)
+                                .setDismissText(R.string.tutorial_ok_text)
                                 .setShapePadding(-150)
                                 .build()
                 );
 
-                sequence.setConfig(config);
-
                 sequence.addSequenceItem(
                         new MaterialShowcaseView.Builder(activity)
                                 .setTarget(addButton)
-                                .setContentText("このボタンから追加することができます")
-                                .setDismissText("[OK]")
+                                .setContentText(R.string.main_tutorial_02)
+                                .setDismissText(R.string.tutorial_ok_text)
                                 .setShapePadding(-100)
                                 .build()
                 );
@@ -113,8 +107,8 @@ public class MainLayout extends RelativeLayout {
                 sequence.addSequenceItem(
                         new MaterialShowcaseView.Builder(activity)
                                 .setTarget(searchButton)
-                                .setContentText("このボタンから検索することができます")
-                                .setDismissText("[OK]")
+                                .setContentText(R.string.main_tutorial_03)
+                                .setDismissText(R.string.tutorial_ok_text)
                                 .setShapePadding(-100)
                                 .build()
                 );

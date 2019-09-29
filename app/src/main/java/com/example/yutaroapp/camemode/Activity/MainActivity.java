@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -89,10 +88,10 @@ public class MainActivity extends AppCompatActivity {
             public void done(List<NCMBObject> list, NCMBException e) {
                 if (e != null) {
                     // エラー時
-                    Toast.makeText(getApplicationContext(), "データ取得エラー", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), R.string.data_get_error, Toast.LENGTH_SHORT).show();
                 } else {
                     // 成功時
-                    Toast.makeText(getApplicationContext(), "データ取得成功", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), R.string.data_get_success, Toast.LENGTH_SHORT).show();
 
                     // ユーザ情報をクリアし、新たに取得したユーザ情報をAddする
                     userInfoDataList.clear();

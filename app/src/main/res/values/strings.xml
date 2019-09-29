@@ -61,7 +61,35 @@
     <string name="cameraman">"カメラマン"</string>
     <string name="model">"モデル"</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!--トースト表示文言-->
+    <string name="data_put_error">データ登録エラー</string>
+    <string name="data_put_success">データ登録成功</string>
+
+    <string name="data_get_error">データ取得エラー</string>
+    <string name="data_get_success">データ取得成功</string>
+
+    <!-- チュートリアル文言 -->
+    <string name="tutorial_ok_text">[OK]</string>
+    <string name="main_tutorial_01">CameMode はカメラマンとモデルを繋げる手助けをするアプリです。</string>
+    <string name="main_tutorial_02">このボタンから追加することができます</string>
+    <string name="main_tutorial_03">このボタンから検索することができます</string>
+
+    <string name="add_tutorial_01">入力項目について詳細はこちらを長押ししてください</string>
+
+    <string name="search_tutorial_01">条件を入力して、下の検索ボタンを押すと他のユーザ情報が見つけられます。</string>
+
+    <!-- 登録項目の詳細文言 -->
+    <string name="tooltip_category">あなたがやりたい「種別」を\n選択してください。</string>
+    <string name="tooltip_display_name">当アプリ内での表示名です。</string>
+    <string name="tooltip_sns_user_name">上記項目で選択した\nSNSのアカウント名[ID]を\nご入力ください。</string>
+    <string name="tooltip_imagination">撮影時のイメージを\n200文字まででご入力ください。</string>
+
+    <!-- バリデーションエラー文言 -->
+    <string name="display_name_input_error">表示名を入力してください</string>
+    <string name="sns_user_name_input_error">SNSアカウント名を入力してください</string>
+    <string name="imagination_input_error">撮影時のイメージを入力してください</string>
+
+    <!-- 遷移URL -->
+    <string name="twitter_url">https://twitter.com/</string>
 
 </resources>

@@ -1,7 +1,6 @@
 package com.example.yutaroapp.camemode;
 
 import android.content.Intent;
-import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -12,7 +11,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -64,17 +62,12 @@ public class ListItemFragment extends Fragment {
         });
 
         ImageView categoryImageView = (ImageView) inflatedView.findViewById(R.id.category_image);
-        // ToDo: Stringsを元に判定する
-        if (categoryRole.equals("カメラマン")) {
+        if (categoryRole.equals(R.string.cameraman)) {
             categoryImageView.setImageResource(R.drawable.cameraman);
-            // ToDo: 画像そのものに色をつけておく
-//            categoryImageView.setBackgroundColor(Color.argb(120, 0, 153, 204));
-        } else if (categoryRole.equals("モデル")) {
+        } else if (categoryRole.equals(R.string.model)) {
             categoryImageView.setImageResource(R.drawable.model);
-//            categoryImageView.setBackgroundColor(Color.argb(120, 255, 0, 0));
         } else {
             categoryImageView.setImageResource(R.drawable.camera_and_model);
-//            categoryImageView.setBackgroundColor(Color.argb(120, 255, 241, 0));
         }
 
         TextView displayNameTextView = (TextView) inflatedView.findViewById(R.id.display_name);
@@ -109,8 +102,9 @@ public class ListItemFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Log.d("ListItemFragment", "onClick snsUserName: " + snsUserName);
-                // ToDo: Stringsに定義する
-                Uri uri = Uri.parse("https://twitter.com/" + snsUserName + "/");
+                // ToDo: インスタの分岐を追加する
+                Uri uri;
+                uri = Uri.parse(getString(R.string.twitter_url) + snsUserName + "/");
                 Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                 startActivity(intent);
             }

@@ -73,8 +73,8 @@
 - [x] onActivityResultでリストの更新を行う
 
 - アプリ全体の設計の見直し
-  - [ ] 文言を strings に定義
-  - [ ] 数値を dimens に定義
+  - [x] 文言を strings に定義
+  - [x] 数値を dimens に定義
   - [ ] 色を colors に定義
   - [x] Activity と Layout の切り分け
   - [x] ディレクトリを分けて切り分ける

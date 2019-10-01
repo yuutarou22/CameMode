@@ -94,6 +94,7 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), R.string.data_get_success, Toast.LENGTH_SHORT).show();
 
                     // ユーザ情報をクリアし、新たに取得したユーザ情報をAddする
+                    Utility.userInfoDataList.clear();
                     userInfoDataList.clear();
                     for (NCMBObject obj : list) {
                         Log.d("MainActivity", "userInfoDataList DispName: " + obj.getString("DisplayName"));

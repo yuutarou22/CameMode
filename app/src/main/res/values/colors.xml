@@ -6,4 +6,6 @@
     <color name="colorEditTextBackground">#EDEDED</color>
     <color name="colorFragmentBackground">#FFFFFF</color>
     <color name="colorBottomButtonBackground">#FFFFFF</color>
+    <color name="colorItemTitleTextColor">#000000</color>
+
 </resources>

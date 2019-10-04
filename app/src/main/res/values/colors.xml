@@ -8,4 +8,9 @@
     <color name="colorBottomButtonBackground">#FFFFFF</color>
     <color name="colorItemTitleTextColor">#000000</color>
 
+    <color name="colorCardViewBackgroundCameraman">#7fbfff</color>
+    <color name="colorCardViewBackgroundModel">#ff7f7f</color>
+    <color name="colorCardViewBackgroundBoth">#ffed00</color>
+
+
 </resources>

@@ -7,6 +7,8 @@ public class UserListItem {
     private String mUserName = null;
     private String mCategoryRole = null;
     private String mImaginationHope = null;
+    private int mAge = 0;
+    private int mSex = 0;
 
     /**
      * コンストラクタ
@@ -14,10 +16,12 @@ public class UserListItem {
      * @param mUserName     表示名
      * @param mCategoryRole カテゴリー種別
      */
-    public UserListItem(String mUserName, String mCategoryRole, String mImaginationHope) {
+    public UserListItem(String mUserName, String mCategoryRole, String mImaginationHope, int mAge, int mSex) {
         this.mUserName = mUserName;
         this.mCategoryRole = mCategoryRole;
         this.mImaginationHope = mImaginationHope;
+        this.mAge = mAge;
+        this.mSex = mSex;
     }
 
     // setter
@@ -48,5 +52,13 @@ public class UserListItem {
 
     public String getImaginationHope() {
         return mImaginationHope;
+    }
+
+    public int getAge() {
+        return mAge;
+    }
+
+    public int getSex() {
+        return mSex;
     }
 }

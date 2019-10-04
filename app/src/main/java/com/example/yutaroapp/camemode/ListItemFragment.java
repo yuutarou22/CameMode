@@ -62,9 +62,9 @@ public class ListItemFragment extends Fragment {
         });
 
         ImageView categoryImageView = (ImageView) inflatedView.findViewById(R.id.category_image);
-        if (categoryRole.equals(R.string.cameraman)) {
+        if (categoryRole.equals("カメラマン")) {
             categoryImageView.setImageResource(R.drawable.cameraman);
-        } else if (categoryRole.equals(R.string.model)) {
+        } else if (categoryRole.equals("モデル")) {
             categoryImageView.setImageResource(R.drawable.model);
         } else {
             categoryImageView.setImageResource(R.drawable.camera_and_model);

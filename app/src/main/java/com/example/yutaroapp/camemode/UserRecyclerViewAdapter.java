@@ -1,6 +1,7 @@
 package com.example.yutaroapp.camemode;
 
 import android.annotation.SuppressLint;
+import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -58,6 +59,10 @@ public class UserRecyclerViewAdapter extends RecyclerView.Adapter<ViewHolder> {
     @SuppressLint("ResourceAsColor")
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, final int position) {
+        int color = 0;
+        String age = null;
+        String sex = null;
+
         viewHolder.mUserName.setText(list.get(position).getUserName());
         viewHolder.mCategoryRole.setText(list.get(position).getCategoryRole());
         viewHolder.mImaginationHope.setText(list.get(position).getImaginationHope());
@@ -72,10 +77,29 @@ public class UserRecyclerViewAdapter extends RecyclerView.Adapter<ViewHolder> {
 
         if (list.get(position).getCategoryRole().equals("カメラマン")) {
             viewHolder.mUserIcon.setImageResource(R.drawable.cameraman);
+            color = viewHolder.mLineView.getContext().getResources().getColor(R.color.colorCardViewBackgroundCameraman);
         } else if (list.get(position).getCategoryRole().equals("モデル")) {
             viewHolder.mUserIcon.setImageResource(R.drawable.model);
+            color = viewHolder.mLineView.getContext().getResources().getColor(R.color.colorCardViewBackgroundModel);
         } else {
             viewHolder.mUserIcon.setImageResource(R.drawable.camera_and_model);
+            color = viewHolder.mLineView.getContext().getResources().getColor(R.color.colorCardViewBackgroundBoth);
+        }
+        viewHolder.mLineView.setBackgroundColor(color);
+
+        if (list.get(position).getAge() == 0) {
+            age = "未選択";
+        } else {
+            age = String.valueOf(list.get(position).getAge() * 10) + "代";
+        }
+        viewHolder.mAge.setText(age);
+
+        if (list.get(position).getSex() == 0) {
+            sex = "未選択";
+        } else if (list.get(position).getSex() == 1) {
+            sex = "男性";
+        } else {
+            sex = "女性";
         }
     }
 

@@ -20,8 +20,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:text="希望種別"
-                android:textSize="20dp"
-                android:textColor="@color/colorItemTitleTextColor" />
+                android:textSize="20dp" />
 
             <ImageView
                 android:id="@+id/category_role_help"
@@ -73,8 +72,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:text="投稿表示名"
-                android:textSize="20dp"
-                android:textColor="@color/colorItemTitleTextColor" />
+                android:textSize="20dp" />
 
             <ImageView
                 android:id="@+id/display_name_help"
@@ -103,8 +101,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:text="編集・削除パスワード"
-            android:textSize="20dp"
-            android:textColor="@color/colorItemTitleTextColor" />
+            android:textSize="20dp" />
 
         <EditText
             android:id="@+id/password"
@@ -122,8 +119,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:text="SNSの種類"
-            android:textSize="20dp"
-            android:textColor="@color/colorItemTitleTextColor" />
+            android:textSize="20dp" />
 
         <RadioGroup
             android:id="@+id/category_sns"
@@ -158,8 +154,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:text="SNSアカウント名"
-                android:textSize="20dp"
-                android:textColor="@color/colorItemTitleTextColor" />
+                android:textSize="20dp" />
 
             <ImageView
                 android:id="@+id/sns_user_name_help"
@@ -203,8 +198,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:text="空き日"
-            android:textSize="20dp"
-            android:textColor="@color/colorItemTitleTextColor" />
+            android:textSize="20dp" />
 
         <LinearLayout
             android:id="@+id/free_day"
@@ -271,8 +265,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:text="有償・無償"
-            android:textSize="20dp"
-            android:textColor="@color/colorItemTitleTextColor" />
+            android:textSize="20dp" />
 
         <RadioGroup
             android:id="@+id/which_charge"
@@ -308,8 +301,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:text="地域"
-            android:textSize="20dp"
-            android:textColor="@color/colorItemTitleTextColor" />
+            android:textSize="20dp" />
 
         <Spinner
             android:id="@+id/spinner_region"
@@ -326,8 +318,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:text="性別"
-            android:textSize="20dp"
-            android:textColor="@color/colorItemTitleTextColor" />
+            android:textSize="20dp" />
 
         <Spinner
             android:id="@+id/spinner_sex"
@@ -344,8 +335,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:text="年代"
-            android:textSize="20dp"
-            android:textColor="@color/colorItemTitleTextColor" />
+            android:textSize="20dp" />
 
         <Spinner
             android:id="@+id/spinner_age"
@@ -367,8 +357,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:text="撮りたい（撮られたい）イメージ"
-                android:textSize="20dp"
-                android:textColor="@color/colorItemTitleTextColor" />
+                android:textSize="20dp" />
 
             <ImageView
                 android:id="@+id/imagination_hope_help"

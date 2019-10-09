@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
@@ -62,12 +63,16 @@ public class ListItemFragment extends Fragment {
         });
 
         ImageView categoryImageView = (ImageView) inflatedView.findViewById(R.id.category_image);
+        LinearLayout fragmentLayout = (LinearLayout) inflatedView.findViewById(R.id.fragment_list_item);
         if (categoryRole.equals("カメラマン")) {
             categoryImageView.setImageResource(R.drawable.cameraman);
+            fragmentLayout.setBackground(getResources().getDrawable(R.drawable.fragment_background_cameraman));
         } else if (categoryRole.equals("モデル")) {
             categoryImageView.setImageResource(R.drawable.model);
+            fragmentLayout.setBackground(getResources().getDrawable(R.drawable.fragment_background_model));
         } else {
             categoryImageView.setImageResource(R.drawable.camera_and_model);
+            fragmentLayout.setBackground(getResources().getDrawable(R.drawable.fragment_background_camera_and_model));
         }
 
         TextView displayNameTextView = (TextView) inflatedView.findViewById(R.id.display_name);

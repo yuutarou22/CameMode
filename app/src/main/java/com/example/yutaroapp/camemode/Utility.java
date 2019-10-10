@@ -1,7 +1,11 @@
 package com.example.yutaroapp.camemode;
 
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.util.Log;
 
+import com.example.yutaroapp.camemode.Activity.MainActivity;
 import com.nifcloud.mbaas.core.NCMBObject;
 
 import java.util.ArrayList;
@@ -48,5 +52,10 @@ public class Utility {
     /* バリデーションチェック */
     public boolean validationCheck() {
         return true;
+    }
+
+    public static void snsTranslationActivity(Uri uri, Context context) {
+        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+        context.startActivity(intent);
     }
 }

@@ -1,7 +1,10 @@
 package com.example.yutaroapp.camemode;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.Intent;
 import android.content.res.ColorStateList;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -14,6 +17,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.nifcloud.mbaas.core.NCMBObject;
 
@@ -24,15 +28,17 @@ public class UserRecyclerViewAdapter extends RecyclerView.Adapter<ViewHolder> {
     private List<UserListItem> list;
     private View.OnClickListener listener;
     private FragmentManager fragmentManager;
+    private Context mContext;
 
     /**
      * コンストラクタ
      *
      * @param list MainActivity #display() からの userListItems
      */
-    public UserRecyclerViewAdapter(List<UserListItem> list, FragmentManager fragmentManager) {
+    public UserRecyclerViewAdapter(List<UserListItem> list, FragmentManager fragmentManager, Context context) {
         this.list = list;
         this.fragmentManager = fragmentManager;
+        this.mContext = context;
     }
 
     /**
@@ -86,6 +92,21 @@ public class UserRecyclerViewAdapter extends RecyclerView.Adapter<ViewHolder> {
             color = viewHolder.mLineView.getContext().getResources().getColor(R.color.colorCardViewBackgroundBoth);
         }
         viewHolder.mLineView.setBackgroundColor(color);
+
+        Button snsTransitionButton = (Button) viewHolder.mSnsTranslationButton;
+        snsTransitionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // ToDo: インスタの分岐を追加する
+                Uri uri;
+                uri = Uri.parse(mContext.getResources().getString(R.string.twitter_url) + list.get(position).getSnsUserName() + "/");
+//                Utility.snsTranslationActivity(uri, mContext);
+                Log.d("TEST", "Uri: " + uri.toString());
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                mContext.startActivity(intent);
+
+            }
+        });
 
         if (list.get(position).getAge() == 0) {
             age = "未選択";

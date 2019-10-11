@@ -91,5 +91,6 @@
 
     <!-- 遷移URL -->
     <string name="twitter_url">https://twitter.com/</string>
+    <string name="instagram_url">https://www.instagram.com/</string>
 
 </resources>

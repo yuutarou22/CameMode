@@ -98,13 +98,7 @@ public class UserRecyclerViewAdapter extends RecyclerView.Adapter<ViewHolder> {
             @Override
             public void onClick(View view) {
                 // ToDo: インスタの分岐を追加する
-                Uri uri;
-                uri = Uri.parse(mContext.getResources().getString(R.string.twitter_url) + list.get(position).getSnsUserName() + "/");
-//                Utility.snsTranslationActivity(uri, mContext);
-                Log.d("TEST", "Uri: " + uri.toString());
-                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-                mContext.startActivity(intent);
-
+                Utility.snsTranslationActivity(list.get(position).getSnsUserName(), list.get(position).getCategorySns(), mContext);
             }
         });
 

@@ -107,11 +107,7 @@ public class ListItemFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Log.d("ListItemFragment", "onClick snsUserName: " + snsUserName);
-                // ToDo: インスタの分岐を追加する
-                Uri uri;
-                uri = Uri.parse(getString(R.string.twitter_url) + snsUserName + "/");
-                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-                startActivity(intent);
+                Utility.snsTranslationActivity(snsUserName, categorySNS, getContext());
             }
         });
 

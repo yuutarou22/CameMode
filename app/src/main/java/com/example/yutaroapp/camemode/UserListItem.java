@@ -7,6 +7,7 @@ public class UserListItem {
     private String mUserName = null;
     private String mSnsUserName = null;
     private String mCategoryRole = null;
+    private String mCategorySns = null;
     private String mImaginationHope = null;
     private int mAge = 0;
     private int mSex = 0;
@@ -17,10 +18,11 @@ public class UserListItem {
      * @param mUserName     表示名
      * @param mCategoryRole カテゴリー種別
      */
-    public UserListItem(String mUserName, String mSnsUserName, String mCategoryRole, String mImaginationHope, int mAge, int mSex) {
+    public UserListItem(String mUserName, String mSnsUserName, String mCategoryRole, String mCategorySns, String mImaginationHope, int mAge, int mSex) {
         this.mUserName = mUserName;
         this.mSnsUserName = mSnsUserName;
         this.mCategoryRole = mCategoryRole;
+        this.mCategorySns = mCategorySns;
         this.mImaginationHope = mImaginationHope;
         this.mAge = mAge;
         this.mSex = mSex;
@@ -58,6 +60,10 @@ public class UserListItem {
 
     public String getCategoryRole() {
         return mCategoryRole;
+    }
+
+    public String getCategorySns() {
+        return mCategorySns;
     }
 
     public String getImaginationHope() {

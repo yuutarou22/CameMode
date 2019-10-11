@@ -1,7 +1,11 @@
 package com.example.yutaroapp.camemode;
 
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.util.Log;
 
+import com.example.yutaroapp.camemode.Activity.MainActivity;
 import com.nifcloud.mbaas.core.NCMBObject;
 
 import java.util.ArrayList;
@@ -48,5 +52,19 @@ public class Utility {
     /* バリデーションチェック */
     public boolean validationCheck() {
         return true;
+    }
+
+    /* 各SNSへ遷移する処理 */
+    public static void snsTranslationActivity(String snsUserName, String categorySns, Context context) {
+        Uri uri;
+
+        if (categorySns.equals("Twitter")) {
+            uri = Uri.parse(context.getResources().getString(R.string.twitter_url) + snsUserName + "/");
+        } else {
+            uri = Uri.parse(context.getResources().getString(R.string.instagram_url) + snsUserName + "/");
+        }
+
+        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+        context.startActivity(intent);
     }
 }

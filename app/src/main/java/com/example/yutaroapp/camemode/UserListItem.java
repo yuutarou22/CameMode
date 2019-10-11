@@ -5,7 +5,9 @@ import android.graphics.Bitmap;
 public class UserListItem {
     private Bitmap mUserIcon = null;
     private String mUserName = null;
+    private String mSnsUserName = null;
     private String mCategoryRole = null;
+    private String mCategorySns = null;
     private String mImaginationHope = null;
     private int mAge = 0;
     private int mSex = 0;
@@ -16,9 +18,11 @@ public class UserListItem {
      * @param mUserName     表示名
      * @param mCategoryRole カテゴリー種別
      */
-    public UserListItem(String mUserName, String mCategoryRole, String mImaginationHope, int mAge, int mSex) {
+    public UserListItem(String mUserName, String mSnsUserName, String mCategoryRole, String mCategorySns, String mImaginationHope, int mAge, int mSex) {
         this.mUserName = mUserName;
+        this.mSnsUserName = mSnsUserName;
         this.mCategoryRole = mCategoryRole;
+        this.mCategorySns = mCategorySns;
         this.mImaginationHope = mImaginationHope;
         this.mAge = mAge;
         this.mSex = mSex;
@@ -31,6 +35,10 @@ public class UserListItem {
 
     public void setUserName(String mUserName) {
         this.mUserName = mUserName;
+    }
+
+    public void setSnsUserName(String mSnsUserName) {
+        this.mSnsUserName = mSnsUserName;
     }
 
     public void setImaginationHope(String mImaginationHope) {
@@ -46,8 +54,16 @@ public class UserListItem {
         return mUserName;
     }
 
+    public String getSnsUserName() {
+        return mSnsUserName;
+    }
+
     public String getCategoryRole() {
         return mCategoryRole;
+    }
+
+    public String getCategorySns() {
+        return mCategorySns;
     }
 
     public String getImaginationHope() {

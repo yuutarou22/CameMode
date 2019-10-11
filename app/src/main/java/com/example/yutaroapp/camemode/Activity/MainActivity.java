@@ -116,11 +116,11 @@ public class MainActivity extends AppCompatActivity {
         final ArrayList<UserListItem> userListItems = new ArrayList<>();
         // 取得したユーザ情報をもとに、ユーザ情報アイテムを生成し、格納する
         for (NCMBObject obj : userInfoDataList) {
-            UserListItem userItem = new UserListItem(obj.getString("DisplayName"), obj.getString("CategoryRole"), obj.getString("ImaginationHope"), obj.getInt("SpinnerAgeInt"), obj.getInt("SpinnerSex"));
+            UserListItem userItem = new UserListItem(obj.getString("DisplayName"), obj.getString("SNSUserName"), obj.getString("CategoryRole"), obj.getString("CategorySNS"), obj.getString("ImaginationHope"), obj.getInt("SpinnerAgeInt"), obj.getInt("SpinnerSex"));
             userListItems.add(userItem);
         }
 
-        final UserRecyclerViewAdapter adapter = new UserRecyclerViewAdapter(userListItems, getSupportFragmentManager());
+        final UserRecyclerViewAdapter adapter = new UserRecyclerViewAdapter(userListItems, getSupportFragmentManager(), MainActivity.this);
         LinearLayoutManager llm = new LinearLayoutManager(getApplicationContext());
         userListView.setHasFixedSize(true);
         userListView.setLayoutManager(llm);

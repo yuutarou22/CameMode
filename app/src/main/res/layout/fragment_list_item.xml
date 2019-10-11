@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/fragment_list_item"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorFragmentBackground"
     android:clickable="true"
     android:orientation="vertical">
 
@@ -25,7 +25,6 @@
                     android:id="@+id/back_button"
                     android:layout_width="70dp"
                     android:layout_height="70dp"
-                    android:layout_marginVertical="15dp"
                     android:padding="25dp"
                     android:layout_gravity="left"
                     android:src="@drawable/back_button"/>
@@ -35,8 +34,7 @@
                     android:layout_width="@dimen/user_detail_category_role_icon_size"
                     android:layout_height="@dimen/user_detail_category_role_icon_size"
                     android:layout_gravity="center"
-                    android:background="@drawable/fragment_icon_style"
-                    android:padding="15dp" />
+                    android:padding="5dp" />
 
                 <TextView
                     android:id="@+id/display_name"

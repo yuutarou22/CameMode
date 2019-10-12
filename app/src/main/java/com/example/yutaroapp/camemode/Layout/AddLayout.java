@@ -1,5 +1,6 @@
 package com.example.yutaroapp.camemode.Layout;
 
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Build;
@@ -29,6 +30,7 @@ public class AddLayout extends RelativeLayout {
     public int freeDayArrayCount = 7;
 
     // レイアウト定義用
+    public ImageView backButton;
     public RadioGroup categoryRole;
     public EditText displayName;
     public EditText password;
@@ -75,6 +77,13 @@ public class AddLayout extends RelativeLayout {
      * @param view
      */
     public void setUpViews(View view) {
+        backButton = (ImageView) view.findViewById(R.id.back_button);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ((Activity)mContext).finish();
+            }
+        });
         categoryRole = (RadioGroup) view.findViewById(R.id.category_role);
         displayName = (EditText) view.findViewById(R.id.display_name);
         password = (EditText) view.findViewById(R.id.password);

@@ -1,11 +1,13 @@
 package com.example.yutaroapp.camemode.Layout;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Handler;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
@@ -22,6 +24,7 @@ public class SearchLayout extends RelativeLayout {
 
     public int freeDayArrayCount = 7;
     // レイアウト定義用
+    public ImageView backButton;
     public RadioGroup categoryRole;
     public CheckBox[] freeDay = new CheckBox[freeDayArrayCount];
     public RadioGroup whichCharge;
@@ -57,6 +60,14 @@ public class SearchLayout extends RelativeLayout {
      * @param view
      */
     public void setUpViews(View view) {
+        backButton = (ImageView) view.findViewById(R.id.back_button);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ((Activity)mContext).finish();
+            }
+        });
+
         categoryRole = (RadioGroup) view.findViewById(R.id.category_role);
 
         freeDay[0] = (CheckBox) view.findViewById(R.id.free_day_mon);

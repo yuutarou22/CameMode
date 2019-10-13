@@ -46,7 +46,15 @@ public class AddActivity extends AppCompatActivity {
         mAddLayout.addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                new AlertDialog.Builder(AddActivity.this).setTitle("登録しますか？")
+
+                String dialogStr = null;
+                if (mAddLayout.password.getText().toString().length() == 0) {
+                    dialogStr = "登録される情報は、今後削除・編集が出来ませんがよろしいですか？";
+                } else {
+                    dialogStr = "入力情報に誤りはありませんか？";
+                }
+
+                new AlertDialog.Builder(AddActivity.this).setTitle(dialogStr)
                         .setNeutralButton("はい", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {

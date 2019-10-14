@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
-import com.example.yutaroapp.camemode.Layout.AddLayout;
+import com.example.yutaroapp.camemode.Layout.EditLayout;
 import com.example.yutaroapp.camemode.R;
 import com.nifcloud.mbaas.core.DoneCallback;
 import com.nifcloud.mbaas.core.NCMBException;
@@ -18,8 +18,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class EditActivity extends AppCompatActivity {
-    /* AddLayout */
-    private AddLayout mAddLayout;
+    /* EditLayout */
+    private EditLayout mEditLayout;
 
     int freeDayArrayCount = 7;
 
@@ -40,15 +40,15 @@ public class EditActivity extends AppCompatActivity {
     String imaginationHopeString;
 
     private void setUpViews() {
-        mAddLayout = new AddLayout(this);
-        mAddLayout.setUpViews(getWindow().getDecorView());
+        mEditLayout = new EditLayout(this);
+        mEditLayout.setUpViews(getWindow().getDecorView());
 
-        mAddLayout.addButton.setOnClickListener(new View.OnClickListener() {
+        mEditLayout.addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 String dialogStr = null;
-                if (mAddLayout.password.getText().toString().length() == 0) {
+                if (mEditLayout.password.getText().toString().length() == 0) {
                     dialogStr = "登録される情報は、今後削除・編集が出来ませんがよろしいですか？";
                 } else {
                     dialogStr = "入力情報に誤りはありませんか？";
@@ -78,34 +78,34 @@ public class EditActivity extends AppCompatActivity {
             }
         });
 
-        mAddLayout.createTutorial(this);
+//        mEditLayout.createTutorial(this);
     }
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add);
+        setContentView(R.layout.activity_edit);
         setUpViews();
     }
 
     public void convertViewValue() {
         // ToDo: ”mSearchLayout.”といちいちつけるのが冗長に感じる、気持ち悪い。
-        categoryRoleButton = findViewById(mAddLayout.categoryRole.getCheckedRadioButtonId());
+        categoryRoleButton = findViewById(mEditLayout.categoryRole.getCheckedRadioButtonId());
         categoryRoleString = categoryRoleButton.getText().toString();
-        displayNameString = mAddLayout.displayName.getText().toString();
-        passwordString = mAddLayout.password.getText().toString();
-        categorySnsButton = findViewById(mAddLayout.categorySns.getCheckedRadioButtonId());
+        displayNameString = mEditLayout.displayName.getText().toString();
+        passwordString = mEditLayout.password.getText().toString();
+        categorySnsButton = findViewById(mEditLayout.categorySns.getCheckedRadioButtonId());
         categorySnsString = categorySnsButton.getText().toString();
-        snsUserNameString = mAddLayout.snsUserName.getText().toString();
+        snsUserNameString = mEditLayout.snsUserName.getText().toString();
         for (int i = 0; i < freeDayArrayCount; i++) {
-            freeDayArrayList.add(mAddLayout.freeDay[i].isChecked());
+            freeDayArrayList.add(mEditLayout.freeDay[i].isChecked());
         }
-        whichChargeButton = findViewById(mAddLayout.whichCharge.getCheckedRadioButtonId());
+        whichChargeButton = findViewById(mEditLayout.whichCharge.getCheckedRadioButtonId());
         whichChargeString = whichChargeButton.getText().toString();
-        spinnerRegionInt = mAddLayout.spinnerRegion.getSelectedItemPosition();
-        spinnerSexInt = mAddLayout.spinnerSex.getSelectedItemPosition();
-        spinnerAgeInt = mAddLayout.spinnerAge.getSelectedItemPosition();
-        imaginationHopeString = mAddLayout.imaginationHope.getText().toString();
+        spinnerRegionInt = mEditLayout.spinnerRegion.getSelectedItemPosition();
+        spinnerSexInt = mEditLayout.spinnerSex.getSelectedItemPosition();
+        spinnerAgeInt = mEditLayout.spinnerAge.getSelectedItemPosition();
+        imaginationHopeString = mEditLayout.imaginationHope.getText().toString();
     }
 
     protected NCMBObject putUserInfo(NCMBObject userInfo) throws NCMBException {
@@ -128,16 +128,16 @@ public class EditActivity extends AppCompatActivity {
     public boolean validationCheck(String displayNameString, String snsUserNameString, String imaginationHopeString) {
         if (displayNameString.isEmpty() || snsUserNameString.isEmpty() || imaginationHopeString.isEmpty()) {
             if (displayNameString.isEmpty()) {
-                mAddLayout.displayName.setError(getString(R.string.display_name_input_error));
-                mAddLayout.displayName.setFocusable(true);
+                mEditLayout.displayName.setError(getString(R.string.display_name_input_error));
+                mEditLayout.displayName.setFocusable(true);
             }
             if (snsUserNameString.isEmpty()) {
-                mAddLayout.snsUserName.setError(getString(R.string.sns_user_name_input_error));
-                mAddLayout.snsUserName.setFocusable(true);
+                mEditLayout.snsUserName.setError(getString(R.string.sns_user_name_input_error));
+                mEditLayout.snsUserName.setFocusable(true);
             }
             if (imaginationHopeString.isEmpty()) {
-                mAddLayout.imaginationHope.setError(getString(R.string.imagination_input_error));
-                mAddLayout.imaginationHope.setFocusable(true);
+                mEditLayout.imaginationHope.setError(getString(R.string.imagination_input_error));
+                mEditLayout.imaginationHope.setFocusable(true);
             }
             return false;
         }

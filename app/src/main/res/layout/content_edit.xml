@@ -1,0 +1,402 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/back_button"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:padding="25dp"
+            android:layout_gravity="left"
+            android:src="@drawable/back_button"/>
+
+        <!-- 希望種別( :カメラマン、 :モデル、:どちらとも) -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/category_role_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="希望種別"
+                android:textSize="20dp" />
+
+            <ImageView
+                android:id="@+id/category_role_help"
+                android:layout_width="30dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="5dp"
+                android:padding="3dp"
+                android:gravity="left"
+                android:src="@drawable/help_image" />
+        </LinearLayout>
+
+        <RadioGroup
+            android:id="@+id/category_role"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+
+            android:orientation="vertical">
+
+            <RadioButton
+                android:id="@+id/category_role_cameraman"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="カメラマン" />
+
+            <RadioButton
+                android:id="@+id/category_role_model"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="モデル" />
+
+            <RadioButton
+                android:id="@+id/category_role_none"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="どちらとも" />
+        </RadioGroup>
+
+        <!-- 表示名(入力:そのまま使用、未入力:NG.同じ名前がある場合はNG→表示名で検索する時困る) -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/display_name_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="投稿表示名"
+                android:textSize="20dp" />
+
+            <ImageView
+                android:id="@+id/display_name_help"
+                android:layout_width="30dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="5dp"
+                android:padding="3dp"
+                android:gravity="left"
+                android:src="@drawable/help_image" />
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/display_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:hint="表示名"
+            android:inputType="text" />
+
+        <!--編集・削除パスワード(未入力可だが、未入力の場合、チェック時に注意文言を表示する)-->
+        <!-- 数字のみにしよう -->
+        <TextView
+            android:id="@+id/password_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="編集・削除パスワード"
+            android:textSize="20dp" />
+
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:hint="編集・削除パスワード"
+            android:inputType="textPassword" />
+
+        <!-- SNS種別(:Twitter、:instagram) -->
+        <TextView
+            android:id="@+id/category_sns_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="SNSの種類"
+            android:textSize="20dp" />
+
+        <RadioGroup
+            android:id="@+id/category_sns"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:orientation="vertical">
+
+            <RadioButton
+                android:id="@+id/category_sns_twitter"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="Twitter" />
+
+            <RadioButton
+                android:id="@+id/category_sns_instagram"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="instagram" />
+        </RadioGroup>
+
+        <!-- SNSのアカウント名 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/sns_user_name_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="SNSアカウント名"
+                android:textSize="20dp" />
+
+            <ImageView
+                android:id="@+id/sns_user_name_help"
+                android:layout_width="30dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="5dp"
+                android:padding="3dp"
+                android:gravity="left"
+                android:src="@drawable/help_image" />
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/sns_user_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:hint="SNSでのユーザ名"
+            android:inputType="text" />
+
+        <!-- URL -->
+        <!--<TextView-->
+        <!--android:id="@+id/photo_url_label"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginTop="5dp"-->
+        <!--android:text="写真のURL"-->
+        <!--android:textSize="20dp"/>-->
+        <!--<EditText-->
+        <!--android:id="@+id/photo_url"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_margin="8dp"-->
+        <!--android:hint="URL"-->
+        <!--android:inputType="text"/>-->
+
+        <!-- 空き日 -->
+        <TextView
+            android:id="@+id/free_day_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="空き日"
+            android:textSize="20dp" />
+
+        <LinearLayout
+            android:id="@+id/free_day"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp">
+
+            <CheckBox
+                android:id="@+id/free_day_mon"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="月" />
+
+            <CheckBox
+                android:id="@+id/free_day_tue"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="火" />
+
+            <CheckBox
+                android:id="@+id/free_day_wed"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="水" />
+
+            <CheckBox
+                android:id="@+id/free_day_thu"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="木" />
+
+            <CheckBox
+                android:id="@+id/free_day_fri"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="金" />
+
+            <CheckBox
+                android:id="@+id/free_day_sat"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:checked="true"
+                android:text="土" />
+
+            <CheckBox
+                android:id="@+id/free_day_sun"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:checked="true"
+                android:text="日" />
+        </LinearLayout>
+
+        <!-- 有償・無償 -->
+        <TextView
+            android:id="@+id/which_charge_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="有償・無償"
+            android:textSize="20dp" />
+
+        <RadioGroup
+            android:id="@+id/which_charge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:orientation="vertical">
+
+            <RadioButton
+                android:id="@+id/charge"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="有償" />
+
+            <RadioButton
+                android:id="@+id/no_charge"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="無償" />
+
+            <RadioButton
+                android:id="@+id/either"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="どちらでも" />
+        </RadioGroup>
+
+        <!-- 地域 -->
+        <TextView
+            android:id="@+id/region_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="地域"
+            android:textSize="20dp" />
+
+        <Spinner
+            android:id="@+id/spinner_region"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:entries="@array/region_item_add"
+            android:spinnerMode="dialog" />
+
+        <!-- 性別 -->
+        <TextView
+            android:id="@+id/sex_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="性別"
+            android:textSize="20dp" />
+
+        <Spinner
+            android:id="@+id/spinner_sex"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:entries="@array/sex_item"
+            android:spinnerMode="dialog" />
+
+        <!-- 年代 -->
+        <TextView
+            android:id="@+id/age_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="年代"
+            android:textSize="20dp" />
+
+        <Spinner
+            android:id="@+id/spinner_age"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:entries="@array/age_item_search"
+            android:spinnerMode="dialog" />
+
+        <!-- ざっくりイメージ -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/imagination_hope_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="撮りたい（撮られたい）イメージ"
+                android:textSize="20dp" />
+
+            <ImageView
+                android:id="@+id/imagination_hope_help"
+                android:layout_width="30dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="5dp"
+                android:padding="3dp"
+                android:gravity="left"
+                android:src="@drawable/help_image" />
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/imagination_hope"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_margin="8dp"
+            android:background="@color/colorEditTextBackground"
+            android:hint=""
+            android:maxLength="200"
+            android:maxLines="10" />
+
+        <TextView
+            android:id="@+id/imagination_text_count"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="8dp"
+            android:gravity="right"
+            android:text="0/200" />
+
+        <Button
+            android:id="@+id/add_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Add!" />
+
+    </LinearLayout>
+</ScrollView>

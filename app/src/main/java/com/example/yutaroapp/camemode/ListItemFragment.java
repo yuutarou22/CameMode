@@ -2,7 +2,6 @@ package com.example.yutaroapp.camemode;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -17,6 +16,15 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.example.yutaroapp.camemode.Activity.EditActivity;
+import com.nifcloud.mbaas.core.FindCallback;
+import com.nifcloud.mbaas.core.NCMBException;
+import com.nifcloud.mbaas.core.NCMBObject;
+import com.nifcloud.mbaas.core.NCMBQuery;
+
+import java.util.List;
 
 
 public class ListItemFragment extends Fragment {
@@ -67,16 +75,27 @@ public class ListItemFragment extends Fragment {
 
         final EditText editText = new EditText(getContext());
 
-        ImageView editButton = (ImageView) inflatedView.findViewById(R.id.edit_button);
+        final ImageView editButton = (ImageView) inflatedView.findViewById(R.id.edit_button);
         editButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View view) {
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getContext());
                 alertDialogBuilder.setTitle("編集・削除パスワードを入力してください")
+                        .setView(editText)
                         .setNeutralButton("編集する", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
 
+                                CheckPassword(categoryRole, snsUserName, sex, editText.getText().toString());
+                                if(Utility.isValidPassword){
+                                    Utility.isValidPassword = false;
+                                    Intent intent = new Intent(getContext(), EditActivity.class);
+                                    startActivity(intent);
+                                } else {
+                                    Toast.makeText(getContext(), "パスワード不一致", Toast.LENGTH_SHORT).show();
+                                }
+                                ViewGroup viewGroup = (ViewGroup) editText.getParent();
+                                viewGroup.removeView(editText);
                             }
                         }).setPositiveButton("戻る", new DialogInterface.OnClickListener() {
                             @Override
@@ -84,8 +103,16 @@ public class ListItemFragment extends Fragment {
                                 ViewGroup viewGroup = (ViewGroup) editText.getParent();
                                 viewGroup.removeView(editText);
                             }
-                        })
-                        .setView(editText);
+                        }).setOnDismissListener(new DialogInterface.OnDismissListener() {
+                            @Override
+                            public void onDismiss(DialogInterface dialog) {
+                                Log.i("MainActivity", "setOnDismissListenerが呼ばれました。");
+                                ViewGroup viewGroup = (ViewGroup) editText.getParent();
+                                if (viewGroup != null) {
+                                    viewGroup.removeView(editText);
+                                }
+                            }
+                        });
 
                 AlertDialog alertDialog = alertDialogBuilder.create();
                 alertDialog.setCanceledOnTouchOutside(false);
@@ -143,5 +170,37 @@ public class ListItemFragment extends Fragment {
         });
 
         return inflatedView;
+    }
+
+    /**
+     * 編集・削除パスワードがサーバにある情報と一致するか確認
+     *
+     * @return パスワードが一致:true　パスワードが不一致:false
+     */
+    private void CheckPassword(String categoryRole, String snsUserName, int sex, String inputText) {
+        final String mInputText = inputText;
+
+        // 種別、SNSユーザ名、性別で検索をかける
+        NCMBQuery<NCMBObject> query = new NCMBQuery<>("UserInfoData");
+        query.whereEqualTo("CategoryRole", categoryRole);
+        query.whereEqualTo("SNSUserName", snsUserName);
+        query.whereEqualTo("SpinnerSex", sex);
+        query.setLimit(1);
+
+        query.findInBackground(new FindCallback<NCMBObject>() {
+            @Override
+            public void done(List<NCMBObject> list, NCMBException e) {
+                if (e != null) {
+                    // エラー時
+                    Utility.isValidPassword = false;
+                } else {
+                    // 成功時
+                    // 検索した項目のパスワードと、入力されたパスワードが同じであれば、trueにする。
+                    if (mInputText.equals(list.get(0).getString("Password"))) {
+                        Utility.isValidPassword = true;
+                    }
+                }
+            }
+        });
     }
 }

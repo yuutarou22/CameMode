@@ -1,16 +1,19 @@
 package com.example.yutaroapp.camemode;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -59,6 +62,34 @@ public class ListItemFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 getFragmentManager().popBackStack();
+            }
+        });
+
+        final EditText editText = new EditText(getContext());
+
+        ImageView editButton = (ImageView) inflatedView.findViewById(R.id.edit_button);
+        editButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(final View view) {
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getContext());
+                alertDialogBuilder.setTitle("編集・削除パスワードを入力してください")
+                        .setNeutralButton("編集する", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+                            }
+                        }).setPositiveButton("戻る", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                ViewGroup viewGroup = (ViewGroup) editText.getParent();
+                                viewGroup.removeView(editText);
+                            }
+                        })
+                        .setView(editText);
+
+                AlertDialog alertDialog = alertDialogBuilder.create();
+                alertDialog.setCanceledOnTouchOutside(false);
+                alertDialog.show();
             }
         });
 

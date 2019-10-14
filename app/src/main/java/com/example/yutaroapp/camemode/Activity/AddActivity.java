@@ -54,7 +54,7 @@ public class AddActivity extends AppCompatActivity {
                     dialogStr = "入力情報に誤りはありませんか？";
                 }
 
-                new AlertDialog.Builder(AddActivity.this).setTitle(dialogStr)
+                AlertDialog alertDialog = new AlertDialog.Builder(AddActivity.this).setTitle(dialogStr)
                         .setNeutralButton("はい", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
@@ -67,10 +67,14 @@ public class AddActivity extends AppCompatActivity {
                                 }
                             }
                         }).setPositiveButton("いいえ", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                    }
-                }).show();
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+                            }
+                        }).create();
+
+                alertDialog.setCanceledOnTouchOutside(false);
+                alertDialog.show();
             }
         });
 

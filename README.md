@@ -177,3 +177,5 @@
 - Viewを両端に表示する http://blog.tappli.com/article/40838047.html
 - AlertDialogに入力可能なEditTextを乗っける https://programming-jissen.com/how-to-create-dialog-that-can-be-input/
 - 親Viewと子Viewの関連があると、ちゃんとremoveViewしないといけない。特にDialog http://sumahodays.sblo.jp/article/105586834.html
+- ダイアログが閉じるListenerを検知する https://programming-jissen.com/how-to-get-event-to-close-dialog/
+  - ちなみに、PositiveButton,NegativeButtonどちらともDismissListenerを通っちゃう。

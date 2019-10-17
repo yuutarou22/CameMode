@@ -4,6 +4,7 @@
     <string name="title_activity_add">AddActivity</string>
     <string name="title_activity_search">SearchActivity</string>
     <string name="title_activity_search_result">SearchResultActivity</string>
+    <string name="title_activity_edit">EditActivity</string>
 
     <string-array name="region_item_add">
         <item>北海道</item>

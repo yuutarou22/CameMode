@@ -54,6 +54,9 @@ public class Utility {
         return true;
     }
 
+    /* 編集・削除パスワードを確認する際に使うフラグ */
+    public static boolean isValidPassword = false;
+
     /* 各SNSへ遷移する処理 */
     public static void snsTranslationActivity(String snsUserName, String categorySns, Context context) {
         Uri uri;

@@ -27,7 +27,7 @@ import com.nifcloud.mbaas.core.NCMBQuery;
 import java.util.List;
 
 
-public class ListItemFragment extends Fragment {
+public class ListItemFragment extends Fragment implements UserInfoEditCheckTask.UserInfoEditCheckListener {
     String displayName;
     String categoryRole;
     String categorySNS;
@@ -44,6 +44,8 @@ public class ListItemFragment extends Fragment {
     String[] ageArray = {"10代", "20代", "30代", "40代", "50代", "60代以上"};
     String[] sexArray = {"未選択", "男性", "女性"};
     String[] regionArray = {"北海道", "東北", "関東", "北陸", "中部", "近畿", "四国", "中国", "九州", "沖縄"};
+
+    EditText editText = null;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -73,7 +75,7 @@ public class ListItemFragment extends Fragment {
             }
         });
 
-        final EditText editText = new EditText(getContext());
+        editText = new EditText(getContext());
 
         final ImageView editButton = (ImageView) inflatedView.findViewById(R.id.edit_button);
         editButton.setOnClickListener(new View.OnClickListener() {
@@ -85,17 +87,7 @@ public class ListItemFragment extends Fragment {
                         .setNeutralButton("編集する", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-
                                 CheckPassword(categoryRole, snsUserName, sex, editText.getText().toString());
-                                if(Utility.isValidPassword){
-                                    Utility.isValidPassword = false;
-                                    Intent intent = new Intent(getContext(), EditActivity.class);
-                                    startActivity(intent);
-                                } else {
-                                    Toast.makeText(getContext(), "パスワード不一致", Toast.LENGTH_SHORT).show();
-                                }
-                                ViewGroup viewGroup = (ViewGroup) editText.getParent();
-                                viewGroup.removeView(editText);
                             }
                         }).setPositiveButton("戻る", new DialogInterface.OnClickListener() {
                             @Override
@@ -177,8 +169,10 @@ public class ListItemFragment extends Fragment {
      *
      * @return パスワードが一致:true　パスワードが不一致:false
      */
-    private void CheckPassword(String categoryRole, String snsUserName, int sex, String inputText) {
-        final String mInputText = inputText;
+    private void CheckPassword(String categoryRole, String snsUserName, int sex, final String inputText) {
+        if (inputText.equals("") || inputText.length() == 0) {
+            return;
+        }
 
         // 種別、SNSユーザ名、性別で検索をかける
         NCMBQuery<NCMBObject> query = new NCMBQuery<>("UserInfoData");
@@ -186,6 +180,10 @@ public class ListItemFragment extends Fragment {
         query.whereEqualTo("SNSUserName", snsUserName);
         query.whereEqualTo("SpinnerSex", sex);
         query.setLimit(1);
+
+        // 検索処理タスクを生成
+        final UserInfoEditCheckTask editCheckTask = new UserInfoEditCheckTask();
+        editCheckTask.setListener(this);
 
         query.findInBackground(new FindCallback<NCMBObject>() {
             @Override
@@ -195,12 +193,20 @@ public class ListItemFragment extends Fragment {
                     Utility.isValidPassword = false;
                 } else {
                     // 成功時
-                    // 検索した項目のパスワードと、入力されたパスワードが同じであれば、trueにする。
-                    if (mInputText.equals(list.get(0).getString("Password"))) {
-                        Utility.isValidPassword = true;
-                    }
+                    editCheckTask.taskStart(list, inputText);
                 }
             }
         });
+    }
+
+    @Override
+    public void onSuccess() {
+        if(Utility.isValidPassword){
+            Utility.isValidPassword = false;
+            Intent intent = new Intent(getContext(), EditActivity.class);
+            startActivity(intent);
+        } else {
+            Toast.makeText(getContext(), "パスワード不一致", Toast.LENGTH_SHORT).show();
+        }
     }
 }

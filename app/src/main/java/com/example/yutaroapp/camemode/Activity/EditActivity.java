@@ -43,7 +43,7 @@ public class EditActivity extends AppCompatActivity {
         mEditLayout = new EditLayout(this);
         mEditLayout.setUpViews(getWindow().getDecorView());
 
-        mEditLayout.addButton.setOnClickListener(new View.OnClickListener() {
+        mEditLayout.updateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 

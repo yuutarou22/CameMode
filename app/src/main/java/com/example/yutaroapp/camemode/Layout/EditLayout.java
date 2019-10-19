@@ -3,6 +3,7 @@ package com.example.yutaroapp.camemode.Layout;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
+import android.media.Image;
 import android.os.Build;
 import android.os.Handler;
 import android.text.Editable;
@@ -31,6 +32,7 @@ public class EditLayout extends RelativeLayout {
 
     // レイアウト定義用
     public ImageView backButton;
+    public ImageView deleteButton;
     public RadioGroup categoryRole;
     public EditText displayName;
     public EditText password;
@@ -43,7 +45,7 @@ public class EditLayout extends RelativeLayout {
     public Spinner spinnerAge;
     public EditText imaginationHope;
     public TextView imaginationTextCount;
-    public Button addButton; // 登録ボタン
+    public Button updateButton; // 更新ボタン
     /* HELPボタン */
     public ImageView CategoryRoleHelp;
     public ImageView DisplayNameHelp;
@@ -84,6 +86,13 @@ public class EditLayout extends RelativeLayout {
                 ((Activity)mContext).finish();
             }
         });
+        deleteButton = (ImageView) view.findViewById(R.id.delete_button);
+        deleteButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //ToDo: 削除処理
+            }
+        });
         categoryRole = (RadioGroup) view.findViewById(R.id.category_role);
         displayName = (EditText) view.findViewById(R.id.display_name);
         password = (EditText) view.findViewById(R.id.password);
@@ -117,7 +126,7 @@ public class EditLayout extends RelativeLayout {
             ImaginationHopeHelp.setTooltipText(getResources().getString(R.string.tooltip_imagination));
         }
 
-        addButton = (Button) view.findViewById(R.id.add_button);
+        updateButton = (Button) view.findViewById(R.id.update_button);
 
         imaginationHope.addTextChangedListener(new TextWatcher() {
             @Override

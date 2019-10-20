@@ -21,6 +21,7 @@ import android.widget.TextView;
 
 import com.example.yutaroapp.camemode.Activity.AddActivity;
 import com.example.yutaroapp.camemode.R;
+import com.example.yutaroapp.camemode.Utility;
 
 import uk.co.deanwild.materialshowcaseview.MaterialShowcaseSequence;
 import uk.co.deanwild.materialshowcaseview.MaterialShowcaseView;
@@ -119,6 +120,8 @@ public class EditLayout extends RelativeLayout {
         SnsUserNameHelp = (ImageView) view.findViewById(R.id.sns_user_name_help);
         ImaginationHopeHelp = (ImageView) view.findViewById(R.id.imagination_hope_help);
 
+        setUserInfoDetail();
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             CategoryRoleHelp.setTooltipText(getResources().getString(R.string.tooltip_category));
             DisplayNameHelp.setTooltipText(getResources().getString(R.string.tooltip_display_name));
@@ -175,5 +178,21 @@ public class EditLayout extends RelativeLayout {
                 sequence.start();
             }
         });
+    }
+
+    public void setUserInfoDetail() {
+        // categoryRole
+        displayName.setText(Utility.editUserInfoData.getString("DisplayName"));
+        password.setText(Utility.editUserInfoData.getString("Password"));
+        // categorySns
+        snsUserName.setText(Utility.editUserInfoData.getString("SNSUserName"));
+
+        // freeDay
+
+        // whichCharge
+        // spinnerRegion
+        // spinnerSex
+        // spinnerAge
+        imaginationHope.setText(Utility.editUserInfoData.getString("ImaginationHope"));
     }
 }

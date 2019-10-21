@@ -181,18 +181,43 @@ public class EditLayout extends RelativeLayout {
     }
 
     public void setUserInfoDetail() {
-        // categoryRole
+
+        String categoryRoleStr = Utility.editUserInfoData.getString("CategoryRole");
+        if (categoryRoleStr.equals(R.string.cameraman)) {
+            categoryRole.check(R.id.category_role_cameraman);
+        } else if (categoryRoleStr.equals(R.string.model)) {
+            categoryRole.check(R.id.category_role_model);
+        } else {
+            categoryRole.check(R.id.category_role_none);
+        }
+
         displayName.setText(Utility.editUserInfoData.getString("DisplayName"));
         password.setText(Utility.editUserInfoData.getString("Password"));
-        // categorySns
+
+        String categorySnsStr = Utility.editUserInfoData.getString("CategorySNS");
+        if (categorySnsStr.equals("Twitter")) {
+            categorySns.check(R.id.category_sns_twitter);
+        } else {
+            categorySns.check(R.id.category_sns_instagram);
+        }
+
         snsUserName.setText(Utility.editUserInfoData.getString("SNSUserName"));
 
         // freeDay
 
-        // whichCharge
-        // spinnerRegion
-        // spinnerSex
-        // spinnerAge
+        String whichChargeStr = Utility.editUserInfoData.getString("WhichCharge");
+        if (whichChargeStr.equals("有償")) {
+            whichCharge.check(R.id.charge);
+        } else if (whichChargeStr.equals("無償")) {
+            whichCharge.check(R.id.no_charge);
+        } else {
+            whichCharge.check(R.id.either);
+        }
+
+        spinnerRegion.setSelection(Utility.editUserInfoData.getInt("SpinnerRegionInt"));
+        spinnerSex.setSelection(Utility.editUserInfoData.getInt("SpinnerSex"));
+        spinnerAge.setSelection(Utility.editUserInfoData.getInt("SpinnerAgeInt"));
+
         imaginationHope.setText(Utility.editUserInfoData.getString("ImaginationHope"));
     }
 }

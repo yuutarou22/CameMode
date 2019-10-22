@@ -158,7 +158,7 @@
 未選択の場合は、全検索にするようデフォルト値を設定する。
 - 何度も操作していると、MainActivityのリスト項目の下がだんだん広がる。
 
-## References
+## 参考文献
 - ボタンを等間隔で配置する https://qiita.com/k_keisuke/items/fa56434dc11ec6608f67
 - RecyclerViewの基本的な実装 https://qiita.com/HideMatsu/items/a9ab48608e4f681d31fe
 - RecyclerViewのタッチイベント実装（どこに実装するのが正解かわからん！） https://qiita.com/konifar/items/5ad771b3e3a78e1eda4f
@@ -179,3 +179,5 @@
 - 親Viewと子Viewの関連があると、ちゃんとremoveViewしないといけない。特にDialog http://sumahodays.sblo.jp/article/105586834.html
 - ダイアログが閉じるListenerを検知する https://programming-jissen.com/how-to-get-event-to-close-dialog/
   - ちなみに、PositiveButton,NegativeButtonどちらともDismissListenerを通っちゃう。
+- ラジオボタンのチェックをあらかじめ設定する https://seesaawiki.jp/w/moonlight_aska/d/%A5%E9%A5%B8%A5%AA%A5%DC%A5%BF%A5%F3%A4%CE%A5%C1%A5%A7%A5%C3%A5%AF%BE%F5%C2%D6%A4%F2%C0%DF%C4%EA%2C%20%BC%E8%C6%C0%A4%B9%A4%EB
+- スピナー（プルダウン）の選択を設定する https://onestepbeyond7830.wordpress.com/2016/10/16/androidspinner選択値を強制的に変更する方法/

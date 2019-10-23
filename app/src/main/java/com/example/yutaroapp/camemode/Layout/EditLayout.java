@@ -2,10 +2,12 @@ package com.example.yutaroapp.camemode.Layout;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.media.Image;
 import android.os.Build;
 import android.os.Handler;
+import android.support.v7.app.AlertDialog;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
@@ -20,8 +22,10 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.yutaroapp.camemode.Activity.AddActivity;
+import com.example.yutaroapp.camemode.Activity.EditActivity;
 import com.example.yutaroapp.camemode.R;
 import com.example.yutaroapp.camemode.Utility;
+import com.nifcloud.mbaas.core.NCMBException;
 
 import uk.co.deanwild.materialshowcaseview.MaterialShowcaseSequence;
 import uk.co.deanwild.materialshowcaseview.MaterialShowcaseView;
@@ -91,7 +95,27 @@ public class EditLayout extends RelativeLayout {
         deleteButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                //ToDo: 削除処理
+                AlertDialog alertDialog = new AlertDialog.Builder(mContext).setTitle("削除して本当によろしいですか？")
+                        .setNeutralButton("はい", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                // 削除処理
+                                try {
+                                    Utility.editUserInfoData.deleteObject();
+                                    ((Activity)mContext).finish();
+                                } catch (NCMBException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        }).setPositiveButton("いいえ", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+                            }
+                        }).create();
+
+                alertDialog.setCanceledOnTouchOutside(false);
+                alertDialog.show();
             }
         });
         categoryRole = (RadioGroup) view.findViewById(R.id.category_role);

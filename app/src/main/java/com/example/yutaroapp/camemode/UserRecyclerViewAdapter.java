@@ -116,6 +116,7 @@ public class UserRecyclerViewAdapter extends RecyclerView.Adapter<ViewHolder> {
         } else {
             sex = "女性";
         }
+        viewHolder.mSex.setText(sex);
     }
 
     public void setOnClickItemListener(View.OnClickListener listener) {

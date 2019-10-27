@@ -101,6 +101,7 @@ public class EditLayout extends RelativeLayout {
                             public void onClick(DialogInterface dialog, int which) {
                                 // 削除処理
                                 try {
+                                    // ToDo: 再描画処理
                                     Utility.editUserInfoData.deleteObject();
                                     ((Activity)mContext).finish();
                                 } catch (NCMBException e) {
@@ -175,31 +176,6 @@ public class EditLayout extends RelativeLayout {
             @Override
             public void afterTextChanged(Editable editable) {
 
-            }
-        });
-    }
-
-    public void createTutorial(final AddActivity activity) {
-        new Handler().post(new Runnable() {
-            @Override
-            public void run() {
-                ShowcaseConfig config = new ShowcaseConfig();
-                config.setDelay(100);
-                config.setFadeDuration(200);
-
-                MaterialShowcaseSequence sequence = new MaterialShowcaseSequence(activity, "R.id.category_role_help");
-                sequence.setConfig(config);
-
-                sequence.addSequenceItem(
-                        new MaterialShowcaseView.Builder(activity)
-                                .setTarget(CategoryRoleHelp)
-                                .setContentText(R.string.add_tutorial_01)
-                                .setDismissText(R.string.tutorial_ok_text)
-                                .setDismissOnTouch(true)
-                                .build()
-                );
-
-                sequence.start();
             }
         });
     }

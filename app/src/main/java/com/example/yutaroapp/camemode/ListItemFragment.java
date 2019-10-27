@@ -41,7 +41,7 @@ public class ListItemFragment extends Fragment implements UserInfoEditCheckTask.
 
     // 表示用文字列配列
     // ToDo: Stringsに定義しておくことはできないか
-    String[] ageArray = {"10代", "20代", "30代", "40代", "50代", "60代以上"};
+    String[] ageArray = {"未選択", "10代", "20代", "30代", "40代", "50代", "60代以上"};
     String[] sexArray = {"未選択", "男性", "女性"};
     String[] regionArray = {"北海道", "東北", "関東", "北陸", "中部", "近畿", "四国", "中国", "九州", "沖縄"};
 
@@ -205,8 +205,16 @@ public class ListItemFragment extends Fragment implements UserInfoEditCheckTask.
             Utility.isValidPassword = false;
             Intent intent = new Intent(getContext(), EditActivity.class);
             startActivity(intent);
+            closeFragment();
         } else {
             Toast.makeText(getContext(), "パスワード不一致", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    /**
+     * 編集画面へ遷移する際、ユーザ詳細Fragmentを閉じる
+     */
+    private void closeFragment() {
+        getFragmentManager().beginTransaction().remove(this).commit();
     }
 }

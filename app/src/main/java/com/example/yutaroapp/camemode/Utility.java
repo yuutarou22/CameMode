@@ -15,6 +15,9 @@ public class Utility {
     /* UserInfoDataクラスを格納するList */
     public static List<NCMBObject> userInfoDataList = new ArrayList<NCMBObject>();
 
+    /* 編集・削除パスワード照合用 */
+    public static NCMBObject editUserInfoData = null;
+
     /* ログの出力(検索用) */
     public static void onCreateLog(String categoryRoleString, List<Boolean> freeDayArrayList,
                                    String whichChargeString, int spinnerSexInt, int spinnerAgeInt) {

@@ -23,6 +23,7 @@ public class UserInfoEditCheckTask {
         // 検索した項目のパスワードと、入力されたパスワードが同じであれば、trueにする。
         if (inputText.equals(list.get(0).getString("Password"))) {
             Utility.isValidPassword = true;
+            Utility.editUserInfoData = list.get(0);
         }
 
         if (listener != null) {

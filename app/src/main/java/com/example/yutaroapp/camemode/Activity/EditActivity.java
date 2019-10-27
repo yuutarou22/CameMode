@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import com.example.yutaroapp.camemode.Layout.EditLayout;
 import com.example.yutaroapp.camemode.R;
+import com.example.yutaroapp.camemode.Utility;
 import com.nifcloud.mbaas.core.DoneCallback;
 import com.nifcloud.mbaas.core.NCMBException;
 import com.nifcloud.mbaas.core.NCMBObject;
@@ -43,15 +44,15 @@ public class EditActivity extends AppCompatActivity {
         mEditLayout = new EditLayout(this);
         mEditLayout.setUpViews(getWindow().getDecorView());
 
-        mEditLayout.addButton.setOnClickListener(new View.OnClickListener() {
+        mEditLayout.updateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 String dialogStr = null;
                 if (mEditLayout.password.getText().toString().length() == 0) {
-                    dialogStr = "登録される情報は、今後削除・編集が出来ませんがよろしいですか？";
+                    dialogStr = "[更新]登録される情報は、今後削除・編集が出来ませんがよろしいですか？";
                 } else {
-                    dialogStr = "入力情報に誤りはありませんか？";
+                    dialogStr = "[更新]入力情報に誤りはありませんか？";
                 }
 
                 AlertDialog alertDialog = new AlertDialog.Builder(EditActivity.this).setTitle(dialogStr)
@@ -60,7 +61,7 @@ public class EditActivity extends AppCompatActivity {
                             public void onClick(DialogInterface dialog, int which) {
                                 convertViewValue();
                                 if (validationCheck(displayNameString, snsUserNameString, imaginationHopeString)) {
-                                    pushUserData();
+                                    updateUserData();
                                     freeDayArrayList.clear();
                                     setResult(RESULT_OK);
                                     finish();
@@ -144,10 +145,10 @@ public class EditActivity extends AppCompatActivity {
         return true;
     }
 
-    public void pushUserData() {
+    public void updateUserData() {
         NCMBObject saveUserInfoData = null;
         try {
-            saveUserInfoData = putUserInfo(new NCMBObject("UserInfoData"));
+            saveUserInfoData = putUserInfo(Utility.editUserInfoData);
         } catch (NCMBException e) {
             e.printStackTrace();
         }
@@ -156,10 +157,10 @@ public class EditActivity extends AppCompatActivity {
             public void done(NCMBException e) {
                 if (e != null) {
                     // error
-                    Toast.makeText(getApplicationContext(), R.string.data_put_error, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "データ更新エラー", Toast.LENGTH_SHORT).show();
                 } else {
                     // success
-                    Toast.makeText(getApplicationContext(), R.string.data_put_success, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "データ更新成功", Toast.LENGTH_SHORT).show();
                 }
             }
         });

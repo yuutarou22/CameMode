@@ -194,3 +194,8 @@
   - ちなみに、PositiveButton,NegativeButtonどちらともDismissListenerを通っちゃう。
 - ラジオボタンのチェックをあらかじめ設定する https://seesaawiki.jp/w/moonlight_aska/d/%A5%E9%A5%B8%A5%AA%A5%DC%A5%BF%A5%F3%A4%CE%A5%C1%A5%A7%A5%C3%A5%AF%BE%F5%C2%D6%A4%F2%C0%DF%C4%EA%2C%20%BC%E8%C6%C0%A4%B9%A4%EB
 - スピナー（プルダウン）の選択を設定する https://onestepbeyond7830.wordpress.com/2016/10/16/androidspinner選択値を強制的に変更する方法/
+
+## 補足事項
+- 使用しているリソースは「ICOOON MONO」さんからお借りしています。商用利用も可能です。
+  - https://icooon-mono.com/
+- 当プロジェクトは、公開リポジトリにしておりますが、APIキーを記載したConfigファイルのみ非公開のためビルドできません🙇‍♂️

@@ -204,7 +204,7 @@ public class ListItemFragment extends Fragment implements UserInfoEditCheckTask.
         if(Utility.isValidPassword){
             Utility.isValidPassword = false;
             Intent intent = new Intent(getContext(), EditActivity.class);
-            startActivity(intent);
+            getActivity().startActivityForResult(intent, Utility.REQUEST_CODE);
             closeFragment();
         } else {
             Toast.makeText(getContext(), "パスワード不一致", Toast.LENGTH_SHORT).show();

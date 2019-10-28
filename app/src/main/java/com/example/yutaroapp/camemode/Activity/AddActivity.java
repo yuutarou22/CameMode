@@ -74,6 +74,7 @@ public class AddActivity extends AppCompatActivity {
                         }).create();
 
                 alertDialog.setCanceledOnTouchOutside(false);
+                alertDialog.setIcon(R.drawable.alert_danger);
                 alertDialog.show();
             }
         });

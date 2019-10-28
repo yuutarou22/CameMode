@@ -29,9 +29,6 @@ public class MainActivity extends AppCompatActivity {
     /* MainLayout */
     private MainLayout mMainLayout;
 
-    /* onActivityResultで用いるREQUEST_CODE */
-    private static final int REQUEST_CODE = 1;
-
     /* UserInfoDataクラスのデータを格納するList */
     List<NCMBObject> userInfoDataList = new ArrayList<NCMBObject>();
 
@@ -59,12 +56,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public static void startActivityforResult(Activity activity, Intent intent) {
-        activity.startActivityForResult(intent, REQUEST_CODE);
+        activity.startActivityForResult(intent, Utility.REQUEST_CODE);
     }
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         switch (requestCode) {
-            case REQUEST_CODE:
+            case Utility.REQUEST_CODE:
                 if (resultCode == RESULT_OK || resultCode == RESULT_CANCELED) {
                     query.addOrderByDescending("updateDate");
                     query.setLimit(15);

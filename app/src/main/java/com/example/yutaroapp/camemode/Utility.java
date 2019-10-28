@@ -52,6 +52,9 @@ public class Utility {
         Log.d("onCreateLog", "imaginationHopeString: " + imaginationHopeString);
     }
 
+    /* 編集、削除、または追加処理後、MainActivityに戻ってきたとき描画更新処理をするためのリクエストコード */
+    public static final int REQUEST_CODE = 1;
+
     /* バリデーションチェック */
     public boolean validationCheck() {
         return true;

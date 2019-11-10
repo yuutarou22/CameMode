@@ -198,4 +198,6 @@
 ## 補足事項
 - 使用しているリソースは「ICOOON MONO」さんからお借りしています。商用利用も可能です。
   - https://icooon-mono.com/
+- 当アプリのロゴフォントは「Phenomena Bold」です。
+  - https://www.fontfabric.com/fonts/phenomena/
 - 当プロジェクトは、公開リポジトリにしておりますが、APIキーを記載したConfigファイルのみ非公開のためビルドできません🙇‍♂️

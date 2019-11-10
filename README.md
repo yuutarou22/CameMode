@@ -171,6 +171,16 @@
 - パスワード入力時は、確認用として２回入力してもらうべきでは。
 - DBに削除フラグを立てて、日次バッチなどで完全削除するほうが良いのでは。
 
+## スプラッシュ画面の実装
+- 横長のロゴとアイコンの画像を表示させようとしたが、うまくいかなかった。
+  - ブランチ：0032_スプラッシュの実装
+- 以下のサイトを参考に実装している
+  - https://minpro.net/splash-screen
+  - http://sakebook.hatenablog.com/entry/2016/06/01/031950 (参考)
+  - http://chiiia12.hatenablog.jp/entry/2018/10/30/184328 (参考)
+  - https://developer.android.com/guide/topics/resources/drawable-resource?hl=ja (参考)
+  - https://dev.classmethod.jp/smartphone/android/android-ui-design-layer-list/ (参考)
+
 ## 参考文献
 - ボタンを等間隔で配置する https://qiita.com/k_keisuke/items/fa56434dc11ec6608f67
 - RecyclerViewの基本的な実装 https://qiita.com/HideMatsu/items/a9ab48608e4f681d31fe

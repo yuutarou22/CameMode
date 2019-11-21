@@ -57,17 +57,17 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(this, TutorialPagerActivity.class);
             startActivity(intent);
             finish();
+        } else {
+            setContentView(R.layout.activity_main);
+            setupViews();
+
+            NCMB.initialize(this.getApplicationContext(), Config.getApplicationKey(), Config.getClientKey());
+
+            // updateDateフィールドの新しい順にデータ取得し、ListViewに出力
+            query.addOrderByDescending("updateDate");
+            query.setLimit(15);
+            applyUserInfoDataList(query, userInfoDataList);
         }
-
-        setContentView(R.layout.activity_main);
-        setupViews();
-
-        NCMB.initialize(this.getApplicationContext(), Config.getApplicationKey(), Config.getClientKey());
-
-        // updateDateフィールドの新しい順にデータ取得し、ListViewに出力
-        query.addOrderByDescending("updateDate");
-        query.setLimit(15);
-        applyUserInfoDataList(query, userInfoDataList);
     }
 
     public static void startActivityforResult(Activity activity, Intent intent) {

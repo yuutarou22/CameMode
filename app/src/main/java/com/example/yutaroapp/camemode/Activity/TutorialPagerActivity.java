@@ -1,6 +1,8 @@
 package com.example.yutaroapp.camemode.Activity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -42,6 +44,11 @@ public class TutorialPagerActivity extends AppCompatActivity {
     // 引数のViewは、TutorialPagerFragment3の「始めるボタン」
     public void onClickStartActivity(View view) {
         Intent intent = new Intent(this, MainActivity.class);
+        SharedPreferences sp = getSharedPreferences("DataSave", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sp.edit();
+        editor.putBoolean("isClosedTutorial", true);
+        editor.apply();
+
         startActivity(intent);
         finish();
     }

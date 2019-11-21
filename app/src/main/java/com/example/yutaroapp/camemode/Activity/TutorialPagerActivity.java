@@ -1,5 +1,6 @@
 package com.example.yutaroapp.camemode.Activity;
 
+import android.content.Intent;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -36,5 +37,12 @@ public class TutorialPagerActivity extends AppCompatActivity {
     public void onClickGoToTop(View view) {
         currentPage = 0;
         pager.setCurrentItem(currentPage);
+    }
+
+    // 引数のViewは、TutorialPagerFragment3の「始めるボタン」
+    public void onClickStartActivity(View view) {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+        finish();
     }
 }

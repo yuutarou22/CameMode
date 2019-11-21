@@ -3,6 +3,7 @@ package com.example.yutaroapp.camemode.Activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.AppLaunchChecker;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -45,6 +46,17 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         setTheme(R.style.AppTheme_NoActionBar);
         super.onCreate(savedInstanceState);
+
+        boolean before = AppLaunchChecker.hasStartedFromLauncher(getApplicationContext());
+        AppLaunchChecker.onActivityCreate(this);
+        boolean after = AppLaunchChecker.hasStartedFromLauncher(getApplicationContext());
+
+        if (!before && after) {
+            Intent intent = new Intent(this, TutorialPagerActivity.class);
+            startActivity(intent);
+            finish();
+        }
+
         setContentView(R.layout.activity_main);
         setupViews();
 

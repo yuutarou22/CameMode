@@ -1,8 +1,12 @@
 package com.example.yutaroapp.camemode.Activity;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.support.v4.app.AppLaunchChecker;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -45,15 +49,25 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         setTheme(R.style.AppTheme_NoActionBar);
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        setupViews();
 
-        NCMB.initialize(this.getApplicationContext(), Config.getApplicationKey(), Config.getClientKey());
+        SharedPreferences sp = getSharedPreferences("DataSave", Context.MODE_PRIVATE);
+        sp.getBoolean("isClosedTutorial", false);
 
-        // updateDateフィールドの新しい順にデータ取得し、ListViewに出力
-        query.addOrderByDescending("updateDate");
-        query.setLimit(15);
-        applyUserInfoDataList(query, userInfoDataList);
+        if (!sp.getBoolean("isClosedTutorial", false)) {
+            Intent intent = new Intent(this, TutorialPagerActivity.class);
+            startActivity(intent);
+            finish();
+        } else {
+            setContentView(R.layout.activity_main);
+            setupViews();
+
+            NCMB.initialize(this.getApplicationContext(), Config.getApplicationKey(), Config.getClientKey());
+
+            // updateDateフィールドの新しい順にデータ取得し、ListViewに出力
+            query.addOrderByDescending("updateDate");
+            query.setLimit(15);
+            applyUserInfoDataList(query, userInfoDataList);
+        }
     }
 
     public static void startActivityforResult(Activity activity, Intent intent) {

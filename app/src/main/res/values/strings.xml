@@ -5,6 +5,7 @@
     <string name="title_activity_search">SearchActivity</string>
     <string name="title_activity_search_result">SearchResultActivity</string>
     <string name="title_activity_edit">EditActivity</string>
+    <string name="title_activity_tutorial_pager">TutorialPagerActivity</string>
 
     <string-array name="region_item_add">
         <item>北海道</item>
@@ -93,5 +94,8 @@
     <!-- 遷移URL -->
     <string name="twitter_url">https://twitter.com/</string>
     <string name="instagram_url">https://www.instagram.com/</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

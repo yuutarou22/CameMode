@@ -182,6 +182,9 @@
   - https://dev.classmethod.jp/smartphone/android/android-ui-design-layer-list/ (参考)
 
 ## 参考文献
+- 初回起動時のみ実行する　https://qiita.com/inuko/items/399a4431941dd6b3160b
+http://programming-cafe.com/android/sharedpreferences/first-launch-the-application
+（実際には使ってない。SharedPreferencesのデフォルト値を利用）
 - ボタンを等間隔で配置する https://qiita.com/k_keisuke/items/fa56434dc11ec6608f67
 - RecyclerViewの基本的な実装 https://qiita.com/HideMatsu/items/a9ab48608e4f681d31fe
 - RecyclerViewのタッチイベント実装（どこに実装するのが正解かわからん！） https://qiita.com/konifar/items/5ad771b3e3a78e1eda4f

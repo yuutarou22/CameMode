@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.net.Uri;
 import android.util.Log;
 
-import com.example.yutaroapp.camemode.Activity.MainActivity;
 import com.nifcloud.mbaas.core.NCMBObject;
 
 import java.util.ArrayList;

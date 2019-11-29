@@ -5,9 +5,30 @@
     android:layout_height="match_parent"
     tools:context=".TutorialPagerFragment.TutorialPagerFragment2">
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:gravity="center_vertical"
+            android:layout_gravity="center"
+            android:paddingHorizontal="35dp"
+            android:text="@string/tutprial_pager_2" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="5"
+            android:src="@drawable/tutorial_pager_img_2" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2" />
+    </LinearLayout>
 
 </FrameLayout>

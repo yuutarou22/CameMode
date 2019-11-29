@@ -95,7 +95,9 @@
     <string name="twitter_url">https://twitter.com/</string>
     <string name="instagram_url">https://www.instagram.com/</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-
+    <!--  初回起動時のtutorialページャの文言 -->
+    <string name="tutprial_pager_1">このアプリは、カメラマンとモデルの\n「ポートレート撮影したい」という思いを叶えるためのアプリです。</string>
+    <string name="tutprial_pager_2">①　撮影したいモデル、撮影してもらいたいカメラマンを探します。</string>
+    <string name="tutprial_pager_3">②　条件に合う人が見つかったら各SNS上でやり取りをし、実際に撮影をします。</string>
+    <string name="tutprial_pager_4">人に迷惑かけるようなことはやめましょう！\n\nキモいし気分悪いからな！\nちゃんと守れるお友だちは、下のボタンをタップ！</string>
 </resources>

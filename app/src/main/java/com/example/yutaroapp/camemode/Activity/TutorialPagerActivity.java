@@ -36,8 +36,8 @@ public class TutorialPagerActivity extends AppCompatActivity {
         pager.setCurrentItem(currentPage);
     }
 
-    public void onClickGoToTop(View view) {
-        currentPage = 0;
+    public void onClickBack(View view) {
+        currentPage--;
         pager.setCurrentItem(currentPage);
     }
 

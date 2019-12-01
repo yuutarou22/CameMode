@@ -182,6 +182,7 @@
   - https://dev.classmethod.jp/smartphone/android/android-ui-design-layer-list/ (参考)
 
 ## ImageButton
+scaleType
 
 ## 参考文献
 - 初回起動時のみ実行する　https://qiita.com/inuko/items/399a4431941dd6b3160b

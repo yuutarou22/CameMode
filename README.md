@@ -181,8 +181,13 @@
   - https://developer.android.com/guide/topics/resources/drawable-resource?hl=ja (参考)
   - https://dev.classmethod.jp/smartphone/android/android-ui-design-layer-list/ (参考)
 
-## ImageButton
-scaleType
+## ImageButtonの画像がはみ出す時の対応
+scaleTypeを「CENTER_CROP」に指定する
+http://adash-android.jp.net/imagebutton%E3%81%A7%E3%83%9C%E3%82%BF%E3%83%B3%E5%86%85%E3%81%AB%E7%94%BB%E5%83%8F%E3%82%92%E8%A1%A8%E7%A4%BA%E3%81%99%E3%82%8B/
+
+## ImageButtonの背景の灰色枠を消す対応
+backgroundに「@null」か「#00000000」を指定する
+https://love-fukushima.hatenadiary.org/entry/20120111/1326291791
 
 ## 参考文献
 - 初回起動時のみ実行する　https://qiita.com/inuko/items/399a4431941dd6b3160b

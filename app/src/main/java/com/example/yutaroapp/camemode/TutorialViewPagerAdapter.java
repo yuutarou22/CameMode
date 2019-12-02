@@ -7,9 +7,10 @@ import android.support.v4.app.FragmentPagerAdapter;
 import com.example.yutaroapp.camemode.TutorialPagerFragment.TutorialPagerFragment1;
 import com.example.yutaroapp.camemode.TutorialPagerFragment.TutorialPagerFragment2;
 import com.example.yutaroapp.camemode.TutorialPagerFragment.TutorialPagerFragment3;
+import com.example.yutaroapp.camemode.TutorialPagerFragment.TutorialPagerFragment4;
 
 public class TutorialViewPagerAdapter extends FragmentPagerAdapter {
-    private static final int PAGE_NUM = 3;
+    private static final int PAGE_NUM = 4;
 
     public TutorialViewPagerAdapter(FragmentManager fm) {
         super(fm);
@@ -25,8 +26,11 @@ public class TutorialViewPagerAdapter extends FragmentPagerAdapter {
             case 1:
                 fragment = new TutorialPagerFragment2();
                 break;
-            default:
+            case 2:
                 fragment = new TutorialPagerFragment3();
+                break;
+            default:
+                fragment = new TutorialPagerFragment4();
         }
         return fragment;
     }

@@ -5,26 +5,48 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".Activity.TutorialPagerActivity">
+
+
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <Button
-            android:onClick="onClickGoToTop"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="先頭へ" />
-        <Button
-            android:onClick="onClickNext"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="次へ" />
-    </LinearLayout>
-    <LinearLayout
+        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <android.support.v4.view.ViewPager
-            android:id="@+id/tutorial_pager"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+
+        <Button
+            android:onClick="onClickBack"
+            android:layout_gravity="center"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="＜" />
+
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="8">
+
+            <ImageView
+                android:src="@mipmap/logo"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2"/>
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/tutorial_pager"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="8"/>
+        </LinearLayout>
+
+        <Button
+            android:onClick="onClickNext"
+            android:layout_gravity="center"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="＞" />
+
     </LinearLayout>
 </LinearLayout>

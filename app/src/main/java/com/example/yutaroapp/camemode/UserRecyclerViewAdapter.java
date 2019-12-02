@@ -2,14 +2,13 @@ package com.example.yutaroapp.camemode;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.Intent;
-import android.content.res.ColorStateList;
-import android.net.Uri;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.widget.RecyclerView;
 import android.transition.Slide;
 import android.util.Log;
@@ -17,7 +16,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.ImageButton;
 
 import com.nifcloud.mbaas.core.NCMBObject;
 
@@ -93,7 +92,8 @@ public class UserRecyclerViewAdapter extends RecyclerView.Adapter<ViewHolder> {
         }
         viewHolder.mLineView.setBackgroundColor(color);
 
-        Button snsTransitionButton = (Button) viewHolder.mSnsTranslationButton;
+        ImageButton snsTransitionButton = (ImageButton) viewHolder.mSnsTranslationButton;
+        snsTransitionButton.setImageDrawable(setSNSImageButton(list.get(position).getCategorySns()));
         snsTransitionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -168,5 +168,16 @@ public class UserRecyclerViewAdapter extends RecyclerView.Adapter<ViewHolder> {
         bundle.putInt("SpinnerSex", SelectedUserInfo.getInt("SpinnerSex"));
         bundle.putString("WhichCharge", SelectedUserInfo.getString("WhichCharge"));
         return bundle;
+    }
+
+    /*  各SNSへ遷移するボタンの画像 */
+    private Drawable setSNSImageButton(String categorySns) {
+        Drawable drawable;
+        if (categorySns.equals("Twitter")) {
+            drawable = ResourcesCompat.getDrawable(mContext.getResources(), R.drawable.image_twitter_button, null);
+        } else {
+            drawable = ResourcesCompat.getDrawable(mContext.getResources(), R.drawable.image_instagram_button, null);
+        }
+        return drawable;
     }
 }

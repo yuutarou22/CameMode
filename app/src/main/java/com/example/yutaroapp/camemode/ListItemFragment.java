@@ -12,8 +12,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -154,7 +154,7 @@ public class ListItemFragment extends Fragment implements UserInfoEditCheckTask.
         TextView imaginationHopeTextView = (TextView) inflatedView.findViewById(R.id.imagination_hope);
         imaginationHopeTextView.setText(imaginationHope);
 
-        Button snsTransitionButton = (Button) inflatedView.findViewById(R.id.sns_transition);
+        ImageButton snsTransitionButton = (ImageButton) inflatedView.findViewById(R.id.sns_transition);
         snsTransitionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

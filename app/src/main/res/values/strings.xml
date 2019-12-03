@@ -72,9 +72,9 @@
 
     <!-- チュートリアル文言 -->
     <string name="tutorial_ok_text">[OK]</string>
-    <string name="main_tutorial_01">CameMode はカメラマンとモデルを繋げる手助けをするアプリです。</string>
-    <string name="main_tutorial_02">このボタンから追加することができます</string>
-    <string name="main_tutorial_03">このボタンから検索することができます</string>
+    <string name="main_tutorial_01">CameMode へようこそ！\nこれから簡単な説明をしていきます。\n下の[OK]をタップしてください。</string>
+    <string name="main_tutorial_02">このボタンからあなたの情報を追加し、カメラマンまたはモデルを募集することができます。</string>
+    <string name="main_tutorial_03">このボタンから募集している他のユーザの情報を検索することができます。</string>
 
     <string name="add_tutorial_01">入力項目について詳細はこちらを長押ししてください</string>
 

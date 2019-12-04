@@ -32,12 +32,16 @@ public class TutorialPagerActivity extends AppCompatActivity {
     }
 
     public void onClickNext(View view) {
-        currentPage++;
+        if (currentPage >= 0 && currentPage <4) {
+            currentPage++;
+        }
         pager.setCurrentItem(currentPage);
     }
 
     public void onClickBack(View view) {
-        currentPage--;
+        if (currentPage > 0 && currentPage <=4) {
+            currentPage--;
+        }
         pager.setCurrentItem(currentPage);
     }
 

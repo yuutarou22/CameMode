@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -140,6 +141,27 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Log.d("display", "onClick!!!!!!!!!!!");
+            }
+        });
+        userListView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+            }
+
+            @Override
+            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                if (!recyclerView.canScrollVertically(-1)) {
+                    /* リストの先頭に来た時の処理 */
+                    android.util.Log.d("MainActivity","onScrolled Top");
+
+                }
+
+                if (!recyclerView.canScrollVertically(1)) {
+                    /* リストの末尾に来た時の処理 */
+                    android.util.Log.d("MainActivity","onScrolled Down");
+                }
             }
         });
     }

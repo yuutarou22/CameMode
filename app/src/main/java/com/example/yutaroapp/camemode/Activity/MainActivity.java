@@ -32,11 +32,17 @@ public class MainActivity extends AppCompatActivity {
     /* MainLayout */
     private MainLayout mMainLayout;
 
-    /* UserInfoDataクラスのデータを格納するList */
+    /* UserInfoDataクラス（NCMBObject）のデータを格納するList */
     List<NCMBObject> userInfoDataList = new ArrayList<NCMBObject>();
 
-    /* UserInfoDataクラスのデータを取得するクエリ */
+    /* UserInfoDataクラス（NCMBObject）のデータを取得するクエリ */
     NCMBQuery<NCMBObject> query = new NCMBQuery<>("UserInfoData");
+
+    /* ユーザ情報リスト */
+    RecyclerView userListView;
+
+    /* ユーザ情報リストのアダプタ */
+    UserRecyclerViewAdapter adapter;
 
     private void setupViews() {
         mMainLayout = new MainLayout(this);
@@ -131,7 +137,7 @@ public class MainActivity extends AppCompatActivity {
             userListItems.add(userItem);
         }
 
-        final UserRecyclerViewAdapter adapter = new UserRecyclerViewAdapter(userListItems, getSupportFragmentManager(), MainActivity.this);
+        adapter = new UserRecyclerViewAdapter(userListItems, getSupportFragmentManager(), MainActivity.this);
         LinearLayoutManager llm = new LinearLayoutManager(getApplicationContext());
         userListView.setHasFixedSize(true);
         userListView.setLayoutManager(llm);

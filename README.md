@@ -183,6 +183,20 @@
 - 外部サービス（Instagram、Twitter）に委任してしまうと再訪問する理由がなくなってしまうので、リピーターが減る恐れがある。
   - 本当だったらこのサービスだけで完結するような仕組みにできたら良いんだけど。
 
+## RecyclerViewの下スクロールで読み込む処理
+一番下スクロール検知→差分データ取得→表示位置を維持し更新
+- RecyclerViewのスクロール検知
+  - https://qiita.com/u_nation/items/282e3220ae863e6d21e5
+- NCMBのupdateDataは、ISO 8601の拡張形式だった。それと比較するため、デバイス側にあるユーザ情報リストの一番古い日時を取得し、NCMBで検索するクエリを発行する。
+  - https://qiita.com/azumagoro/items/11cadb4de3015e732d3d
+  - https://drambuie.hatenadiary.org/entry/20110219/p1
+  - http://enumorish.hatenablog.com/entry/20101114/1289733321
+  - https://www.sejuku.net/blog/20994
+- 取得した差分データを表示する
+  - https://qiita.com/fu_neko/items/77683a800a9da9ca29d1
+  - https://qiita.com/sussan0416/items/e7d68a208f71b3b95f8f
+  - http://ja.voidcc.com/question/p-knbqemsq-ge.html
+
 ## スプラッシュ画面の実装
 - 横長のロゴとアイコンの画像を表示させようとしたが、うまくいかなかった。
   - ブランチ：0032_スプラッシュの実装

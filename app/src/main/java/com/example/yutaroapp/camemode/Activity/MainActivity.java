@@ -25,7 +25,9 @@ import com.nifcloud.mbaas.core.NCMBException;
 import com.nifcloud.mbaas.core.NCMBObject;
 import com.nifcloud.mbaas.core.NCMBQuery;
 
+import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -65,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
         } else {
             setContentView(R.layout.activity_main);
             setupViews();
+            userListView = (RecyclerView) findViewById(R.id.user_info_list);
 
             NCMB.initialize(this.getApplicationContext(), Config.getApplicationKey(), Config.getClientKey());
 
@@ -118,7 +121,34 @@ public class MainActivity extends AppCompatActivity {
                         userInfoDataList.add(obj);
                         Utility.userInfoDataList.add(obj);
                     }
-                    displayListView();
+                    applyedDisplayListView();
+                }
+            }
+        });
+    }
+
+    /**
+     * ユーザ情報を取得し、リストを更新する
+     *
+     * @param query            NCMBQuery 検索用のクエリー
+     */
+    private void addUserInfoDataList(NCMBQuery query) {
+        query.findInBackground(new FindCallback<NCMBObject>() {
+            @Override
+            public void done(List<NCMBObject> list, NCMBException e) {
+                if (e != null) {
+                    // エラー時
+                    Toast.makeText(getApplicationContext(), R.string.data_get_error, Toast.LENGTH_SHORT).show();
+                } else {
+                    // 成功時
+                    Toast.makeText(getApplicationContext(), R.string.data_get_success, Toast.LENGTH_SHORT).show();
+
+                    for (NCMBObject obj : list) {
+                        Log.d("MainActivity", "userInfoDataList DispName: " + obj.getString("DisplayName"));
+                        userInfoDataList.add(obj);
+                        Utility.userInfoDataList.add(obj);
+                    }
+                    addedDisplayListView();
                 }
             }
         });
@@ -127,9 +157,7 @@ public class MainActivity extends AppCompatActivity {
     /**
      * 取得したユーザ情報をリストビューに出力する
      */
-    private void displayListView() {
-        final RecyclerView userListView = (RecyclerView) findViewById(R.id.user_info_list);
-
+    private void applyedDisplayListView() {
         final ArrayList<UserListItem> userListItems = new ArrayList<>();
         // 取得したユーザ情報をもとに、ユーザ情報アイテムを生成し、格納する
         for (NCMBObject obj : userInfoDataList) {
@@ -166,9 +194,39 @@ public class MainActivity extends AppCompatActivity {
 
                 if (!recyclerView.canScrollVertically(1)) {
                     /* リストの末尾に来た時の処理 */
-                    android.util.Log.d("MainActivity","onScrolled Down");
+
+                    // updateDateフィールドの新しい順にデータ取得し、ListViewに出力
+                    query.addOrderByDescending("updateDate");
+                    query.setLimit(15);
+                    try {
+                        Date date = Utility.getLastDate();
+                        query.whereLessThanOrEqualTo("updateDate", date);
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
+                    addUserInfoDataList(query);
                 }
             }
         });
+    }
+
+    /**
+     * 取得したユーザ情報をリストビューに出力する（下スクロール時用）
+     */
+    private void addedDisplayListView() {
+        final ArrayList<UserListItem> userListItems = new ArrayList<>();
+        // 取得したユーザ情報をもとに、ユーザ情報アイテムを生成し、格納する
+        for (NCMBObject obj : userInfoDataList) {
+            UserListItem userItem = new UserListItem(obj.getString("DisplayName"), obj.getString("SNSUserName"), obj.getString("CategoryRole"), obj.getString("CategorySNS"), obj.getString("ImaginationHope"), obj.getInt("SpinnerAgeInt"), obj.getInt("SpinnerSex"));
+            userListItems.add(userItem);
+        }
+        adapter.refreshItemList(userListItems);
+        adapter.setOnClickItemListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.d("display", "onClick!!!!!!!!!!!");
+            }
+        });
+        adapter.notifyDataSetChanged();
     }
 }

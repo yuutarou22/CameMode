@@ -180,4 +180,10 @@ public class UserRecyclerViewAdapter extends RecyclerView.Adapter<ViewHolder> {
         }
         return drawable;
     }
+
+    /* ユーザ情報リストをリフレッシュする */
+    public void refreshItemList(List<UserListItem> list) {
+        this.list.clear();
+        this.list = list;
+    }
 }

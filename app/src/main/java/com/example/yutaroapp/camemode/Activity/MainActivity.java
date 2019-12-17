@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -30,6 +31,9 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
     /* MainLayout */
     private MainLayout mMainLayout;
+
+    /* SwipeRefreshLayout */
+    private SwipeRefreshLayout mSwipeRefreshLayout;
 
     /* UserInfoDataクラスのデータを格納するList */
     List<NCMBObject> userInfoDataList = new ArrayList<NCMBObject>();
@@ -59,12 +63,17 @@ public class MainActivity extends AppCompatActivity {
             setContentView(R.layout.activity_main);
             setupViews();
 
-            NCMB.initialize(this.getApplicationContext(), Config.getApplicationKey(), Config.getClientKey());
+            mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_refresh);
+            mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+                @Override
+                public void onRefresh() {
+                    createQueryToSearch();
+                }
+            });
 
-            // updateDateフィールドの新しい順にデータ取得し、ListViewに出力
-            query.addOrderByDescending("updateDate");
-            query.setLimit(15);
-            applyUserInfoDataList(query, userInfoDataList);
+            NCMB.initialize(this.getApplicationContext(), Config.getApplicationKey(), Config.getClientKey());
+            createQueryToSearch();
+
         }
     }
 
@@ -76,14 +85,23 @@ public class MainActivity extends AppCompatActivity {
         switch (requestCode) {
             case Utility.REQUEST_CODE:
                 if (resultCode == RESULT_OK || resultCode == RESULT_CANCELED) {
-                    query.addOrderByDescending("updateDate");
-                    query.setLimit(15);
-                    applyUserInfoDataList(query, userInfoDataList);
+                    createQueryToSearch();
                 }
                 break;
             default:
                 break;
         }
+    }
+
+    /**
+     * ユーザ情報取得クエリを作成し、更新する
+     *
+     * */
+    public void createQueryToSearch() {
+        // updateDateフィールドの新しい順にデータ取得し、ListViewに出力
+        query.addOrderByDescending("updateDate");
+        query.setLimit(15);
+        applyUserInfoDataList(query, userInfoDataList);
     }
 
     /**
@@ -142,5 +160,8 @@ public class MainActivity extends AppCompatActivity {
                 Log.d("display", "onClick!!!!!!!!!!!");
             }
         });
+        if (mSwipeRefreshLayout.isRefreshing()) {
+            mSwipeRefreshLayout.setRefreshing(false);
+        }
     }
 }

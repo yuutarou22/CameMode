@@ -7,7 +7,10 @@ import android.util.Log;
 
 import com.nifcloud.mbaas.core.NCMBObject;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class Utility {
@@ -74,5 +77,12 @@ public class Utility {
 
         Intent intent = new Intent(Intent.ACTION_VIEW, uri);
         context.startActivity(intent);
+    }
+
+    /* ユーザ情報の一番古い日付を取得する処理 */
+    public static Date getLastDate() throws ParseException {
+        String str = userInfoDataList.get(userInfoDataList.size()-1).getString("updateDate");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+        return sdf.parse(str);
     }
 }

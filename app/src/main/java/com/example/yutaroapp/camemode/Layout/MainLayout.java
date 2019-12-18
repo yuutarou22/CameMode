@@ -8,6 +8,7 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.Toolbar;
 
 import com.example.yutaroapp.camemode.Activity.AddActivity;
 import com.example.yutaroapp.camemode.Activity.MainActivity;
@@ -28,6 +29,7 @@ public class MainLayout extends RelativeLayout {
      */
     private Context mContext;
 
+    Toolbar toolbar;
     ImageView appLogoImage;
     ImageView addButton;
     ImageView searchButton;

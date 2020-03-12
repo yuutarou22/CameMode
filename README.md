@@ -256,3 +256,6 @@ http://programming-cafe.com/android/sharedpreferences/first-launch-the-applicati
 - 当アプリのロゴフォントは「Phenomena Bold」です。
   - https://www.fontfabric.com/fonts/phenomena/
 - 当プロジェクトは、公開リポジトリにしておりますが、APIキーを記載したConfigファイルのみ非公開のためビルドできません🙇‍♂️
+- 20200312
+  - Toshikiくんの助言の通り、issueで管理するよう移行（したい）
+- ラジオボタンのチェックをあらかじめ設定する https://seesaawiki.jp/w/moonlight_aska/d/%A5%E9%A5%B8%A5%AA%A5%DC%A5%BF%A5%F3%A4%CE%A5%C1%A5%A7%A5%C3%A5%AF%BE%F5%C2%D6%A4%F2%C0%DF%C4%EA%2C%20%BC%E8%C6%C0%A4%B9%A4%EBき

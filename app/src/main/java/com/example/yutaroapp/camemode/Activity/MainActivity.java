@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
     List<NCMBObject> userInfoDataList = new ArrayList<NCMBObject>();
 
     /* UserInfoDataクラス（NCMBObject）のデータを取得するクエリ */
-    NCMBQuery<NCMBObject> query = new NCMBQuery<>("UserInfoData");
+    NCMBQuery<NCMBObject> query;
 
     /* ユーザ情報リスト */
     RecyclerView userListView;
@@ -110,6 +110,7 @@ public class MainActivity extends AppCompatActivity {
      * */
     public void createQueryToSearch() {
         // updateDateフィールドの新しい順にデータ取得し、ListViewに出力
+        query = new NCMBQuery<>("UserInfoData");
         query.addOrderByDescending("updateDate");
         query.setLimit(15);
         applyUserInfoDataList(query, userInfoDataList);
@@ -135,10 +136,12 @@ public class MainActivity extends AppCompatActivity {
                     // ユーザ情報をクリアし、新たに取得したユーザ情報をAddする
                     Utility.userInfoDataList.clear();
                     userInfoDataList.clear();
+                    userInfoDataList.addAll(list);
+                    Utility.userInfoDataList.addAll(list);
+
                     for (NCMBObject obj : list) {
+                        //ToDo: 取得結果用ログ（キリのいいところで削除）
                         Log.d("MainActivity", "userInfoDataList DispName: " + obj.getString("DisplayName"));
-                        userInfoDataList.add(obj);
-                        Utility.userInfoDataList.add(obj);
                     }
                     applyedDisplayListView();
                 }
